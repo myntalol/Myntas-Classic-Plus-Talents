@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoW Classic Talent Calculator - Warlock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="warlock-page">
+
+    <h1>Warlock</h1>
+
+    <div id="controls">
+        <span>
+            <a href="index.html" style="color: #ccc; text-decoration: none;">
+                &larr; Class Selection
+            </a>
+        </span>
+        <span>Points Spent: <span id="points-spent">0</span> / 51</span>
+<button id="reset-button" class="control-button">Reset All</button>
+<button id="toggle-empty-slots" class="control-button" type="button">Hide Slots</button>
+    </div>
+
+    <!-- OUTER DARK CARD (width controlled by .talent-shell padding in CSS) -->
+    <div class="talent-shell">
+        <!-- FRAME + INNER GLOW (global frame art / class glow handled in CSS) -->
+        <div class="talent-frame">
+            <!-- TALENT TREES -->
+            <div class="talent-calculator">
+
+                <!-- Affliction Tree -->
+                <div class="tree-container">
+                    <div
+                        id="affliction-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/aff_warlock.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/spell_shadow_deathcoil.jpg"
+                             class="tree-icon-small"
+                             alt="Affliction tree icon">
+                        <h3>Affliction (<span id="affliction-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- Demonology Tree -->
+                <div class="tree-container">
+                    <div
+                        id="demonology-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/dem_warlock.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/spell_shadow_metamorphosis.jpg"
+                             class="tree-icon-small"
+                             alt="Demonology tree icon">
+                        <h3>Demonology (<span id="demonology-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- Destruction Tree -->
+                <div class="tree-container">
+                    <div
+                        id="destruction-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/dest_warlock.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/spell_shadow_rainoffire.jpg"
+                             class="tree-icon-small"
+                             alt="Destruction tree icon">
+                        <h3>Destruction (<span id="destruction-points">0</span>)</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+<!-- ===================== -->
+<!-- FEATS (5 selectable)  -->
+<!-- ===================== -->
+<section class="rune-section">
+  <h2 class="section-title">Feats</h2>
+
+  <div class="rune-slots" id="rune-slots">
+    <button class="rune-slot" type="button" data-slot="0" aria-label="Feat Slot 1"></button>
+    <button class="rune-slot" type="button" data-slot="1" aria-label="Feat Slot 2"></button>
+    <button class="rune-slot" type="button" data-slot="2" aria-label="Feat Slot 3"></button>
+    <button class="rune-slot" type="button" data-slot="3" aria-label="Feat Slot 4"></button>
+    <button class="rune-slot" type="button" data-slot="4" aria-label="Feat Slot 5"></button>
+  </div>
+
+  <!-- picker panel opens when you click a slot -->
+  <div class="rune-picker" id="rune-picker" hidden>
+    <div class="rune-picker-header">
+      <div class="rune-picker-title" id="rune-picker-title">Choose a Feat</div>
+      <button class="rune-picker-close" id="rune-picker-close" type="button" aria-label="Close">✕</button>
+    </div>
+	<div class="rune-borrow-strip" id="rune-borrow-strip" hidden></div>
+    <div class="rune-options" id="rune-options"></div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- PATCH NOTES           -->
+<!-- ===================== -->
+<section class="patch-notes">
+  <h2 class="section-title">Patch Notes</h2>
+
+  <!-- You can edit this HTML per class whenever you want -->
+  <div class="patch-notes-card">
+
+<hr>
+
+<p>
+  <img class="inline-icon" data-wowicon="ability_druid_balanceofpower.jpg" alt="Warlock icon"><strong>Balance Changes</strong>
+<ul>
+<li>
+<img class="inline-icon"
+         src="images/icons/spell_shadow_summonvoidwalker.jpg"
+         alt="Sunder Armor icon">
+    <strong>Voidwalker</strong> now gains 45% additional Attack Power (based on its master's spell damage). <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+<img class="inline-icon"
+         src="images/icons/spell_shadow_ragingscream.jpg"
+         alt="Sunder Armor icon">
+    <strong>Demon Armor</strong> now restores additional health based on the Warlock's Defense skill. <img class="patch-badge" src="images/mynta.png" alt="TBC">
+<li>
+<img class="inline-icon"
+         src="images/icons/spell_shadow_summonfelhunter.jpg"
+         alt="Sunder Armor icon">
+    <strong>Summoned Demon Pets</strong> have had their total Health increased by 10%. <img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+<img class="inline-icon"
+         src="images/icons/spell_fire_firearmor.jpg"
+         alt="Sunder Armor icon">
+    <strong>Imp - Fire Shield</strong> can now be cast on raid members. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+  <img class="inline-icon" data-wowicon="spell_shadow_antishadow.jpg" alt="Charge icon">
+  <strong>Shadow Ward</strong>  low ranks of this spell will now be penalized the same way healing spells are penalized. <img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+<img class="inline-icon"
+         src="images/icons/inv_misc_gem_amethyst_02.jpg"
+         alt="Sunder Armor icon">
+    <strong>Soul Shard</strong> now has a maximum count of 20 in the inventory. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+  <img class="inline-icon" data-wowicon="inv_misc_gem_bloodstone_02.jpg" alt="Charge icon">
+  <strong>Firestones and Spellstones</strong> are now classified as relics and equipped in the ranged weapon slot (was held in off-hand).
+ <img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+  <img class="inline-icon" data-wowicon="inv_misc_gem_sapphire_01.jpg" alt="Charge icon">
+  <strong>Spellstones</strong> no longer absorbs magic damage or consumes itself on use.  Now has a 3 min cooldown. <img class="patch-badge" src="images/bc.png" alt="TBC">
+</ul>
+</hr>
+<hr>
+<p>
+  <img class="inline-icon" data-wowicon="inv_enchant_essencemagicsmall.jpg" alt="Spell icon"><strong>New Spells and Abilities</strong>
+<ul>
+<li>
+    <img class="inline-icon"
+         src="images/icons/spell_fire_burnout.jpg"
+         alt="Sunder Armor icon">
+    <strong>Incinerate</strong> is now trainable at level 40:
+<ul>
+	<li>
+	Deals Fire damage to your target and additional Fire damage if the target is affected by an Immolate spell.
+</ul>
+<li>
+    <img class="inline-icon"
+         src="images/icons/spell_shadow_psychicscream.jpg"
+         alt="Sunder Armor icon">
+    <strong>Demonic Sacrifice</strong> has been reworked and is now a baseline spell, trainable at level 25:
+<ul>
+	<li>
+	Sacrifices your summoned demon, replacing this spell with a new one for 30 min. The effect is cancelled if any Demon is summoned.
+<br><li>
+Imp: <img class="inline-icon"
+         src="images/icons/classic_spell_fire_elementaldevastation.jpg"
+         alt="Sunder Armor icon"> Singe Magic - Removes 1 harmful magic effect from a friendly target. 10 sec cooldown.
+<br><li>
+Voidwalker: <img class="inline-icon"
+         src="images/icons/spell_shadow_antishadow.jpg"
+         alt="Sunder Armor icon"> Void Shield - Reduces all spell damage taken by 20% for 6 sec. 2 min cooldown.
+<br><li>
+Succubus: <img class="inline-icon"
+         src="images/icons/ability_warlock_whiplash.jpg"
+         alt="Sunder Armor icon"> Whiplash - Deals Shadow damage and knocks the target backwards. 20 sec cooldown.
+<br><li>
+Felhunter: <img class="inline-icon"
+         src="images/icons/spell_shadow_mindrot.jpg"
+         alt="Sunder Armor icon"> Spell Lock - Interrupts spellcasting, preventing any spell in that school from being cast for 6 sec. 25 sec cooldown.
+<br><li>
+Felguard: <img class="inline-icon"
+         src="images/icons/inv_1115_warlock_diabolicritual_felguard.jpg"
+         alt="Sunder Armor icon"> Pursuit - Charge an enemy and deal 100% weapon damage. 30 sec cooldown.
+</ul>
+<li>
+  <img class="inline-icon" data-wowicon="spell_shadow_felarmour.jpg" alt="Charge icon">
+  <strong>Fel Armor</strong> is now trainable at Level 50:
+	<ul>
+	<li>
+	Surrounds the caster with fel energy, increasing spell damage and healing by an amount equal to 40% of your Spirit. Only one type of Armor spell can be active on the Warlock at any time. Lasts 30 min.
+</ul>
+</ul>
+</hr>
+<hr>
+<p>
+  <img class="inline-icon" src="images/icons/ability_racial_forgeoflight.jpg" alt="Hero icon"><strong>Hero's Journey</strong>
+<ul>
+Upon reaching max level, the Warlock class goes on a dark journey to learn the Infernal Repository spell: 
+<ul>
+</ul>
+       <img class="inline-icon" src="images/icons/inv_legioncircle_cache_nightmareraid.jpg" <li><strong>Infernal Repository</strong>
+<ul>
+	<li>	
+	Summon a cache from the nether, which can store reagents including Soul Shards, Infernal Stones, Demonic Figurines, etc. Spells that require reagents can pull from the repository even if it isn't currently on this plane of existence. Lasts 5 min. 30 min cooldown.
+  </li>
+</ul>
+</ul>
+<hr>
+
+<p><center>Balance Changes Key</center><br><center><img class="patch-badge" src="images/bc.png" alt="TBC"><img class="patch-badge" src="images/wrath.png" alt="TBC"><img class="patch-badge" src="images/cata.png" alt="TBC"> labels the expansion Blizzard made that change.</center><br><center><img class="patch-badge" src="images/wow.png" alt="TBC"> labels an idea Blizzard made during SoD.</center><br>
+<center><img class="patch-badge" src="images/mynta.png" alt="TBC"> labels a new idea I came up with.</center><br><center><em>Thanks for exploring! - Mynta, GM of Aggrophobia, Fear bombing mobs since 2006, Andorhal PvP | NA</em><span style="color: #CC24FF;"> (@mynlol on Discord)</span></center></p>
+  </div>
+</section>
+    <div id="tooltip"></div>
+<script src="tooltip_extras.js"></script>
+    <script src="warlock.js"></script>
+<script src="talent_engine.js"></script>
+<script src="runes.js"></script>
+<script src="patchnotes.js"></script>
+<footer class="page-footer">
+  <img src="images/fansiteheader.jpg" alt="World of Warcraft fan site banner">
+</footer>
+</body>
+</html>

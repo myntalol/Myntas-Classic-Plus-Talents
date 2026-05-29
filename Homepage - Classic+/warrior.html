@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WoW Classic Talent Calculator – Warrior</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body class="warrior-page">
+
+    <h1>Warrior</h1>
+
+    <div id="controls">
+        <span>
+            <a href="index.html" style="color: #ccc; text-decoration: none;">
+                &larr; Class Selection
+            </a>
+        </span>
+        <span>Points Spent: <span id="points-spent">0</span> / 51</span>
+<button id="reset-button" class="control-button">Reset All</button>
+<button id="toggle-empty-slots" class="control-button" type="button">Hide Slots</button>
+    </div>
+
+    <!-- OUTER DARK CARD (width controlled by .talent-shell padding in CSS) -->
+    <div class="talent-shell">
+        <!-- METAL FRAME + INNER GLOW (position vs trees controlled by .talent-frame padding) -->
+        <div class="talent-frame">
+            <!-- TALENT TREES -->
+            <div class="talent-calculator">
+
+                <!-- ARMS -->
+                <div class="tree-container">
+                    <div
+                        id="arms-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/arms_warrior.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/ability_rogue_eviscerate.jpg"
+                             class="tree-icon-small"
+                             alt="Arms tree icon">
+                        <h3>Arms (<span id="arms-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- FURY -->
+                <div class="tree-container">
+                    <div
+                        id="fury-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/fury_warrior.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/ability_warrior_innerrage.jpg"
+                             class="tree-icon-small"
+                             alt="Fury tree icon">
+                        <h3>Fury (<span id="fury-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- PROTECTION -->
+                <div class="tree-container">
+                    <div
+                        id="protection-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/prot_warrior.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/ability_warrior_defensivestance.jpg"
+                             class="tree-icon-small"
+                             alt="Protection tree icon">
+                        <h3>Protection (<span id="protection-points">0</span>)</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+<!-- ===================== -->
+<!-- FEATS (5 selectable)  -->
+<!-- ===================== -->
+<section class="rune-section">
+  <h2 class="section-title">Feats</h2>
+
+  <div class="rune-slots" id="rune-slots">
+    <button class="rune-slot" type="button" data-slot="0" aria-label="Feat Slot 1"></button>
+    <button class="rune-slot" type="button" data-slot="1" aria-label="Feat Slot 2"></button>
+    <button class="rune-slot" type="button" data-slot="2" aria-label="Feat Slot 3"></button>
+    <button class="rune-slot" type="button" data-slot="3" aria-label="Feat Slot 4"></button>
+    <button class="rune-slot" type="button" data-slot="4" aria-label="Feat Slot 5"></button>
+  </div>
+
+  <!-- picker panel opens when you click a slot -->
+  <div class="rune-picker" id="rune-picker" hidden>
+    <div class="rune-picker-header">
+      <div class="rune-picker-title" id="rune-picker-title">Choose a Rune</div>
+      <button class="rune-picker-close" id="rune-picker-close" type="button" aria-label="Close">✕</button>
+    </div>
+
+    <div class="rune-options" id="rune-options"></div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- PATCH NOTES           -->
+<!-- ===================== -->
+<section class="patch-notes">
+  <h2 class="section-title">Patch Notes</h2>
+
+  <!-- You can edit this HTML per class whenever you want -->
+  <div class="patch-notes-card">
+
+<hr>
+
+<p>
+  <img class="inline-icon" data-wowicon="ability_druid_balanceofpower.jpg" alt="Warrior icon"><strong>Balance Changes</strong>
+<ul>
+<li>
+  <img class="inline-icon" data-wowicon="ability_racial_bloodrage.jpg" alt="Charge icon">
+  <strong>Rage Generation</strong> has been updated to The Burning Crusade formula.  <img class="patch-badge" src="images/bc.png" alt="TBC">
+<ul>
+      <li>Each auto-attack will provide a set amount of Rage, with off-hand weapons granting 50% of the Rage main-hand weapons do. Rage from damage taken will no longer be based on a standard creature of the character's level, but instead will be based on the health of the warrior or druid. This calculation ignores all damage reduction from armor, absorption, avoidance, block, or similar mechanics, so improving your gear will not reduce Rage gained.<br><br><em>Note - Yes it's true...I am a Warrior main advocating for Rage normalization. I know many would hate this for Classic+, but I understand why Blizz did this back in TBC. For tanks, better gear = worse Rage? Awful. The problem wasn't "Warriors spam abilities too much", so I made talents inspired by SoD like Flagellation & improved Unbridled Wrath / Anger Management so you can always zug zug. </em></li>
+    </ul>
+  </li>
+<li>
+  <img class="inline-icon" data-wowicon="ability_warrior_revenge.jpg" alt="Charge icon">
+  <strong>Revenge</strong> and <strong>Overpower</strong> no longer share a cooldown. <img class="patch-badge" src="images/bc.png" alt="TBC">
+  <li>
+  <img class="inline-icon" data-wowicon="ability_warrior_charge.jpg" alt="Charge icon">
+  <strong>Charge</strong> is now usable in combat.<img class="patch-badge" src="images/wrath.png" alt="TBC">
+  <li>
+  <img class="inline-icon" data-wowicon="ability_warrior_charge.jpg" alt="Charge icon">
+  <strong>Charge and Intervene</strong> stun effect is no longer subject to diminishing returns. <img class="patch-badge" src="images/bc.png" alt="TBC"> 
+  <li>
+  <img class="inline-icon" data-wowicon="ability_warrior_charge.jpg" alt="Charge icon">
+  <strong>Charge, Intercept and Intervene</strong> now suppress all Slowing effects while charging the target. <img class="patch-badge" src="images/bc.png" alt="TBC"> 
+  <li>
+  <img class="inline-icon" data-wowicon="ability_warrior_offensivestance.jpg" alt="Charge icon">
+  <strong>Battle Stance</strong> now increases the Warrior's chance to hit by 3%. <img class="patch-badge" src="images/mynta.png" alt="TBC">
+  <li>
+    <img class="inline-icon"
+         src="images/icons/ability_whirlwind.jpg"
+         alt="Sunder Armor icon">
+    <strong>Whirlwind</strong> now strikes with both weapons while the Warrior is
+    dual-wielding. <img class="patch-badge" src="images/bc.png" alt="TBC">
+ <li>
+    <img class="inline-icon"
+         src="images/icons/ability_warrior_decisivestrike.jpg"
+         alt="Sunder Armor icon">
+    <strong>Slam</strong> now suspends the weapon swing timer rather than resetting it. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+</ul>
+</hr>
+<hr>
+<p>
+  <img class="inline-icon" data-wowicon="inv_enchant_essencemagicsmall.jpg" alt="Spell icon"><strong>New Spells and Abilities</strong>
+<ul>
+<li>
+<img class="inline-icon"
+         src="images/icons/ability_warrior_shieldreflection.jpg"
+         alt="Sunder Armor icon">
+    <strong>Spell Reflection</strong> is now trainable at level 50:
+<ul>
+	<li>
+Raise your shield, reflecting the next spell cast on you. Lasts 5 sec. 20 Rage. 10 sec cooldown,
+</ul>
+</ul>
+<ul>
+<li>
+<img class="inline-icon"
+         src="images/icons/ability_warrior_victoryrush.jpg"
+         alt="Sunder Armor icon">
+    <strong>Intervene</strong> is now trainable at level 60:
+<ul>
+	<li>
+Run at high speed towards a party or raid member, intercepting the next melee or ranged attack made against them as well as reducing their total threat. 10 Rage. 30 sec cooldown.
+</ul>
+</ul>
+<ul>
+<li>
+<img class="inline-icon"
+         src="images/icons/ability_warrior_rallyingcry.jpg"
+         alt="Sunder Armor icon">
+    <strong>Commanding Shout</strong> is now trainable at level 30:
+<ul>
+	<li>
+Increases maximum health of all party members within 20 yards.  Lasts 2 min. 10 Rage.
+</ul>
+</ul>
+</hr>
+<hr>
+<p>
+  <img class="inline-icon" src="images/icons/ability_racial_forgeoflight.jpg" alt="Hero icon"><strong>Hero's Journey</strong>
+<ul>
+Upon reaching max level, the Warrior chooses from one of three traits. This choice is <strong>permanent</strong> and cannot be undone: 
+<ul>
+      <li><strong>Giant's Strength</strong> - Your backpack gains 12 additional slots.
+<li><strong>Tactical Soldier</strong> - The healing provided by your bandages and the duration of food buffs are increased by 25%.
+<li><strong>Knightly Charisma</strong> - The cost of repairing items is reduced by 20%.
+  </li>
+</ul>
+</ul>
+<hr>
+
+<p><center>Balance Changes Key</center><br><center><img class="patch-badge" src="images/bc.png" alt="TBC"><img class="patch-badge" src="images/wrath.png" alt="TBC"><img class="patch-badge" src="images/cata.png" alt="TBC"> labels the expansion Blizzard made that change.</center><br><center><img class="patch-badge" src="images/wow.png" alt="TBC"> labels an idea Blizzard made during SoD.</center><br>
+<center><img class="patch-badge" src="images/mynta.png" alt="TBC"> labels a new idea I came up with.</center><br><center><em>Thanks for exploring! - Mynta, GM of Aggrophobia, Fear bombing mobs since 2006, Andorhal PvP | NA</em><span style="color: #CC24FF;"> (@mynlol on Discord)</span></center></p>
+  </div>
+</section>    <div id="tooltip"></div>
+<script src="tooltip_extras.js"></script>
+    <script src="warrior.js"></script>
+<script src="talent_engine.js"></script>
+<script src="runes.js"></script>
+<script src="patchnotes.js"></script>
+<footer class="page-footer">
+  <img src="images/fansiteheader.jpg" alt="World of Warcraft fan site banner">
+</footer>
+</body>
+</html>

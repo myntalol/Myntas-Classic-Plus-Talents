@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoW Classic Talent Calculator - Druid</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="druid-page">
+
+    <h1>Druid</h1>
+
+    <div id="controls">
+        <span><a href="index.html" style="color: #ccc; text-decoration: none;">&larr; Class Selection</a></span>
+        <span>Points Spent: <span id="points-spent">0</span> / 51</span>
+<button id="reset-button" class="control-button">Reset All</button>
+<button id="toggle-empty-slots" class="control-button" type="button">Hide Slots</button>
+    </div>
+
+  <!-- OUTER DARK CARD (width controlled by .talent-shell padding in CSS) -->
+    <div class="talent-shell">
+        <!-- METAL FRAME + INNER GLOW (position vs trees controlled by .talent-frame padding) -->
+        <div class="talent-frame">
+            <!-- TALENT TREES -->
+            <div class="talent-calculator">
+
+<!-- Balance Tree -->
+                <div class="tree-container">
+                    <div
+                        id="balance-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/bal_druid.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/spell_nature_starfall.jpg"
+                             class="tree-icon-small"
+                             alt="Balance tree icon">
+                        <h3>Balance (<span id="balance-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- FERAL COMBAT -->
+                <div class="tree-container">
+                    <div
+                        id="feral-combat-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/feral_druid.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/ability_racial_bearform.jpg"
+                             class="tree-icon-small"
+                             alt="Feral tree icon">
+                        <h3>Feral (<span id="feral-combat-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- RESTORATION -->
+                <div class="tree-container">
+                    <div
+                        id="restoration-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/resto_druid.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/spell_nature_healingtouch.jpg"
+                             class="tree-icon-small"
+                             alt="Restoration tree icon">
+                        <h3>Restoration (<span id="restoration-points">0</span>)</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<!-- ===================== -->
+<!-- FEATS (5 selectable)  -->
+<!-- ===================== -->
+<section class="rune-section">
+  <h2 class="section-title">Feats</h2>
+
+  <div class="rune-slots" id="rune-slots">
+    <button class="rune-slot" type="button" data-slot="0" aria-label="Feat Slot 1"></button>
+    <button class="rune-slot" type="button" data-slot="1" aria-label="Feat Slot 2"></button>
+    <button class="rune-slot" type="button" data-slot="2" aria-label="Feat Slot 3"></button>
+    <button class="rune-slot" type="button" data-slot="3" aria-label="Feat Slot 4"></button>
+    <button class="rune-slot" type="button" data-slot="4" aria-label="Feat Slot 5"></button>
+  </div>
+
+  <!-- picker panel opens when you click a slot -->
+  <div class="rune-picker" id="rune-picker" hidden>
+    <div class="rune-picker-header">
+      <div class="rune-picker-title" id="rune-picker-title">Choose a Feat</div>
+      <button class="rune-picker-close" id="rune-picker-close" type="button" aria-label="Close">✕</button>
+    </div>
+
+    <div class="rune-options" id="rune-options"></div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- PATCH NOTES           -->
+<!-- ===================== -->
+<section class="patch-notes">
+  <h2 class="section-title">Patch Notes</h2>
+
+  <!-- You can edit this HTML per class whenever you want -->
+  <div class="patch-notes-card">
+
+<hr>
+
+<p>
+  <img class="inline-icon"
+         src="images/icons/ability_druid_balanceofpower.jpg"
+         alt="Balance icon"><strong>Balance Changes</strong>
+<ul>
+<li>
+  <img class="inline-icon" data-wowicon="ability_racial_bloodrage.jpg" alt="Charge icon">
+  <strong>Rage Generation</strong> has been updated to The Burning Crusade formula.  <img class="patch-badge" src="images/bc.png" alt="TBC">
+<ul>
+      <li>Each auto-attack will provide a set amount of Rage, with off-hand weapons granting 50% of the Rage main-hand weapons do. Rage from damage taken will no longer be based on a standard creature of the character's level, but instead will be based on the health of the warrior or druid. This calculation ignores all damage reduction from armor, absorption, avoidance, block, or similar mechanics, so improving your gear will not reduce Rage gained.</li>
+    </ul>
+    <li>
+  <img class="inline-icon" data-wowicon="ability_racial_bearform.jpg" alt="Charge icon">
+  <strong>Bear and Dire Bear Forms</strong> have been consolidated into one Bear Form spell. <img class="patch-badge" src="images/cata.png" alt="TBC">
+  <ul>
+      <li>Beginning at level 40, Bear Form gains the additional power bonuses originally granted by Dire Bear Form.</li>
+<em>Note - Even in researching old forum posts, many Druids felt that having two versions wasn't needed, especially when there wasn't a "Dire Cat" equivalent. This was a choice for simplicity and to minimize "Requires Bear or Dire Bear Form" complexity.</em></ul>
+</li>
+<li>
+  <img class="inline-icon" data-wowicon="spell_nature_stranglevines.jpg" alt="Charge icon">
+  <strong>Entangling Roots</strong> can now be used indoors.
+  <img class="patch-badge" src="images/bc.png" alt="TBC">
+</li>
+<li>
+   <img class="inline-icon" data-wowicon="ability_mount_jungletiger.jpg" alt="Charge icon">
+  <strong>Tiger's Fury</strong> now increases all physical damage you deal by 10% instead of by a flat value and now has a 1 min cooldown.
+  <img class="patch-badge" src="images/mynta.png" alt="TBC"><ul><em>Note - Tiger's Fury got changed to deal percentage damage in Cata, but this version has a slightly longer cooldown, as the Cata version was a bit OP when layered with revamped talents.</em></ul>
+
+</li>
+<li>
+   <img class="inline-icon" data-wowicon="ability_bullrush.jpg" alt="Charge icon">
+  <strong>Frenzied Regeneration</strong> now converts each point of rage into 0.3% of max health.
+  <img class="patch-badge" src="images/wrath.png" alt="TBC">
+</li>
+<li>
+     <img class="inline-icon"
+         src="images/icons/inv_misc_monsterclaw_03.jpg"
+         alt="Sunder Armor icon">
+    <strong>Swipe</strong> is now usable in Cat Form, becoming Swipe (Cat).  <img class="patch-badge" src="images/wow.png" alt="TBC">
+</li>
+<li>
+     <img class="inline-icon"
+         src="images/icons/spell_nature_insectswarm.jpg"
+         alt="Sunder Armor icon">
+    <strong>Insect Swarm</strong> damage increased by 30% at all ranks.
+  <img class="patch-badge" src="images/bc.png" alt="TBC">
+</li>
+<li>
+    <img class="inline-icon"
+         src="images/icons/spell_nature_preservation.jpg"
+         alt="Sunder Armor icon">
+    <strong>Periodic heals (HoTs)</strong> cast by different players can now be active on the same target simultaneously.  <img class="patch-badge" src="images/bc.png" alt="TBC">
+</li>
+<li>
+     <img class="inline-icon"
+         src="images/icons/spell_nature_stoneclawtotem.jpg"
+         alt="Sunder Armor icon">
+    <strong>Barkskin</strong> can now be cast while shapeshifted and can be cast on allies. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+</li>
+<li>
+     <img class="inline-icon"
+         src="images/icons/spell_nature_tranquility.jpg"
+         alt="Sunder Armor icon">
+    <strong>Tranquility</strong> base amount healed has increased by approximately 250% and the radius has increased to 30 yds. <img class="patch-badge" src="images/bc.png" alt="TBC">
+</li>
+</ul>
+</hr>
+<hr>
+<p>
+ <img class="inline-icon"
+         src="images/icons/inv_enchant_essencemagicsmall.jpg"
+         alt="Spell icon"><strong>New Spells and Abilities</strong>
+<ul>
+<li>
+<img class="inline-icon"
+         src="images/icons/ability_druid_lacerate.jpg"
+         alt="Sunder Armor icon">
+    <strong>Lacerate</strong> is now trainable at level 30:
+<ul>
+	<li>
+Lacerates the target, making them bleed for physical damage over 15 sec plus an additional amount equal to 6% weapon damage per stack. Causes a high amount of threat. Stacks up to 5 times. Requires Bear Form.
+</ul>
+<li>
+     <img class="inline-icon"
+         src="images/icons/spell_nature_earthbind.jpg"
+         alt="Sunder Armor icon">
+    <strong>Cyclone</strong> is now trainable at level 60:
+<ul>
+	<li>
+Lifts an enemy target into the air, preventing all action and making them invulnerable for up to 6 sec.  Only one target can be affected by your Cyclone at a time.
+</ul>
+<li>
+ <img class="inline-icon" data-wowicon="spell_nature_natureswrath.jpg" alt="Charge icon">
+  <strong>Nature’s Grasp</strong> is now trainable at level 10:
+<ul>
+	<li>
+While active, any time an enemy strikes the caster they have a 25% chance to become afflicted by Entangling Roots. <br>1 charge.  Lasts 30 sec. 1 min cooldown.
+</ul>
+</li>
+</ul>
+</hr>
+<hr>
+<p>
+<img class="inline-icon"
+         src="images/icons/ability_racial_forgeoflight.jpg"
+         alt="Sunder Armor icon"><strong>Hero's Journey</strong>
+<ul>
+Upon reaching max level, the Druid class is able to befriend a unique critter companion that provides a permanent effect when summoned. This choice is <strong>permanent</strong> and cannot be undone: 
+<ul>
+      <li><strong>Dream-Touched Moth</strong> - Total Spirit increased by 1%.
+<li><strong>Ferocious Squirrel</strong> - Total Strength increased by 1%.
+<li><strong>Moon-Blessed Owl</strong> - Total Intellect increased by 1%.
+  </li>
+</ul>
+</ul>
+<hr>
+
+<p><center>Balance Changes Key</center><br><center><img class="patch-badge" src="images/bc.png" alt="TBC"><img class="patch-badge" src="images/wrath.png" alt="TBC"><img class="patch-badge" src="images/cata.png" alt="TBC"> labels the expansion Blizzard made that change.</center><br><center><img class="patch-badge" src="images/wow.png" alt="TBC"> labels an idea Blizzard made during SoD.</center><br>
+<center><img class="patch-badge" src="images/mynta.png" alt="TBC"> labels a new idea I came up with.</center><br><center><em>Thanks for exploring! - Mynta, GM of Aggrophobia, Fear bombing mobs since 2006, Andorhal PvP | NA</em></span><span style="color: #CC24FF;"> (@mynlol on Discord)</span></center></p>
+  </div>
+</section>
+    <div id="tooltip"></div>
+<script src="tooltip_extras.js"></script>
+<script src="druid.js"></script>
+<script src="talent_engine.js"></script>
+<script src="runes.js"></script>
+<script src="patchnotes.js"></script>
+<footer class="page-footer">
+  <img src="images/fansiteheader.jpg" alt="World of Warcraft fan site banner">
+</footer>
+</body>
+</html>

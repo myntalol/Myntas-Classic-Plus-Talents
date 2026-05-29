@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoW Classic Talent Calculator - Rogue</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="rogue-page">
+
+    <h1>Rogue</h1>
+
+    <div id="controls">
+        <span>
+            <a href="index.html" style="color: #ccc; text-decoration: none;">
+                &larr; Class Selection
+            </a>
+        </span>
+        <span>Points Spent: <span id="points-spent">0</span> / 51</span>
+<button id="reset-button" class="control-button">Reset All</button>
+<button id="toggle-empty-slots" class="control-button" type="button">Hide Slots</button>
+    </div>
+
+    <!-- OUTER DARK CARD (width controlled by .talent-shell padding in CSS) -->
+    <div class="talent-shell">
+        <!-- FRAME + INNER GLOW (global frame art / class glow handled in CSS) -->
+        <div class="talent-frame">
+            <!-- TALENT TREES -->
+            <div class="talent-calculator">
+
+                <!-- Assassination Tree -->
+                <div class="tree-container">
+                    <div
+                        id="assassination-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/ass_rogue.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/ability_rogue_eviscerate.jpg"
+                             class="tree-icon-small"
+                             alt="Assassination tree icon">
+                        <h3>Assassination (<span id="assassination-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- Combat Tree -->
+                <div class="tree-container">
+                    <div
+                        id="combat-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/com_rogue.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/ability_backstab.jpg"
+                             class="tree-icon-small"
+                             alt="Combat tree icon">
+                        <h3>Combat (<span id="combat-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- Subtlety Tree -->
+                <div class="tree-container">
+                    <div
+                        id="subtlety-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/sub_rogue.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/ability_stealth.jpg"
+                             class="tree-icon-small"
+                             alt="Subtlety tree icon">
+                        <h3>Subtlety (<span id="subtlety-points">0</span>)</h3>
+                     </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== -->
+<!-- FEATS (5 selectable)  -->
+<!-- ===================== -->
+<section class="rune-section">
+  <h2 class="section-title">Feats</h2>
+
+  <div class="rune-slots" id="rune-slots">
+    <button class="rune-slot" type="button" data-slot="0" aria-label="Feat Slot 1"></button>
+    <button class="rune-slot" type="button" data-slot="1" aria-label="Feat Slot 2"></button>
+    <button class="rune-slot" type="button" data-slot="2" aria-label="Feat Slot 3"></button>
+    <button class="rune-slot" type="button" data-slot="3" aria-label="Feat Slot 4"></button>
+    <button class="rune-slot" type="button" data-slot="4" aria-label="Feat Slot 5"></button>
+  </div>
+
+  <!-- picker panel opens when you click a slot -->
+  <div class="rune-picker" id="rune-picker" hidden>
+    <div class="rune-picker-header">
+      <div class="rune-picker-title" id="rune-picker-title">Choose a Feat</div>
+      <button class="rune-picker-close" id="rune-picker-close" type="button" aria-label="Close">✕</button>
+    </div>
+	<div class="rune-borrow-strip" id="rune-borrow-strip" hidden></div>
+    <div class="rune-options" id="rune-options"></div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- PATCH NOTES           -->
+<!-- ===================== -->
+<section class="patch-notes">
+  <h2 class="section-title">Patch Notes</h2>
+
+  <!-- You can edit this HTML per class whenever you want -->
+  <div class="patch-notes-card">
+
+<hr>
+
+<p>
+  <img class="inline-icon" data-wowicon="ability_druid_balanceofpower.jpg" alt="Rogue icon"><strong>Balance Changes</strong>
+<ul>
+<li>
+  <img class="inline-icon" data-wowicon="ability_vanish.jpg" alt="Charge icon">
+  <strong>Stealth and Vanish</strong> no longer break upon resisting a spell. <img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+  <img class="inline-icon" data-wowicon="inv_misc_number_5.jpg" alt="Charge icon">
+  <strong>Combo points</strong> added to a target will not be reset until you add a
+    combo point to a different target.
+ <img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+     <img class="inline-icon"
+         src="images/icons/trade_brewpoison.jpg"
+         alt="Sunder Armor icon">
+    <strong>Deadly Poison</strong> from multiple Rogues can now be active on the same
+    target. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+<img class="inline-icon"
+         src="images/icons/ability_kick.jpg"
+         alt="Sunder Armor icon">
+    <strong>Kick</strong> is now only 1 rank and no longer causes damage. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+<img class="inline-icon"
+         src="images/icons/ability_sap.jpg"
+         alt="Sunder Armor icon">
+    <strong>Sap</strong> mechanic changed from "Incapacitate" to "Sap". This will allow more humanoids that were previously immune to Sap to be vulnerable to Sap, but still immune to Gouge. Note that anything that removed Sap previously will still remove Sap after the change. <img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+<img class="inline-icon"
+         src="images/icons/trade_brewpoison.jpg"
+         alt="Sunder Armor icon">
+ <strong>Deadly Poison and Instant Poison</strong> charges have been increased by an additional 10 per rank. <img class="patch-badge" src="images/mynta.png" alt="TBC">
+</ul>
+</hr>
+<hr>
+<p>
+  <img class="inline-icon" data-wowicon="inv_enchant_essencemagicsmall.jpg" alt="Spell icon"><strong>New Spells and Abilities</strong>
+<ul>
+<li>
+    <img class="inline-icon"
+         src="images/icons/inv_throwingknife_04.jpg"
+         alt="Sunder Armor icon">
+    <strong>Shiv</strong> is now trainable at level 40:
+<ul>
+	<li>
+	Performs an instant off-hand weapon attack that automatically applies the poison from your off-hand weapon to the target. Slower weapons require more Energy. Awards 1 combo point. 6 sec cooldown.
+</ul>
+<li>
+  <img class="inline-icon" data-wowicon="inv_throwingknife_07.jpg" alt="Charge icon">
+  <strong>Shuriken Toss</strong> is now trainable at Level 35:
+	<ul>
+	<li>
+Throw a shuriken at your enemy dealing damage equal to 30% of your Attack Power. Awards 1 combo point. 10 sec cooldown.
+</ul>
+<li>
+    <img class="inline-icon"
+         src="images/icons/achievement_halloween_smiley_01.jpg"
+         alt="Sunder Armor icon">
+    <strong>Tease</strong> is now trainable at level 20:
+<ul>
+	<li>	
+Taunts the target to attack you, but has no effect if the target is already attacking you. 10 sec cooldown.
+</ul><ul><em>Note - Rogue tanks in SoD were cool but not very popular (at least on my server.) I wanted to enable off-tanking as a Rogue, as its cool RPG flavor, but was cautious about watering down DPS options. The Combat tree + some feats were enough to make it a reality.</em></ul>
+</ul>
+</hr>
+<hr>
+<p>
+  <img class="inline-icon" src="images/icons/ability_racial_forgeoflight.jpg" alt="Hero icon"><strong>Hero's Journey</strong>
+<ul>
+Upon reaching max level, the Rogue class chooses an alliance with one of four Goblin cities. This alliance reduces the amount of reputation lost when committing crimes and the cost to repair and purchase items in that city by 30%. It also unlocks unique mounts and accessories. This choice is <strong>permanent</strong> and cannot be undone: 
+<ul>
+<li><strong>Gadgetzan</strong> - <img class="inline-icon" data-wowicon="inv_111_themount_themount.jpg" alt="Charge icon"> Bandit's ATV
+<li><strong>Booty Bay </strong> - <img class="inline-icon" data-wowicon="ability_mount_rocketmount2.jpg" alt="Charge icon"> Pirate's Jungle Speeder
+<li><strong>Ratchet</strong> - <img class="inline-icon" data-wowicon="inv_goblintrikemount.jpg" alt="Charge icon"> Outlaw's Sandcycle
+<li><strong>Everlook</strong> - <img class="inline-icon" data-wowicon="inv_mechanicaltiger_grey.jpg" alt="Charge icon"> Mercenary's Mechanocat
+  </li>
+</ul>
+</ul>
+<hr>
+
+<p><center>Balance Changes Key</center><br><center><img class="patch-badge" src="images/bc.png" alt="TBC"><img class="patch-badge" src="images/wrath.png" alt="TBC"><img class="patch-badge" src="images/cata.png" alt="TBC"> labels the expansion Blizzard made that change.</center><br><center><img class="patch-badge" src="images/wow.png" alt="TBC"> labels an idea Blizzard made during SoD.</center><br>
+<center><img class="patch-badge" src="images/mynta.png" alt="TBC"> labels a new idea I came up with.</center><br><center><em>Thanks for exploring! - Mynta, GM of Aggrophobia, Fear bombing mobs since 2006, Andorhal PvP | NA</em><span style="color: #CC24FF;"> (@mynlol on Discord)</span></center></p>
+  </div>
+</section>
+    <div id="tooltip"></div>
+<script src="tooltip_extras.js"></script>
+    <script src="rogue.js"></script>
+<script src="talent_engine.js"></script>
+<script src="runes.js"></script>
+<script src="patchnotes.js"></script>
+<footer class="page-footer">
+  <img src="images/fansiteheader.jpg" alt="World of Warcraft fan site banner">
+</footer>
+</body>
+</html>
+

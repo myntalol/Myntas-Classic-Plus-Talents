@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoW Classic Talent Calculator – Mage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="mage-page">
+
+    <h1>Mage</h1>
+
+    <div id="controls">
+        <span>
+            <a href="index.html" style="color: #ccc; text-decoration: none;">
+                &larr; Class Selection
+            </a>
+        </span>
+        <span>Points Spent: <span id="points-spent">0</span> / <span id="points-cap">51</span>
+<button id="reset-button" class="control-button">Reset All</button>
+<button id="toggle-empty-slots" class="control-button" type="button">Hide Slots</button>
+    </div>
+
+    <!-- OUTER DARK CARD (width controlled by .talent-shell padding in CSS) -->
+    <div class="talent-shell">
+
+        <!-- FRAME + INNER GLOW (art controlled by .mage-page .talent-frame::before in CSS) -->
+        <div class="talent-frame">
+
+            <!-- TALENT TREES -->
+            <div class="talent-calculator">
+
+                <!-- TEMPORAL / ARCANE -->
+                <div class="tree-container">
+                    <div 
+                        id="arcane-grid" 
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/arc_mage.jpg');">
+                        <!-- SVG overlay will be injected by mage.js -->
+                    </div>
+
+                    <div class="tree-footer">
+                        <img src="images/icons/ability_mage_timewarp.jpg"
+                             class="tree-icon-small"
+                             alt="Arcane tree icon">
+                        <h3>Temporal (<span id="arcane-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- OCCULT / FIRE -->
+                <div class="tree-container">
+                    <div 
+                        id="fire-grid" 
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/fire_mage.jpg');">
+                        <!-- SVG overlay will be injected by mage.js -->
+                    </div>
+
+                    <div class="tree-footer">
+                        <img src="images/icons/diabloanniversary_tomeoftownportal.jpg"
+                             class="tree-icon-small"
+                             alt="Fire tree icon">
+                        <h3>Occult (<span id="fire-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- ELEMENTAL / FROST -->
+                <div class="tree-container">
+                    <div 
+                        id="frost-grid" 
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/frost_mage.jpg');">
+                        <!-- SVG overlay will be injected by mage.js -->
+                    </div>
+
+                    <div class="tree-footer">
+                        <img src="images/icons/inv_ability_frostfiremage_frostfirebolt.jpg"
+                             class="tree-icon-small"
+                             alt="Frost tree icon">
+                        <h3>Elemental (<span id="frost-points">0</span>)</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== -->
+<!-- RUNES (5 selectable)  -->
+<!-- ===================== -->
+<section class="rune-section">
+  <h2 class="section-title">Feats</h2>
+
+  <div class="rune-slots" id="rune-slots">
+    <button class="rune-slot" type="button" data-slot="0" aria-label="Feat Slot 1"></button>
+    <button class="rune-slot" type="button" data-slot="1" aria-label="Feat Slot 2"></button>
+    <button class="rune-slot" type="button" data-slot="2" aria-label="Feat Slot 3"></button>
+    <button class="rune-slot" type="button" data-slot="3" aria-label="Feat Slot 4"></button>
+    <button class="rune-slot" type="button" data-slot="4" aria-label="Feat Slot 5"></button>
+  </div>
+
+  <!-- picker panel opens when you click a slot -->
+  <div class="rune-picker" id="rune-picker" hidden>
+    <div class="rune-picker-header">
+      <div class="rune-picker-title" id="rune-picker-title">Choose a Feat</div>
+      <button class="rune-picker-close" id="rune-picker-close" type="button" aria-label="Close">✕</button>
+    </div>
+
+    <div class="rune-options" id="rune-options"></div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- PATCH NOTES           -->
+<!-- ===================== -->
+<section class="patch-notes">
+  <h2 class="section-title">Patch Notes</h2>
+
+  <!-- You can edit this HTML per class whenever you want -->
+  <div class="patch-notes-card">
+<em>Note - Big tree rework here. I felt Mages would enjoy a new tree inspired by Medivh / focused on the risks of seeking knowledge. It also made sense to unify Fire / Frost (like Shaman's Elemental tree) while keeping options open. The Temporal tree was inspired by SoD, and works as a healing or DPS tree.</em>
+<hr>
+
+<p>
+  <img class="inline-icon" data-wowicon="ability_druid_balanceofpower.jpg" alt="Mage icon"><strong>Balance Changes</strong>
+<ul>
+<li>
+  <img class="inline-icon" data-wowicon="spell_frost_iceshock.jpg" alt="Charge icon">
+  <strong>Counterspell</strong> no longer triggers the global cooldown. <img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+  <img class="inline-icon" data-wowicon="spell_shadow_detectlesserinvisibility.jpg" alt="Charge icon">
+  <strong>Mana Shield</strong> now gets a percentage of the Mage's bonus to spell damage or healing as an additional effect (whichever is higher).
+ <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+     <img class="inline-icon"
+         src="images/icons/inv_misc_gem_emerald_01.jpg"
+         alt="Sunder Armor icon">
+    <strong>Conjured mana gems</strong> no longer disappear from your backpack after being logged out for more than 15 minutes. Higher ranks of Conjure Mana Gem will recharge an existing mana gem to maximum charges. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+  <li>
+     <img class="inline-icon"
+         src="images/icons/spell_frost_frostward.jpg"
+         alt="Sunder Armor icon">
+    <strong>Fire Ward </strong>and <strong>Frost Ward</strong> now gain additional benefit from spell damage and have a 10% chance to reflect spells of that type. <img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+   <img class="inline-icon"
+         src="images/icons/spell_arcane_portaldarnassus.jpg"
+         alt="Sunder Armor icon">
+    <strong>Portal spells</strong> now have separate, 24 hour cooldowns. <img class="patch-badge" src="images/mynta.png" alt="TBC"><br><br><em>Note - Mages...don't hate me, but I truly feel that Classic+ should not enable nearly as much fast travel as WoW ended up having. This change would limit the amount of group travel, but Mage "Teleport" spells would still have no CD and enable them to travel fast individually.</em>
+</ul>
+</hr>
+<hr>
+<p>
+  <img class="inline-icon" data-wowicon="inv_enchant_essencemagicsmall.jpg" alt="Spell icon"><strong>New Spells and Abilities</strong>
+<ul>
+<li>
+  <img class="inline-icon" data-wowicon="ability_mage_moltenarmor.jpg" alt="Charge icon">
+  <strong>Molten Armor</strong> is now trainable at Level 36:
+	<ul>
+	<li>
+Causes Fire damage when hit and increases your chance to critically hit by 3%.  Only one type of Armor spell can be active on the Mage at any time.  Lasts 30 min.
+</ul>
+<li>
+    <img class="inline-icon"
+         src="images/icons/spell_arcane_studentofmagic.jpg"
+         alt="Sunder Armor icon">
+    <strong>Focus Magic</strong> is now trainable at level 50:
+<ul>
+	<li>
+	Increases the target's Intellect by 3%. When the target critically hits with a spell, the caster's receives 10% of the base mana cost of the spell. Cannot be cast on self.
+</ul>
+ <li>
+    <img class="inline-icon"
+         src="images/icons/spell_frost_frost.jpg"
+         alt="Sunder Armor icon">
+    <strong>Ice Block</strong> is now trainable at level 30:
+<ul>
+	<li>	
+You become encased in a block of ice, protecting you from all physical attacks and spells for 10 sec, but during that time you cannot attack, move or cast spells. 5 min cooldown.
+</ul>
+ <li>
+    <img class="inline-icon"
+         src="images/icons/spell_arcane_blast.jpg"
+         alt="Sunder Armor icon">
+    <strong>Arcane Blast</strong> is now trainable at level 20:
+<ul>
+	<li>	
+Blasts the target with energy, dealing Arcane damage. Each time you cast Arcane Blast,  the casting time is reduced while mana cost is increased. Effect stacks up to 3 times. Lasts 8 sec.
+</ul>
+</ul>
+</hr>
+<hr>
+<p>
+  <img class="inline-icon" src="images/icons/ability_racial_forgeoflight.jpg" alt="Hero icon"><strong>Hero's Journey</strong>
+<ul>
+<li>
+Upon reaching max level, the Mage class goes on a difficult Magi's Training, and learns the Wish spell: 
+<ul>
+</ul>
+       <img class="inline-icon" src="images/icons/inv_enchant_essencecosmiclesser.jpg" <li><strong>Wish</strong>
+<ul>
+	<li>	
+Play fate against a powerful foe, increasing an Elite or Boss target's damage taken by 20% while increasing their damage, attack speed and casting speed by 20% for 5 min. This spell is unstable and causes the creature to occasionally erupt with arcane magic and go Berserk up to 1000% faster, based on their missing Health at the time this spell is cast. Reagents: Arcane Crystal. 1 hour cooldown.<br><br><em>Note - Seems like a crazy spell huh? I designed this spell from an RPG idea that would enable guilds to create their own "hard modes" that increase kill speed but make it very risky. This spell doesn't provide any bonus rewards, it simply is a "...wanna go brrr but maybe die? sure." spell. Think Bloodlust but more chaotic. Also...doing this on a random boss in Zul Gurub or elite in the world would just be so fun.</em>
+  </li>
+</ul>
+</ul>
+<hr>
+
+<p><center>Balance Changes Key</center><br><center><img class="patch-badge" src="images/bc.png" alt="TBC"><img class="patch-badge" src="images/wrath.png" alt="TBC"><img class="patch-badge" src="images/cata.png" alt="TBC"> labels the expansion Blizzard made that change.</center><br><center><img class="patch-badge" src="images/wow.png" alt="TBC"> labels an idea Blizzard made during SoD.</center><br>
+<center><img class="patch-badge" src="images/mynta.png" alt="TBC"> labels a new idea I came up with.</center><br><center><em>Thanks for exploring! - Mynta, GM of Aggrophobia, Fear bombing mobs since 2006, Andorhal PvP | NA</em><span style="color: #CC24FF;"> (@mynlol on Discord)</span></center></p>
+  </div>
+</section>
+    <div id="tooltip"></div>
+<script src="tooltip_extras.js"></script>
+    <script src="mage.js"></script>
+<script src="talent_engine.js"></script>
+<script src="runes.js"></script>
+<script src="patchnotes.js"></script>
+<footer class="page-footer">
+  <img src="images/fansiteheader.jpg" alt="World of Warcraft fan site banner">
+</footer>
+</body>
+</html>
+

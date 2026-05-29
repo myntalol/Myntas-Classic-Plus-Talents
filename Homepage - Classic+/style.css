@@ -1,0 +1,1303 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+    /* Deep neutral base */
+    background-color: #070607;
+
+    /* Classic WoW-style dark parchment texture */
+    background-image:
+        url("images/parchment.png"),
+        radial-gradient(circle at 50% 10%, rgba(120, 85, 45, 0.18), transparent 55%),
+        radial-gradient(circle at 50% 120%, rgba(0, 0, 0, 0.9), #070607 60%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.35));
+
+    background-repeat:
+        repeat,
+        no-repeat,
+        no-repeat,
+        no-repeat;
+
+    background-size:
+        256px 256px,   /* parchment texture scale — tweakable */
+        100% 100%,
+        100% 100%,
+        420px 420px;
+
+    background-attachment: fixed;
+
+    /* This is the magic that keeps it subtle */
+    background-blend-mode: overlay, normal, normal, normal;
+
+    color: #eee;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body.index-page{
+  background-image: url("images/gryphon.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Optional: add a dark overlay so text/buttons stay readable */
+body.index-page::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  pointer-events: none;
+  z-index: -1; /* stays behind content */
+}
+
+/* Class pages: force pure black background */
+body:not(.index-page){
+  background: #050608;
+}
+
+.page-footer{
+  padding: 10px 0 10px; /* tighter */
+}
+
+.page-footer img{
+  width: min(420px, 92vw); /* smaller than 560px */
+  height: auto;
+  display: block;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 10px rgba(0,0,0,0.85));
+}
+
+h1 {
+    text-align: center;
+    font-weight: normal;
+    color: #f5f5f5;
+}
+
+/* Class Header Colors */
+.warrior-page h1 { color: #C79C6E; }
+.mage-page h1 { color: #40C7EB; }
+.rogue-page h1 { color: #FFF569; }
+.shaman-page h1 { color: #0070DE; }
+.hunter-page h1 { color: #ABD473; }
+.paladin-page h1 { color: #F58CBA; }
+.druid-page h1 { color: #FF7D0A; }
+.warlock-page h1 { color: #8787ED; }
+
+#controls {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.control-button {
+  padding: 8px 16px;
+  border: 1px solid #888;
+  background-color: #333;
+  color: #eee;
+  cursor: pointer;
+}
+
+/* Toggle empty talent slots visibility without changing layout */
+.placeholders-hidden .talent-slot-placeholder{
+  opacity: 0;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+  pointer-events: none; /* so clicks pass through */
+}
+
+.talent-calculator {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    padding: 30px;
+    border: 6px solid #444;
+    border-radius: 2px;
+}
+
+.tree-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.talent-tree {
+    position: relative;
+    display: grid;
+    grid-template-rows: repeat(8, 60px);
+    grid-template-columns: repeat(4, 60px);
+    gap: 18px;
+    padding: 24px;
+    background-color: rgba(0, 0, 0, 1);
+    border: 1px solid #000;
+
+    /* --- Add these properties back --- */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tree-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid #222;
+}
+
+.tree-icon-small {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #555;
+}
+
+.tree-footer h3 {
+    margin: 0;
+    font-weight: normal;
+    font-size: 1.1em;
+    color: #ccc;
+}
+
+.talent-slot-placeholder {
+    border: 1px dashed #333;
+    border-radius: 6px;
+    background-color: #0a0a0a;
+    background-image: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(0, 0, 0, 0.2) 60%,
+        rgba(0, 0, 0, 0.5) 100%
+    );
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.talent-slot {
+    position: relative;
+    border: 2px solid #444;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.talent-slot, .talent-slot-placeholder {
+    box-shadow: 0 0 7px #000;
+}
+
+.talent-icon {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    filter: grayscale(100%) brightness(60%);
+    transition: filter 0.3s ease;
+}
+
+.talent-slot.available .talent-icon,
+.talent-slot.has-points .talent-icon {
+    filter: grayscale(0%);
+}
+
+.talent-points {
+    position: absolute;
+    bottom: -10px;
+    right: -8px;
+    background-color: #000;
+    color: #fff;
+    padding: 1px 4px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.talent-slot.available {
+    border-color: #28a745;
+    box-shadow: 0 0 7px rgba(40, 167, 69, 0.8);
+}
+
+.talent-tree .talent-slot.maxed {
+    border-color: #ffd700;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+}
+
+.talent-slot.available .talent-points:not(.maxed-points) {
+    color: #28a745;
+}
+
+.talent-points.maxed-points {
+    color: #ffd700; /* gold */
+}
+
+/* --- START: Corrected Tooltip Styles --- */
+
+#tooltip {
+    position: absolute;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 1px solid #555;
+    padding: 10px;
+    border-radius: 8px;
+    width: 375px;
+    z-index: 100;
+    pointer-events: none;
+}
+
+#tooltip h3 {
+    margin: 0 0 5px 0;
+    color: #ffffff;
+    font-weight: normal;
+}
+
+/* --- Final, Corrected Tooltip Header Styles --- */
+
+/* The main container for the header block */
+.tooltip-header-block {
+    line-height: 1.5;      /* Creates clean, normal spacing between lines */
+    color: #ffffff;        /* Default text color is white */
+    padding-bottom: 5px;   /* Adds space before the divider line */
+}
+
+/* This rule explicitly sets the font size for ALL header text elements */
+.tooltip-type,
+.tooltip-details-left,
+.tooltip-details-right,
+.tooltip-req {
+    font-size: 0.8em;
+}
+
+/* Styles the gray "Talent" text */
+.tooltip-type {
+    color: #aaaaaa;
+}
+
+/* This creates the two-column row for details */
+.tooltip-details-row {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+}
+
+.tooltip-details-right {
+    text-align: right;
+}
+
+.tooltip-req {
+    font-size: 0.8em;
+    color: #ffffff;
+}
+
+/* A subtle dividing line */
+.tooltip-divider {
+    border: 0;
+    border-top: 1px solid #444;
+    margin: 10px 0;
+}
+
+/* The yellow main description */
+.talent-description,
+.next-rank-description {
+    color: #ffd700;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.next-rank-label {
+    color: #ffffff;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.tooltip-req-points {
+    color: #ff4d4d;
+    padding-top: 10px;
+    font-size: 0.8em; /* Sets the font size to match the other details */
+}
+
+.tooltip-learn {
+    color: #00ff00;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.subspell-title{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  margin-bottom: 6px;
+}
+
+.subspell-block .inline-icon{
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+.inline-mini-icon{
+  width: 16px;
+  height: 16px;
+  vertical-align: -3px;
+  margin: 0 6px 0 2px;
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 0 6px rgba(0,0,0,0.6);
+}
+
+/* --- END: Corrected Tooltip Styles --- */
+
+.arrow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.talent-arrow {
+    position: absolute;
+    background-color: #404040;
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 1)) drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.7));
+    transition: background-color 0.3s ease;
+}
+
+.talent-arrows {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;   /* higher than .talent-slot */
+}
+
+/* Base style for SVG talent arrows */
+.talent-arrow-path {
+    stroke: #404040;
+    stroke-width: 2;        /* a bit slimmer */
+    fill: none;
+    stroke-linecap: butt;   /* line stops exactly at the end */
+    stroke-linejoin: round;
+
+    /* subtle dark outline */
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.85));
+}
+
+/* When prereq is satisfied -> golden with glow */
+.talent-arrow-path.available {
+    stroke: #ffd700;
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 6px rgba(255, 170, 50, 0.8));
+}
+.arrow-head {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    transition: border-color 0.3s ease;
+    z-index: 1;
+}
+
+.arrow-head.down {
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 8px 0 8px;
+    border-color: #404040 transparent transparent transparent;
+}
+
+.arrow-head.right {
+    right: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 8px 0 8px 10px;
+    border-color: transparent transparent transparent #404040;
+}
+
+.arrow-head.left {
+    left: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 8px 10px 8px 0;
+    border-color: transparent #404040 transparent transparent;
+}
+
+.arrow-container.available .talent-arrow {
+    background-color: #ffd700;
+}
+
+.arrow-container.available .arrow-head.down {
+    border-top-color: #ffd700;
+}
+
+.arrow-container.available .arrow-head.right {
+    border-left-color: #ffd700;
+}
+
+.arrow-container.available .arrow-head.left {
+    border-right-color: #ffd700;
+}
+
+.text-white {
+    color: #FFFFFF; /* white */
+}
+
+.talent-frame {
+    position: relative;
+
+    /* 🔁 Use the padding that looked good before – start here and tweak tiny amounts */
+    padding: 40px 40px;   /* top/bottom, left/right */
+
+    background: transparent;
+    box-shadow: none;     /* all outer dark-card shadow is on .talent-shell now */
+}
+.talent-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("images/super_frame.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 2;
+
+    transform: translateY(3px);  /* move artwork down */
+
+animation: frameGlow 11s cubic-bezier(0.6, 0.0, 0.4, 1.0) infinite;
+
+    /* subtle outer glow */
+    filter: drop-shadow(0 0 12px rgba(255, 180, 80, 0.3));
+}
+
+.druid-page .talent-frame::before {
+    background-image: url("images/super_frame.png");
+}
+
+.paladin-page .talent-frame::before {
+    background-image: url("images/paladin_frame.png");
+}
+
+.druid-page .talent-frame::before {
+    filter: drop-shadow(0 0 16px rgba(80, 255, 120, 0.35));
+    animation: druidGlow 12s ease-in-out infinite;
+}
+
+.talent-frame::after {
+    content: "";
+    position: absolute;
+    inset: 12px;  /* inner black glow hugging inside of metal */
+    pointer-events: none;
+    z-index: 1;
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 1);
+}
+/* Calculator panel inside the frame */
+.talent-calculator {
+    position: relative;
+    z-index: 1;               /* under the frame overlay */
+
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 8px;               /* we already tuned this */
+    background: rgba(0, 0, 0, 1); /* or lighter if you want more frame showing */
+    border-radius: 4px;
+    border: 6px solid #000;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.talent-shell {
+    display: inline-block;             /* shrink-wrap around the frame */
+    padding: 2px 2px;                 /* ← width of dark border – TUNE THIS */
+    background-color: #000;            /* dark card behind everything */
+    border-radius: 2px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.85);
+  transform: scale(0.85);
+  transform-origin: top center;
+ margin-bottom: -120px; /* tweak up/down until spacing feels right */
+}
+
+/* Small borrowed-rune row above options (used for wildcard slot) */
+.rune-borrow-strip{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 8px 12px;
+  margin-bottom: 10px;
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: inset 0 -10px 18px rgba(0,0,0,0.35);
+}
+
+.rune-borrow-chip{
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(0,0,0,0.35);
+  box-shadow: 0 0 6px rgba(0,0,0,0.8), inset 0 0 10px rgba(0,0,0,0.55);
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.rune-borrow-chip:hover{
+  border-color: rgba(255,215,0,0.55);
+  box-shadow: 0 0 10px rgba(255,215,0,0.15), inset 0 0 10px rgba(0,0,0,0.55);
+}
+
+.rune-tooltip{
+  position: absolute;
+  background-color: rgba(0,0,0,0.92);
+  border: 1px solid #555;
+  padding: 10px;
+  border-radius: 8px;
+  width: 375px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.rune-clear{
+  margin-left: 6px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(0,0,0,0.35);
+  color: #ddd;
+  cursor: pointer;
+}
+.rune-clear:hover{ background: rgba(0,0,0,0.5); }
+
+/* === GLOW ON ACTIVE ARROWS (BODY) – travels DOWN, base color unchanged === */
+.arrow-container.available .talent-arrow::after {
+    content: "";
+    position: absolute;
+    inset: 0;                  /* exactly cover the arrow line */
+    pointer-events: none;
+
+    /* Stronger, clearly visible warm band */
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.00) 0%,
+        rgba(255, 160, 60, 0.00) 20%,   /* soft orange base */
+        rgba(255, 145, 40, 0.22) 40%,   /* medium ember */
+        rgba(255, 170, 50, 0.75) 50%,   /* bright warm golden flame */
+        rgba(255, 145, 40, 0.22) 60%,   /* medium ember */
+        rgba(255, 160, 60, 0.00) 80%,   /* soft orange fade */
+        rgba(0, 0, 0, 0.00) 100%
+    );
+
+    background-size: 100% 250%;
+
+    /* No blend mode for now — make sure it's visible */
+    /* mix-blend-mode: screen; */
+
+    animation: arrowGlowDown 7s linear infinite;
+    opacity: 0.8;  /* make sure it’s noticeably bright at first */
+}
+
+/* === OPTIONAL: Glow on the TIP too – so the band “lands” there === */
+.arrow-container.available .arrow-head.down::after {
+    content: "";
+    position: absolute;
+    inset: -4px;              /* slightly bigger than the tip */
+    pointer-events: none;
+
+    background-image: radial-gradient(
+        circle at center,
+        rgba(255, 180, 70, 0.8) 0%,   /* warm flame */
+        rgba(255, 140, 40, 0.00) 75%
+    );
+
+    animation: arrowTipGlowDown 7s linear infinite;
+    opacity: 0.0;   /* animated via keyframes */
+}
+
+/* === CLEAR DOWNWARD MOTION FOR THE BAND === */
+@keyframes arrowGlowDown {
+    0% {
+        background-position: 0% -100%;
+        opacity: 0.0;
+    }
+    20% {
+        opacity: 0.8;
+    }
+    50% {
+        background-position: 0% 100%;
+        opacity: 1.0;
+    }
+    80% {
+        opacity: 0.6;
+    }
+    100% {
+        background-position: 0% -100%;
+        opacity: 0.0;
+    }
+}
+
+@keyframes arrowGlowAcross {
+    0% {
+        background-position: 0% 50%;
+        opacity: 0.0;
+    }
+    15% {
+        opacity: 0.4;
+    }
+    50% {
+        background-position: 100% 50%;
+        opacity: 0.8;
+    }
+    85% {
+        opacity: 0.4;
+    }
+    100% {
+        background-position: 0% 50%;
+        opacity: 0.0;
+    }
+}
+
+/* === Horizontal glow (left & right arrows) === */
+.arrow-container.available .talent-arrow.horizontal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    /* Warm golden band moving across */
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.00) 0%,
+        rgba(255, 160, 60, 0.00) 20%,
+        rgba(255, 145, 40, 0.22) 40%,
+        rgba(255, 180, 50, 0.75) 50%,   /* hotter core */
+        rgba(255, 145, 40, 0.22) 60%,
+        rgba(255, 160, 60, 0.00) 80%,
+        rgba(0, 0, 0, 0.00) 100%
+    );
+
+    background-size: 250% 100%;
+
+    animation: arrowGlowAcross 3s linear infinite;
+    opacity: 0.85;
+}
+
+.arrow-container.available .arrow-head.right::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    pointer-events: none;
+
+    background-image: radial-gradient(
+        circle at center,
+        rgba(255, 180, 70, 0.8) 0%,
+        rgba(255, 140, 40, 0.00) 75%
+    );
+
+    animation: arrowTipGlowAcross 3s linear infinite;
+    opacity: 0.0;
+}
+
+.arrow-container.available .arrow-head.left::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    pointer-events: none;
+
+    background-image: radial-gradient(
+        circle at center,
+        rgba(255, 180, 70, 0.8) 0%,
+        rgba(255, 140, 40, 0.00) 75%
+    );
+
+    animation: arrowTipGlowAcross 3s linear infinite;
+    opacity: 0.0;
+}
+
+@keyframes arrowTipGlowAcross {
+    0%   { opacity: 0.0; }
+    40%  { opacity: 0.0; }
+    60%  { opacity: 0.9; }
+    80%  { opacity: 0.0; }
+    100% { opacity: 0.0; }
+}
+
+
+/* Tip glow "pulses" when the band reaches the end */
+@keyframes arrowTipGlowDown {
+    0%   { opacity: 0.0; }
+    40%  { opacity: 0.0; }
+    55%  { opacity: 0.9; }
+    75%  { opacity: 0.0; }
+    100% { opacity: 0.0; }
+}
+
+/* Base style for SVG talent arrows */
+.talent-arrow-path {
+    stroke: #404040;
+    stroke-width: 5;        /* slightly thicker */
+    fill: none;
+    stroke-linecap: butt;   /* line stops exactly at the end, no rounded overhang */
+    stroke-linejoin: round;
+
+    /* subtle dark outline */
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.85));
+}
+
+/* When the prereq is available -> golden + glow */
+.talent-arrow-path.available {
+    stroke: #ffd700;
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 6px rgba(255, 170, 50, 0.8));
+}
+
+/* Extremely subtle warm shimmer moving along arrow */
+.talent-arrow-glow {
+    stroke: rgba(255, 200, 120, 0.55);   /* softer, warmer, dimmer */
+    stroke-width: 5;                     /* thinner than before */
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+
+    /* Tiny glowing segment (subtle!) */
+    stroke-dasharray: 6 220;
+
+    opacity: 0;
+    filter:
+        drop-shadow(0 0 1px rgba(0, 0, 0, 0.70))
+        blur(0.8px)
+        drop-shadow(0 0 3px rgba(255, 180, 80, 0.25));
+    mix-blend-mode: screen;
+}
+
+/* Only animate when active */
+.talent-arrow-glow.available {
+    animation: arrowGlowTravel 6.5s ease-in-out infinite;
+}
+
+/* Smooth, slow shimmer that fades in/out gently */
+@keyframes arrowGlowTravel {
+    0% {
+        stroke-dashoffset: 0;
+        opacity: 0.0;
+    }
+    10% {
+        opacity: 0.18;                      /* VERY soft */
+    }
+    55% {
+        stroke-dashoffset: -260;
+        opacity: 0.22;                      /* slight peak */
+    }
+    90% {
+        opacity: 0.10;                      /* fading */
+    }
+    100% {
+        stroke-dashoffset: -280;
+        opacity: 0.0;
+    }
+}
+@keyframes frameGlow {
+    0% {
+        /* deep warm ember baseline */
+        filter: drop-shadow(0 0 14px rgba(255, 140, 20, 0.16));
+    }
+    25% {
+        /* warm, molten rise */
+        filter: drop-shadow(0 0 26px rgba(255, 120, 10, 0.28));
+    }
+    55% {
+        /* soft dip, still glowing */
+        filter: drop-shadow(0 0 20px rgba(255, 130, 15, 0.20));
+    }
+    80% {
+        /* golden flare — warmest moment */
+        filter: drop-shadow(0 0 34px rgba(255, 155, 30, 0.32));
+    }
+    100% {
+        filter: drop-shadow(0 0 14px rgba(255, 140, 20, 0.16));
+    }
+
+}
+
+/* ============================
+   DRUID — CUSTOM FRAME ONLY
+   ============================ */
+.druid-page .talent-frame::before {
+    background-image: url("images/druid_frame.png");
+}
+
+@keyframes druidGlow {
+    0% {
+        filter: drop-shadow(0 0 12px rgba(80, 255, 140, 0.18));
+    }
+    25% {
+        filter: drop-shadow(0 0 24px rgba(90, 255, 130, 0.28));
+    }
+    55% {
+        filter: drop-shadow(0 0 18px rgba(70, 240, 120, 0.22));
+    }
+    80% {
+        filter: drop-shadow(0 0 26px rgba(110, 255, 150, 0.34));
+    }
+    100% {
+        filter: drop-shadow(0 0 12px rgba(80, 255, 140, 0.18));
+    }
+}
+
+/* ============================
+   PALADIN — PURE HOLY GOLD GLOW
+   ============================ */
+.paladin-page .talent-frame::before {
+    animation: paladinFrameGlow 10s ease-in-out infinite;
+}
+
+/* Consecrated holy gold radiance */
+@keyframes paladinFrameGlow {
+    0% {
+        filter:
+            drop-shadow(0 0 12px rgba(255, 200, 90, 0.35))   /* warm gold */
+            drop-shadow(0 0 18px rgba(255, 230, 150, 0.22)); /* soft halo */
+    }
+    30% {
+        filter:
+            drop-shadow(0 0 16px rgba(255, 215, 100, 0.55))  /* bright holy gold */
+            drop-shadow(0 0 26px rgba(255, 245, 190, 0.40));
+    }
+    60% {
+        filter:
+            drop-shadow(0 0 10px rgba(255, 205, 95, 0.45))
+            drop-shadow(0 0 16px rgba(255, 235, 170, 0.30));
+    }
+    100% {
+        filter:
+            drop-shadow(0 0 14px rgba(255, 200, 90, 0.35))
+            drop-shadow(0 0 18px rgba(255, 230, 150, 0.22));
+    }
+}
+
+/* ============================
+   MAGE — Deep Arcane Blue Frame Glow
+   ============================ */
+.mage-page .talent-frame::before {
+    background-image: url("images/mage_frame.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    transform: translateY(3px);
+
+    /* Darker, richer blue glow */
+    filter: drop-shadow(0 0 18px rgba(40, 70, 180, 0.45));
+    animation: mageFrameGlow 12s ease-in-out infinite;
+}
+
+/* ============================
+   Deeper Blue Arcane Pulse
+   ============================ */
+@keyframes mageFrameGlow {
+    0% {
+        filter: drop-shadow(0 0 14px rgba(30, 60, 150, 0.40));
+    }
+    25% {
+        filter: drop-shadow(0 0 26px rgba(50, 90, 200, 0.55));
+    }
+    55% {
+        filter: drop-shadow(0 0 34px rgba(65, 110, 230, 0.65));
+    }
+    80% {
+        filter: drop-shadow(0 0 22px rgba(40, 75, 190, 0.50));
+    }
+    100% {
+        filter: drop-shadow(0 0 14px rgba(30, 60, 150, 0.40));
+    }
+}
+
+/* ============================
+   PRIEST — CUSTOM FRAME ONLY
+   ============================ */
+.priest-page .talent-frame::before {
+    background-image: url("images/priest_frame.png");
+}
+
+
+/* ============================
+   PRIEST — SERENE HOLY GLOW
+   ============================ */
+.priest-page .talent-frame::before {
+    animation: priestFrameGlow 13s ease-in-out infinite;
+}
+
+/* Soft white / pink holy emanation */
+@keyframes priestFrameGlow {
+    0% {
+        filter:
+            drop-shadow(0 0 14px rgba(255, 245, 245, 0.22))
+            drop-shadow(0 0 28px rgba(255, 210, 220, 0.16));
+    }
+    35% {
+        filter:
+            drop-shadow(0 0 22px rgba(255, 250, 250, 0.32))
+            drop-shadow(0 0 40px rgba(255, 220, 235, 0.22));
+    }
+    65% {
+        filter:
+            drop-shadow(0 0 18px rgba(255, 245, 245, 0.26))
+            drop-shadow(0 0 34px rgba(255, 215, 230, 0.18));
+    }
+    100% {
+        filter:
+            drop-shadow(0 0 14px rgba(255, 245, 245, 0.22))
+            drop-shadow(0 0 28px rgba(255, 210, 220, 0.16));
+    }
+}
+
+/* ============================
+   HUNTER — CUSTOM FRAME ONLY
+   ============================ */
+.hunter-page .talent-frame::before {
+    background-image: url("images/hunter_frame.png");
+}
+
+/* ============================
+   ROGUE — CUSTOM FRAME ONLY
+   ============================ */
+.rogue-page .talent-frame::before {
+    background-image: url("images/rogue_frame.png");
+}
+
+/* ============================
+   ROGUE — DEEP FIRE RED GLOW
+   ============================ */
+.rogue-page .talent-frame::before {
+    animation: rogueFrameGlow 11s ease-in-out infinite;
+}
+
+/* Molten red / volcanic core */
+@keyframes rogueFrameGlow {
+    0% {
+        filter:
+            drop-shadow(0 0 14px rgba(180, 30, 20, 0.36))   /* deep molten red */
+            drop-shadow(0 0 28px rgba(120, 15, 10, 0.24)); /* dark ember */
+    }
+    35% {
+        filter:
+            drop-shadow(0 0 16px rgba(220, 45, 35, 0.50))  /* hot pulse */
+            drop-shadow(0 0 24px rgba(150, 25, 20, 0.32));
+    }
+    65% {
+        filter:
+            drop-shadow(0 0 10px rgba(200, 35, 28, 0.42))
+            drop-shadow(0 0 16px rgba(130, 20, 16, 0.28));
+    }
+    100% {
+        filter:
+            drop-shadow(0 0 8px rgba(180, 30, 20, 0.36))
+            drop-shadow(0 0 18px rgba(120, 15, 10, 0.24));
+    }
+}
+
+/* ============================
+   WARLOCK — CUSTOM FRAME ONLY
+   ============================ */
+.warlock-page .talent-frame::before {
+    background-image: url("images/warlock_frame.png");
+}
+
+
+/* ============================
+   WARLOCK — SINISTER SHADOW GLOW
+   ============================ */
+.warlock-page .talent-frame::before {
+    animation: warlockFrameGlow 12s ease-in-out infinite;
+}
+
+/* Deep purple / shadow arcane emanation */
+@keyframes warlockFrameGlow {
+    0% {
+        filter:
+            drop-shadow(0 0 14px rgba(120, 60, 160, 0.30))
+            drop-shadow(0 0 30px rgba(90, 40, 130, 0.22));
+    }
+    30% {
+        filter:
+            drop-shadow(0 0 26px rgba(150, 70, 200, 0.45))
+            drop-shadow(0 0 46px rgba(110, 50, 170, 0.30));
+    }
+    60% {
+        filter:
+            drop-shadow(0 0 20px rgba(130, 60, 180, 0.36))
+            drop-shadow(0 0 38px rgba(95, 45, 150, 0.26));
+    }
+    100% {
+        filter:
+            drop-shadow(0 0 14px rgba(120, 60, 160, 0.30))
+            drop-shadow(0 0 30px rgba(90, 40, 130, 0.22));
+    }
+}
+
+/* ============================
+   SHAMAN — CUSTOM FRAME ONLY
+   ============================ */
+.shaman-page .talent-frame::before {
+    background-image: url("images/shaman_frame.png");
+}
+
+
+/* ============================
+   SHAMAN — LIGHTNING BLUE GLOW
+   ============================ */
+.shaman-page .talent-frame::before {
+    animation: shamanFrameGlow 9s ease-in-out infinite;
+}
+
+/* Teal / electric lightning emanation */
+@keyframes shamanFrameGlow {
+    0% {
+        filter:
+            drop-shadow(0 0 14px rgba(40, 160, 300, 0.35))   /* deep teal core */
+            drop-shadow(0 0 18px rgba(60, 210, 230, 0.22)); /* electric halo */
+    }
+    30% {
+        filter:
+            drop-shadow(0 0 16px rgba(70, 200, 230, 0.55))  /* lightning flare */
+            drop-shadow(0 0 26px rgba(90, 235, 255, 0.38));
+    }
+    60% {
+        filter:
+            drop-shadow(0 0 10px rgba(50, 180, 210, 0.45))
+            drop-shadow(0 0 18px rgba(75, 220, 240, 0.30));
+    }
+    100% {
+        filter:
+            drop-shadow(0 0 14px rgba(40, 160, 190, 0.35))
+            drop-shadow(0 0 18px rgba(60, 210, 230, 0.22));
+    }
+}
+
+/* ============================
+   SECTION HEADERS
+   ============================ */
+.section-title{
+  margin: 28px 0 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 1.05rem;
+  color: #ddd;
+  text-shadow: 0 2px 2px rgba(0,0,0,0.85);
+}
+
+/* ============================
+   FEATS
+   ============================ */
+.rune-section{
+  width: 100%;
+  max-width: 1100px; /* matches your general page scale nicely */
+  margin-top: 18px;
+}
+
+.rune-slots{
+  display: flex;
+  justify-content: center;   /* ✅ centers horizontally */
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Make rune slots circles */
+.rune-slot{
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;        /* ✅ circle */
+  border: 2px solid #444;
+  background: rgba(0,0,0,0.6);
+  box-shadow: 0 0 7px #000, inset 0 0 10px rgba(0,0,0,0.6);
+  cursor: pointer;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;          /* ✅ keeps the icon neatly clipped in a circle */
+}
+
+
+.rune-slot:hover{
+  border-color: #777;
+}
+
+/* Plus sign centered in empty circles */
+.rune-slot.is-empty::after{
+  content:"+";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  color: rgba(255,255,255,0.35);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+
+.rune-picker{
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.85);
+  background: rgba(0,0,0,0.72);
+  box-shadow: inset 0 0 18px rgba(0,0,0,0.65), 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.rune-picker-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom: 10px;
+}
+
+.rune-picker-title{
+  color:#eee;
+  font-weight: 600;
+}
+
+.rune-picker-close{
+  cursor:pointer;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(0,0,0,0.35);
+  color:#ddd;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.rune-options{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Make rune options circles too (picker icons) */
+.rune-option{
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;        /* ✅ circle */
+  border: 2px solid #444;
+  box-shadow: 0 0 7px #000, inset 0 0 10px rgba(0,0,0,0.45);
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;          /* ✅ icon clipped */
+}
+
+.rune-option:hover{
+  border-color: #ffd700;
+  box-shadow: 0 0 10px rgba(255,215,0,0.25);
+}
+
+.rune-option.is-selected{
+  border-color: #ffd700;
+  box-shadow: 0 0 12px rgba(255,215,0,0.35);
+}
+
+/* Simple tooltip for runes (separate from talent tooltip) */
+.rune-tooltip{
+  position: absolute;
+  z-index: 9999;
+  pointer-events: none;
+  background: rgba(0,0,0,0.92);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 8px;
+  padding: 10px;
+  width: 320px;
+  color: #eee;
+}
+
+/* ============================
+   PATCH NOTES (parchment card)
+   ============================ */
+.patch-notes{
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 18px;
+  margin-bottom: 26px;
+}
+
+.patch-notes-card{
+  padding: 16px 18px;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.85);
+  box-shadow: inset 0 0 18px rgba(0,0,0,0.5);
+  background-color: rgba(10, 8, 6, 0.65);
+  background-image: url("images/parchment.png");
+  background-repeat: repeat;
+  background-size: 420px 420px;
+  background-blend-mode: multiply;
+  color: #f2e9d6;
+}
+
+.patch-notes-card h3{
+  margin: 10px 0 8px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff2cf;
+  text-shadow: 0 2px 2px rgba(0,0,0,0.75);
+}
+
+.patch-notes-card ul{
+  margin: 0 0 12px 18px;
+}
+
+.patch-notes-card li{
+  margin: 6px 0;
+}
+
+/* Patch notes typography helpers */
+.patch-notes-card p { margin: 10px 0; line-height: 1.55; }
+.patch-notes-card strong { color: #fff4cf; font-weight: 800; }
+.patch-notes-card em { color: #f7e6bf; opacity: 0.95; }
+
+/* Nice WoW-ish underline divider */
+.patch-notes-card hr {
+  border: 0;
+  height: 1px;
+  margin: 14px 0;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0.0),
+    rgba(255,215,120,0.35),
+    rgba(255,255,255,0.0)
+  );
+  box-shadow: 0 1px 0 rgba(0,0,0,0.65);
+}
+
+.patch-badge{
+  height: 16px;
+  width: auto;
+  vertical-align: -3px;
+  margin: 0 6px 0 2px;
+
+  /* kill any “badge border” styling */
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  filter: none !important;
+}
+
+/* Inline ability icon (small) */
+.inline-icon {
+  width: 18px;     /* tweak: 16–22px feels right */
+  height: 18px;
+  vertical-align: -3px; /* lines it up with text */
+  margin: 0 6px 0 2px;
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 0 6px rgba(0,0,0,0.6);
+}

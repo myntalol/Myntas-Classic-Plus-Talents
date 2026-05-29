@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoW Classic Talent Calculator - Shaman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="shaman-page">
+
+    <h1>Shaman</h1>
+
+    <div id="controls">
+        <span>
+            <a href="index.html" style="color: #ccc; text-decoration: none;">
+                &larr; Class Selection
+            </a>
+        </span>
+        <span>Points Spent: <span id="points-spent">0</span> / 51</span>
+<button id="reset-button" class="control-button">Reset All</button>
+<button id="toggle-empty-slots" class="control-button" type="button">Hide Slots</button>
+    </div>
+
+    <!-- OUTER DARK CARD (width controlled by .talent-shell padding in CSS) -->
+    <div class="talent-shell">
+        <!-- FRAME + INNER GLOW (global frame art / class glow handled in CSS) -->
+        <div class="talent-frame">
+            <!-- TALENT TREES -->
+            <div class="talent-calculator">
+
+                <!-- Elemental Tree -->
+                <div class="tree-container">
+                    <div
+                        id="elemental-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/ele_shaman.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/spell_nature_lightning.jpg"
+                             class="tree-icon-small"
+                             alt="Elemental tree icon">
+                        <h3>Elemental (<span id="elemental-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- Enhancement Tree -->
+                <div class="tree-container">
+                    <div
+                        id="enhancement-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/enh_shaman.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/spell_nature_lightningshield.jpg"
+                             class="tree-icon-small"
+                             alt="Enhancement tree icon">
+                        <h3>Enhancement (<span id="enhancement-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- Restoration Tree -->
+                <div class="tree-container">
+                    <div
+                        id="restoration-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/resto_shaman.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/spell_nature_magicimmunity.jpg"
+                             class="tree-icon-small"
+                             alt="Restoration tree icon">
+                        <h3>Restoration (<span id="restoration-points">0</span>)</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<!-- ===================== -->
+<!-- FEATS (5 selectable)  -->
+<!-- ===================== -->
+<section class="rune-section">
+  <h2 class="section-title">Feats</h2>
+
+  <div class="rune-slots" id="rune-slots">
+    <button class="rune-slot" type="button" data-slot="0" aria-label="Feat Slot 1"></button>
+    <button class="rune-slot" type="button" data-slot="1" aria-label="Feat Slot 2"></button>
+    <button class="rune-slot" type="button" data-slot="2" aria-label="Feat Slot 3"></button>
+    <button class="rune-slot" type="button" data-slot="3" aria-label="Feat Slot 4"></button>
+    <button class="rune-slot" type="button" data-slot="4" aria-label="Feat Slot 5"></button>
+  </div>
+
+  <!-- picker panel opens when you click a slot -->
+  <div class="rune-picker" id="rune-picker" hidden>
+    <div class="rune-picker-header">
+      <div class="rune-picker-title" id="rune-picker-title">Choose a Feat</div>
+      <button class="rune-picker-close" id="rune-picker-close" type="button" aria-label="Close">✕</button>
+    </div>
+
+    <div class="rune-options" id="rune-options"></div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- PATCH NOTES           -->
+<!-- ===================== -->
+<section class="patch-notes">
+  <h2 class="section-title">Patch Notes</h2>
+
+  <!-- You can edit this HTML per class whenever you want -->
+  <div class="patch-notes-card">
+
+<hr>
+
+<p>
+  <img class="inline-icon" data-wowicon="ability_druid_balanceofpower.jpg" alt="Shaman icon"><strong>Balance Changes</strong>
+<ul>
+<li>
+  <img class="inline-icon" data-wowicon="ability_parry.jpg" alt="Charge icon">
+  <strong>Parry</strong> is now trainable as a baseline skill at level 10.
+<img class="patch-badge" src="images/cata.png" alt="TBC">
+<li>
+ <img class="inline-icon" data-wowicon="inv_axe_09.jpg" alt="Charge icon">
+  <strong>Two-Handed Axes</strong> skill is now trainable as a baseline skill at level 20.
+
+<img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+ <img class="inline-icon" data-wowicon="inv_hammer_09.jpg" alt="Charge icon">
+  <strong>Two-Handed Maces</strong> skill is now trainable as a baseline skill at level 20.
+
+<img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+<img class="inline-icon" data-wowicon="inv_polearm_2h_amanidefense_b_02.jpg" alt="Charge icon">
+  <strong>Polearms</strong> skill is now trainable as a baseline skill at level 20.
+<img class="patch-badge" src="images/mynta.png" alt="TBC"><ul><em>Note - Shamans have never been able to use polearms, but it makes sense RPG wise. They are a primitive weapon and would be used in many environments where Shamans would find them of use. This also opens up new builds and reduces item waste on the Horde side.</em></ul>
+<li>
+
+ <img class="inline-icon" data-wowicon="ability_dualwield.jpg" alt="Charge icon">
+  <strong>Dual Wield</strong> is now trainable as a baseline skill at level 30.
+<img class="patch-badge" src="images/cata.png" alt="TBC">
+<li>
+   <img class="inline-icon" data-wowicon="spell_fire_flametounge.jpg" alt="Charge icon">
+  <strong>Weapon Imbuements</strong> such as Windfury Weapon can be applied to both main-hand and off-hand weapons.
+ <img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+  <img class="inline-icon"
+         src="images/icons/spell_nature_chainlightning.jpg"
+         alt="Sunder Armor icon">
+    <strong>Chain Lightning</strong> damage now increases by 10% per jump instead of reducing by 30% per jump. Initial damage reduced by 20%. <img class="patch-badge" src="images/mynta.png" alt="TBC">
+<li>
+    <img class="inline-icon"
+         src="images/icons/spell_nature_riptide.jpg"
+         alt="Sunder Armor icon">
+    <strong>Periodic heals (HoTs)</strong> cast by different players can now be active on the same target simultaneously. <img class="patch-badge" src="images/bc.png" alt="TBC">
+</li>
+<li>
+     <img class="inline-icon"
+         src="images/icons/spell_nature_earthshock.jpg"
+         alt="Sunder Armor icon">
+    <strong>Earth Shock</strong> no longer interrupts spellcasting. Now deals increased damage to targets under the effects of Flame or Frost Shock. <img class="patch-badge" src="images/mynta.png" alt="TBC">
+  <li>
+    <img class="inline-icon"
+         src="images/icons/inv_relics_totemofrage.jpg"
+         alt="Sunder Armor icon">
+    <strong>Totems</strong> are now considered "Physical" spells, and are no longer magical spells.<img class="patch-badge" src="images/bc.png" alt="TBC">
+  <li>
+     <img class="inline-icon"
+         src="images/icons/spell_nature_spiritwolf.jpg"
+         alt="Sunder Armor icon">
+    <strong>Ghost Wolf</strong> shapeshifting no longer cancels Water Walking. <img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+     <img class="inline-icon"
+         src="images/icons/spell_nature_stoneclawtotem.jpg"
+         alt="Sunder Armor icon">
+    <strong>Stoneclaw Totem</strong> health now scales by an amount equal to 5% of the Shaman's total Health. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+</ul>
+</hr>
+<hr>
+<p>
+  <img class="inline-icon" data-wowicon="inv_enchant_essencemagicsmall.jpg" alt="Spell icon"><strong>New Spells and Abilities</strong>
+<ul>
+<li>
+     <img class="inline-icon"
+         src="images/icons/ability_warrior_bullrush.jpg"
+         alt="Sunder Armor icon">
+    <strong>Provoke</strong> is now trainable at level 30:
+<ul>
+	<li>
+	Taunts the target to attack you, but has no effect if the target is already attacking you. 10 sec cooldown.
+</ul>
+<li>
+     <img class="inline-icon"
+         src="images/icons/spell_nature_cyclone.jpg"
+         alt="Sunder Armor icon">
+    <strong>Wind Shock</strong> is now trainable at level 10:
+<ul>
+	<li>
+	Buffets the target with a gust of wind, causing no damage but interrupting spellcasting and preventing any spell in that school from being cast for 2 sec. 6 sec cooldown.<br><em>Note - In early WOTLK, Wind Shear was called Wind Shock, and was changed to not share a cooldown with other Shock spells. For this, I kept it as a Shock for simplicity and felt that the shared CD was a fair risk/reward choice from early WoW.</em>
+</ul>
+<li>
+<img class="inline-icon"
+         src="images/icons/spell_nature_skinofearth.jpg"
+         alt="Sunder Armor icon">
+    <strong>Earth Shield</strong> is now trainable at level 34:
+<ul>
+	<li>
+Protects the caster with 3 ward stones that restore health when struck by a spell, melee or ranged attack. This expends one charge. This effect can occur once every 3 sec. Only one Elemental Shield can be active on a target at a time.
+</ul>
+<li>
+<img class="inline-icon"
+         src="images/icons/ability_shaman_watershield.jpg"
+         alt="Sunder Armor icon">
+    <strong>Water Shield</strong> is now trainable at level 48:
+<ul>
+	<li>
+The caster is surrounded by 3 globes of water. When a spell, melee or ranged attack hits the caster, mana is restored. This expends one charge. This effect can occur once every 3 sec. Only one Elemental Shield can be active on a target at a time.
+</ul>
+<li>
+     <img class="inline-icon"
+         src="images/icons/spell_shaman_totemrecall.jpg"
+         alt="Sunder Armor icon">
+    <strong>Totemic Projection</strong> is now trainable at level 40: 
+<ul>
+	<li>
+Relocates your active totems to the specified location.
+</ul>
+</ul>
+</hr>
+<hr>
+<p>
+  <img class="inline-icon" src="images/icons/ability_racial_forgeoflight.jpg" alt="Hero icon"><strong>Hero's Journey</strong>
+<ul>
+Upon reaching max level, the Shaman class goes on a pilgrimage to learn the Bind Elemental spell: 
+<ul>
+</ul>
+       <img class="inline-icon" src="images/icons/spell_shaman_bindelemental.jpg" <li><strong>Bind Elemental</strong>
+<ul>
+	<li>	
+Binds the target hostile elemental for up to 50 sec. The bound unit is unable to move, attack or cast spells. Any damage caused will release the target. Only one target can be bound at a time.
+  </li>
+</ul>
+</ul>
+<hr>
+
+<p><center>Balance Changes Key</center><br><center><img class="patch-badge" src="images/bc.png" alt="TBC"><img class="patch-badge" src="images/wrath.png" alt="TBC"><img class="patch-badge" src="images/cata.png" alt="TBC"> labels the expansion Blizzard made that change.</center><br><center><img class="patch-badge" src="images/wow.png" alt="TBC"> labels an idea Blizzard made during SoD.</center><br>
+<center><img class="patch-badge" src="images/mynta.png" alt="TBC"> labels a new idea I came up with.</center><br><center><em>Thanks for exploring! - Mynta, GM of Aggrophobia, Fear bombing mobs since 2006, Andorhal PvP | NA</em><span style="color: #CC24FF;"> (@mynlol on Discord)</span></center></p>
+  </div>
+</section>
+    <div id="tooltip"></div>
+<script src="tooltip_extras.js"></script>
+<script src="shaman.js"></script>
+<script src="talent_engine.js"></script>
+<script src="runes.js"></script>
+<script src="patchnotes.js"></script>
+<footer class="page-footer">
+  <img src="images/fansiteheader.jpg" alt="World of Warcraft fan site banner">
+</footer>
+</body>
+</html>

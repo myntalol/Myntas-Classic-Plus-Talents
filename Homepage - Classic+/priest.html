@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoW Classic Talent Calculator - Priest</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="priest-page">
+
+    <h1>Priest</h1>
+
+    <div id="controls">
+        <span>
+            <a href="index.html" style="color: #ccc; text-decoration: none;">
+                &larr; Class Selection
+            </a>
+        </span>
+        <span>Points Spent: <span id="points-spent">0</span> / 51</span>
+<button id="reset-button" class="control-button">Reset All</button>
+<button id="toggle-empty-slots" class="control-button" type="button">Hide Slots</button>
+    </div>
+
+    <!-- OUTER DARK CARD (width controlled by .talent-shell padding in CSS) -->
+    <div class="talent-shell">
+        <!-- FRAME + INNER GLOW (global frame art / class glow handled in CSS) -->
+        <div class="talent-frame">
+            <!-- TALENT TREES -->
+            <div class="talent-calculator">
+
+                <!-- Discipline Tree -->
+                <div class="tree-container">
+                    <div
+                        id="discipline-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/disc_priest.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/spell_holy_wordfortitude.jpg"
+                             class="tree-icon-small"
+                             alt="Discipline tree icon">
+                        <h3>Discipline (<span id="discipline-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- Holy Tree -->
+                <div class="tree-container">
+                    <div
+                        id="holy-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/holy_priest.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/spell_holy_guardianspirit.jpg"
+                             class="tree-icon-small"
+                             alt="Holy tree icon">
+                        <h3>Holy (<span id="holy-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- Shadow Tree -->
+                <div class="tree-container">
+                    <div
+                        id="shadow-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/shad_priest.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/spell_shadow_shadowwordpain.jpg"
+                             class="tree-icon-small"
+                             alt="Shadow tree icon">
+                        <h3>Shadow (<span id="shadow-points">0</span>)</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== -->
+<!-- FEATS (5 selectable)  -->
+<!-- ===================== -->
+<section class="rune-section">
+  <h2 class="section-title">Feats</h2>
+
+  <div class="rune-slots" id="rune-slots">
+    <button class="rune-slot" type="button" data-slot="0" aria-label="Feat Slot 1"></button>
+    <button class="rune-slot" type="button" data-slot="1" aria-label="Feat Slot 2"></button>
+    <button class="rune-slot" type="button" data-slot="2" aria-label="Feat Slot 3"></button>
+    <button class="rune-slot" type="button" data-slot="3" aria-label="Feat Slot 4"></button>
+    <button class="rune-slot" type="button" data-slot="4" aria-label="Feat Slot 5"></button>
+  </div>
+
+  <!-- picker panel opens when you click a slot -->
+  <div class="rune-picker" id="rune-picker" hidden>
+    <div class="rune-picker-header">
+      <div class="rune-picker-title" id="rune-picker-title">Choose a Feat</div>
+      <button class="rune-picker-close" id="rune-picker-close" type="button" aria-label="Close">✕</button>
+    </div>
+	<div class="rune-borrow-strip" id="rune-borrow-strip" hidden></div>
+    <div class="rune-options" id="rune-options"></div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- PATCH NOTES           -->
+<!-- ===================== -->
+<section class="patch-notes">
+  <h2 class="section-title">Patch Notes</h2>
+
+  <!-- You can edit this HTML per class whenever you want -->
+  <div class="patch-notes-card">
+<hr>
+<p>
+  <img class="inline-icon" data-wowicon="priest_icon_innewill.jpg" alt="Spell icon"><strong>Priest Racials</strong>
+<ul>
+<img class="inline-icon"
+         src="images/icons/race_troll_female.jpg"
+         alt="Sunder Armor icon">
+    <strong>Troll Priest - Hex of Weakness</strong> reworked into <img class="inline-icon"
+         src="images/icons/inv_12_trinket_amanitrollthemedtrinkets.jpg"
+         alt="Sunder Armor icon"><strong>Loa's Blessing:</strong> <img class="patch-badge" src="images/mynta.png" alt="TBC">
+<ul>
+	<li>
+	Instantly heal a friendly target and increase their size and movement speed by 10% for 10 sec. 3 min cooldown.
+</ul>
+<li>
+<img class="inline-icon"
+         src="images/icons/race_human_male.jpg"
+         alt="Sunder Armor icon">
+    <strong>Human Priest - <img class="inline-icon"
+         src="images/icons/ability_paladin_handoflight.jpg"
+         alt="Sunder Armor icon">Castigation</strong>, a new racial, is available to train at level 20: <img class="patch-badge" src="images/mynta.png" alt="TBC">
+
+ <ul>
+	<li>
+	Burns the target with light, causing Holy damage over 24 sec. While the target is burning, the priest's Spirit is increased by 5%.<br>Shares a cooldown with Feedback.
+</ul>
+<li>
+<img class="inline-icon"
+         src="images/icons/race_dwarf_male.jpg"
+         alt="Sunder Armor icon">
+    <strong>Dwarf Priest - <img class="inline-icon"
+         src="images/icons/inv_misc_tournaments_symbol_dwarf.jpg"
+         alt="Sunder Armor icon">Hymn of the Mountain</strong>, a new racial, is available to train at level 20: <img class="patch-badge" src="images/mynta.png" alt="TBC">
+
+ <ul>
+	<li>
+	Creates a shield that absorbs Physical damage equal to 100% of the Priest's total Armor on all party members within 30 yds.<br>Lasts 10 sec. 6 min cooldown.
+</ul>
+</ul>
+
+<ul>
+<li>
+<img class="inline-icon"
+         src="images/icons/race_scourge_female.jpg"
+         alt="Sunder Armor icon">
+    <strong>Undead Priest - Touch of Weakness</strong> reworked: <img class="patch-badge" src="images/mynta.png" alt="TBC">
+<ul>
+	<li>
+	 Touch your target with a rotting, cursed hand, dealing Shadow damage and preventing their attacks from being able to critical strike you for 20 sec. 5 min cooldown. 
+</li>
+</ul>
+<li>
+<img class="inline-icon"
+         src="images/icons/race_troll_female.jpg"
+         alt="Sunder Armor icon">
+    <strong>Troll Priest - Shadowguard</strong> restores a charge when your Shadow Word: Pain deals damage. <img class="patch-badge" src="images/mynta.png" alt="TBC">
+
+<li>
+<img class="inline-icon"
+         src="images/icons/race_nightelf_female.jpg"
+         alt="Sunder Armor icon">
+    <strong>Night Elf Priest - Elune’s Grace</strong> now increases spell casting speed by 20% instead of reducing ranged damage taken. <img class="patch-badge" src="images/mynta.png" alt="TBC">
+
+<li>
+<img class="inline-icon"
+         src="images/icons/race_nightelf_female.jpg"
+         alt="Sunder Armor icon">
+    <strong>Night Elf Priest - Starshards</strong> mana cost reduced by 100%. <img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+  <img class="inline-icon" data-wowicon="spell_holy_excorcism.jpg" alt="Charge icon">
+  <strong>Fear Ward</strong> is now trainable for all Priests and is usable while in Shadowform. <img class="patch-badge" src="images/bc.png" alt="TBC"><br><br><em>Note - Priest is one of the classes I play most, and I always wanted Blizzard to lean into the racials, not get rid of them. Like this whole project, I believe any "Classic+" that comes out should lean into new, RPG-inspired ideas and prioritize fun > balance. I also strongly believe Classic+ needs to get creative with new talents and spells, not just keep them largely the same while adding new raids or dungeons.</em>
+</li>
+</ul>
+</hr>
+<hr>
+
+<p>
+  <img class="inline-icon" src="images/icons/ability_druid_balanceofpower.jpg" alt="Priest icon"><strong>Balance Changes</strong>
+<ul>
+<li>
+<img class="inline-icon"
+         src="images/icons/spell_shadow_impphaseshift.jpg"
+         alt="Sunder Armor icon">
+    <strong>Silence</strong> global cooldown removed. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+  <img class="inline-icon" data-wowicon="spell_shadow_siphonmana.jpg" alt="Charge icon">
+  <strong>Mind Flay</strong> spell coefficient increased by approximately 30%.
+ <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+  <img class="inline-icon" data-wowicon="spell_holy_prayerofhealing02.jpg" alt="Charge icon">
+  <strong>Prayer of Healing</strong> now heals the target's party, rather than being limited to just your direct party.
+ <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+  <img class="inline-icon" data-wowicon="spell_holy_powerwordshield.jpg" alt="Charge icon">
+  <strong>Power Word: Shield</strong> low ranks of this spell will now be penalized the same way healing spells are penalized.
+ <img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+    <img class="inline-icon"
+         src="images/icons/spell_holy_renew.jpg"
+         alt="Sunder Armor icon">
+    <strong>Periodic heals (HoTs)</strong> cast by different players can now be active on the same target simultaneously. <img class="patch-badge" src="images/bc.png" alt="TBC">
+</li>
+</ul>
+</hr>
+<hr>
+<p>
+  <img class="inline-icon" data-wowicon="inv_enchant_essencemagicsmall.jpg" alt="Spell icon"><strong>New Spells and Abilities</strong>
+<ul>
+<li>
+    <img class="inline-icon"
+         src="images/icons/spell_holy_divinespirit.jpg"
+         alt="Sunder Armor icon">
+    <strong>Divine Spirit</strong> is now trainable at level 30:
+<ul>
+	<li>
+	Holy power infuses the target, increasing their Spirit for 30 min.
+</ul>
+<li>
+    <img class="inline-icon"
+         src="images/icons/spell_shadow_demonicfortitude.jpg"
+         alt="Sunder Armor icon">
+    <strong>Shadow Word: Death</strong> is now trainable at level 35:
+<ul>
+	<li>
+	A word of dark binding that inflicts Shadow damage to the target.  If the target is not killed by Shadow Word: Death, the caster takes damage equal to 40% of the damage attempted against the target. 12 sec cooldown.
+</ul>
+<li>
+  <img class="inline-icon" data-wowicon="spell_holy_blindingheal.jpg" alt="Charge icon">
+  <strong>Binding Heal</strong> is now trainable at Level 45:
+	<ul>
+	<li>
+	Heals a friendly target and the caster. Generates a low amount of threat.
+</ul>
+<li>
+    <img class="inline-icon"
+         src="images/icons/spell_shadow_shadowfiend.jpg"
+         alt="Sunder Armor icon">
+    <strong>Shadowfiend</strong> is now trainable at level 60:
+<ul>
+	<li>
+	Creates a shadowy fiend to attack the target. Caster receives 3% mana when the Shadowfiend attacks. Lasts 15 sec.
+</ul>
+
+</ul>
+</ul>
+</hr>
+<hr>
+<p>
+  <img class="inline-icon" src="images/icons/ability_racial_forgeoflight.jpg" alt="Hero icon"><strong>Hero's Journey</strong>
+<ul>
+Upon reaching max level, the Priest class goes on a pilgrimage to discover the ability to /commune with any other Priest to temporarily exchange racial abilities for 6 hours.<ul><li><em>Note: There may be beings outside the playable races that are willing to exchange racial powers...</em>
+</ul>
+<hr>
+
+<p><center>Balance Changes Key</center><br><center><img class="patch-badge" src="images/bc.png" alt="TBC"><img class="patch-badge" src="images/wrath.png" alt="TBC"><img class="patch-badge" src="images/cata.png" alt="TBC"> labels the expansion Blizzard made that change.</center><br><center><img class="patch-badge" src="images/wow.png" alt="TBC"> labels an idea Blizzard made during SoD.</center><br>
+<center><img class="patch-badge" src="images/mynta.png" alt="TBC"> labels a new idea I came up with.</center><br><center><em>Thanks for exploring! - Mynta, GM of Aggrophobia, Fear bombing mobs since 2006, Andorhal PvP | NA</em><span style="color: #CC24FF;"> (@mynlol on Discord)</span></center></p>
+  </div>
+</section>
+    <div id="tooltip"></div>
+<script src="tooltip_extras.js"></script>
+    <script src="priest.js"></script>
+<script src="talent_engine.js"></script>
+<script src="runes.js"></script>
+<script src="patchnotes.js"></script>
+<footer class="page-footer">
+  <img src="images/fansiteheader.jpg" alt="World of Warcraft fan site banner">
+</footer>
+</body>
+</html>
+

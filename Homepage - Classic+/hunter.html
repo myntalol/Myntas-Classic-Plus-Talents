@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoW Classic Talent Calculator - Hunter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="hunter-page">
+
+    <h1>Hunter</h1>
+
+    <div id="controls">
+        <span>
+            <a href="index.html" style="color: #ccc; text-decoration: none;">
+                &larr; Class Selection
+            </a>
+        </span>
+        <span>Points Spent: <span id="points-spent">0</span> / 51</span>
+<button id="reset-button" class="control-button">Reset All</button>
+<button id="toggle-empty-slots" class="control-button" type="button">Hide Slots</button>
+    </div>
+
+    <!-- OUTER DARK CARD (width controlled by .talent-shell padding in CSS) -->
+    <div class="talent-shell">
+        <!-- FRAME + INNER GLOW (global frame art / class glow handled in CSS) -->
+        <div class="talent-frame">
+            <!-- TALENT TREES -->
+            <div class="talent-calculator">
+
+                <!-- Beast Mastery Tree -->
+                <div class="tree-container">
+                    <div
+                        id="beast-mastery-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/beast_hunter.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/ability_physical_taunt.jpg"
+                             class="tree-icon-small"
+                             alt="Beast Mastery tree icon">
+                        <h3>Beast Mastery (<span id="beast-mastery-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- Marksmanship Tree -->
+                <div class="tree-container">
+                    <div
+                        id="marksmanship-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/mark_hunter.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/ability_marksmanship.jpg"
+                             class="tree-icon-small"
+                             alt="Marksmanship tree icon">
+                        <h3>Marksmanship (<span id="marksmanship-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- Survival Tree -->
+                <div class="tree-container">
+                    <div
+                        id="survival-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/surv_hunter.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/ability_hunter_swiftstrike.jpg"
+                             class="tree-icon-small"
+                             alt="Survival tree icon">
+                        <h3>Survival (<span id="survival-points">0</span>)</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+<!-- ===================== -->
+<!-- FEATS (5 selectable)  -->
+<!-- ===================== -->
+<section class="rune-section">
+  <h2 class="section-title">Feats</h2>
+
+  <div class="rune-slots" id="rune-slots">
+    <button class="rune-slot" type="button" data-slot="0" aria-label="Feat Slot 1"></button>
+    <button class="rune-slot" type="button" data-slot="1" aria-label="Feat Slot 2"></button>
+    <button class="rune-slot" type="button" data-slot="2" aria-label="Feat Slot 3"></button>
+    <button class="rune-slot" type="button" data-slot="3" aria-label="Feat Slot 4"></button>
+    <button class="rune-slot" type="button" data-slot="4" aria-label="Feat Slot 5"></button>
+  </div>
+
+  <!-- picker panel opens when you click a slot -->
+  <div class="rune-picker" id="rune-picker" hidden>
+    <div class="rune-picker-header">
+      <div class="rune-picker-title" id="rune-picker-title">Choose a Feat</div>
+      <button class="rune-picker-close" id="rune-picker-close" type="button" aria-label="Close">✕</button>
+    </div>
+
+    <div class="rune-options" id="rune-options"></div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- PATCH NOTES           -->
+<!-- ===================== -->
+<section class="patch-notes">
+  <h2 class="section-title">Patch Notes</h2>
+
+  <!-- You can edit this HTML per class whenever you want -->
+  <div class="patch-notes-card">
+
+<hr>
+
+<p>
+  <img class="inline-icon" data-wowicon="ability_druid_balanceofpower.jpg" alt="Hunter icon"><strong>Balance Changes</strong>
+<ul>
+<li>
+  <img class="inline-icon" data-wowicon="ability_hunter_focusedaim.jpg" alt="Charge icon">
+  <strong>Prowess</strong> - Hunters no longer use mana. Their abilities instead <em>generate</em> Prowess when successfully damaging or crowd-controlling enemies. Upon reaching 100 Prowess, the Hunter deals 10% increased damage, diminishing back down to 0 over 10 sec. </strong><img class="patch-badge" src="images/mynta.png" alt="TBC"><ul><br><em>Note - Instead of Focus from Cata, I thought this iteration of a non-mana resource would differentiate Hunters and align thematically RPG-wise. Blizzard stated their idea was always to have Hunters not use mana, they simply ran out of time in Vanilla.</em></ul>
+<li>
+<img class="inline-icon" data-wowicon="inv_misc_ammo_bullet_02.jpg" alt="Charge icon">
+  <strong>Ranged attack</strong> minimum range has been reduced to 5 yards. <img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+   <img class="inline-icon" data-wowicon="spell_arcane_blink.jpg" alt="Charge icon">
+  <strong>Distracting Shot</strong> now taunts the target for 3 seconds and only has one rank. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+     <img class="inline-icon"
+         src="images/icons/ability_rogue_trip.jpg"
+         alt="Sunder Armor icon">
+    <strong>Wingclip</strong> no longer does damage. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+     <img class="inline-icon"
+         src="images/icons/ability_hunter_swiftstrike.jpg"
+         alt="Sunder Armor icon">
+    <strong>Mongoose Bite</strong> no longer requires the Hunter to Dodge.<img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+     <img class="inline-icon"
+         src="images/icons/spell_frost_chainsofice.jpg"
+         alt="Sunder Armor icon">
+    <strong>Traps</strong> can now be set while in combat and require a 1.5 second arming time. <img class="patch-badge" src="images/bc.png" alt="TBC">
+  <li>
+    <img class="inline-icon"
+         src="images/icons/inv_weapon_bow_05.jpg"
+         alt="Sunder Armor icon">
+    <strong>Auto shot</strong> will be automatically enabled if the Hunter steps out of
+    melee range while in combat with the target. <img class="patch-badge" src="images/bc.png" alt="TBC">
+  <li>
+ <img class="inline-icon"
+         src="images/icons/inv_weapon_bow_05.jpg"
+         alt="Sunder Armor icon">
+    <strong>Auto shot</strong> is now reset when casting Aimed Shot. <img class="patch-badge" src="images/bc.png" alt="TBC">
+ <li>
+ <img class="inline-icon"
+         src="images/icons/ability_hunter_criticalshot.jpg"
+         alt="Sunder Armor icon">
+    <strong>Scorpid Sting</strong> now reduces the target's chance to hit with melee and ranged attacks by 3% for 20 sec. <img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+ <img class="inline-icon"
+         src="images/icons/ability_mount_pinktiger.jpg"
+         alt="Sunder Armor icon">
+    <strong>Pets</strong> now have their own talent trees and can learn talents in one of three trees depending on their creature family. Pets gain talent points starting at level 20 and earn an extra talent point every 4 levels. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+<img class="inline-icon"
+         src="images/icons/ability_mount_pinktiger.jpg"
+         alt="Sunder Armor icon">
+    <strong>Pet families</strong> now have one unique ability. New abilities have been added for families such as bears. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+<img class="inline-icon"
+         src="images/icons/ability_hunter_beastsoothe.jpg"
+         alt="Sunder Armor icon">
+    <strong>Stable masters</strong> can now be visited to recover lost pets. Stable masters can now also accommodate two additional pets. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+<img class="inline-icon"
+         src="images/icons/ability_demonhunter_vengefulretreat2.jpg"
+         alt="Sunder Armor icon">
+    <strong>Disengage</strong> has been reworked: <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<ul>
+<li>
+The hunter leaps backward 13 yds and reduces their total threat by 5%. 45 sec cooldown.
+</ul>
+<li>
+<img class="inline-icon"
+         src="images/icons/ability_hunter_rapidkilling.jpg"
+         alt="Sunder Armor icon">
+    <strong>Rapid Fire</strong> has been updated into <strong>Rapid Killing: </strong><img class="patch-badge" src="images/wow.png" alt="TBC">
+<ul>
+	<li>
+Increases ranged and melee attack speed by 30% for 12 sec. 5 min cooldown.
+</ul>
+</ul>
+</hr>
+<hr>
+<p>
+  <img class="inline-icon" data-wowicon="inv_enchant_essencemagicsmall.jpg" alt="Spell icon"><strong>New Spells and Abilities</strong>
+<ul>
+<li>
+     <img class="inline-icon"
+         src="images/icons/ability_hunter_steadyshot.jpg"
+         alt="Sunder Armor icon">
+    <strong>Steady Shot</strong> is now trainable at level 30:
+<ul>
+	<li>
+A steady shot that causes base ranged weapon damage.
+</ul>
+<li>
+    <img class="inline-icon"
+         src="images/icons/ability_hunter_misdirection.jpg"
+         alt="Sunder Armor icon">
+    <strong>Misdirection</strong> is now trainable at level 60:
+<ul>
+	<li>
+	Causes a friendly target to receive the threat generated by your next damaging attack and all actions taken for 3 sec afterwards.<br>1 min cooldown.
+</ul>
+</ul>
+</hr>
+<hr>
+<p>
+  <img class="inline-icon" src="images/icons/ability_racial_forgeoflight.jpg" alt="Hero icon"><strong>Hero's Journey</strong>
+<ul>
+Upon reaching max level, the Hunter class chooses to increase their damage and movement speed by 5% in one kind of outdoor environment. This choice is <strong>permanent</strong> and cannot be undone: 
+<ul>
+      <li><strong>Desert</strong>
+<li><strong>Forest</strong>
+<li><strong>Snow</strong>
+  </li>
+</ul>
+</ul>
+<hr>
+
+<p><center>Balance Changes Key</center><br><center><img class="patch-badge" src="images/bc.png" alt="TBC"><img class="patch-badge" src="images/wrath.png" alt="TBC"><img class="patch-badge" src="images/cata.png" alt="TBC"> labels the expansion Blizzard made that change.</center><br><center><img class="patch-badge" src="images/wow.png" alt="TBC"> labels an idea Blizzard made during SoD.</center><br>
+<center><img class="patch-badge" src="images/mynta.png" alt="TBC"> labels a new idea I came up with.</center><br><center><em>Thanks for exploring! - Mynta, GM of Aggrophobia, Fear bombing mobs since 2006, Andorhal PvP | NA</em><span style="color: #CC24FF;"> (@mynlol on Discord)</span></center></p>
+  </div>
+</section>
+    <div id="tooltip"></div>
+<script src="tooltip_extras.js"></script>
+<script src="hunter.js"></script>
+<script src="talent_engine.js"></script>
+<script src="runes.js"></script>
+<script src="patchnotes.js"></script>
+<footer class="page-footer">
+  <img src="images/fansiteheader.jpg" alt="World of Warcraft fan site banner">
+</footer>
+</body>
+</html>

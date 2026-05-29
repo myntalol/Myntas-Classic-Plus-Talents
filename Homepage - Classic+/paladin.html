@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoW Classic Talent Calculator - Paladin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="paladin-page">
+
+    <h1>Paladin</h1>
+
+    <div id="controls">
+        <span>
+            <a href="index.html" style="color: #ccc; text-decoration: none;">
+                &larr; Class Selection
+            </a>
+        </span>
+        <span>Points Spent: <span id="points-spent">0</span> / 51</span>
+<button id="reset-button" class="control-button">Reset All</button>
+<button id="toggle-empty-slots" class="control-button" type="button">Hide Slots</button>
+    </div>
+
+    <!-- OUTER DARK CARD (width controlled by .talent-shell padding in CSS) -->
+    <div class="talent-shell">
+        <!-- CLASS FRAME + INNER GLOW (position vs trees controlled by .talent-frame padding) -->
+        <div class="talent-frame">
+            <!-- TALENT TREES -->
+            <div class="talent-calculator">
+
+                <!-- HOLY -->
+                <div class="tree-container">
+                    <div
+                        id="holy-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/holy_paladin.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/spell_holy_holybolt.jpg"
+                             class="tree-icon-small"
+                             alt="Holy tree icon">
+                        <h3>Holy (<span id="holy-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- PROTECTION -->
+                <div class="tree-container">
+                    <div
+                        id="protection-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/prot_paladin.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/spell_holy_devotionaura.jpg"
+                             class="tree-icon-small"
+                             alt="Protection tree icon">
+                        <h3>Protection (<span id="protection-points">0</span>)</h3>
+                    </div>
+                </div>
+
+                <!-- RETRIBUTION -->
+                <div class="tree-container">
+                    <div
+                        id="retribution-grid"
+                        class="talent-tree"
+                        style="background-image: url('images/backgrounds/ret_paladin.jpg');">
+                        <!-- SVG overlay created by JS -->
+                    </div>
+                    <div class="tree-footer">
+                        <img src="images/icons/spell_holy_auraoflight.jpg"
+                             class="tree-icon-small"
+                             alt="Retribution tree icon">
+                        <h3>Retribution (<span id="retribution-points">0</span>)</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<!-- ===================== -->
+<!-- FEATS (5 selectable)  -->
+<!-- ===================== -->
+<section class="rune-section">
+  <h2 class="section-title">Feats</h2>
+
+  <div class="rune-slots" id="rune-slots">
+    <button class="rune-slot" type="button" data-slot="0" aria-label="Feat Slot 1"></button>
+    <button class="rune-slot" type="button" data-slot="1" aria-label="Feat Slot 2"></button>
+    <button class="rune-slot" type="button" data-slot="2" aria-label="Feat Slot 3"></button>
+    <button class="rune-slot" type="button" data-slot="3" aria-label="Feat Slot 4"></button>
+    <button class="rune-slot" type="button" data-slot="4" aria-label="Feat Slot 5"></button>
+  </div>
+
+  <!-- picker panel opens when you click a slot -->
+  <div class="rune-picker" id="rune-picker" hidden>
+    <div class="rune-picker-header">
+      <div class="rune-picker-title" id="rune-picker-title">Choose a Feat</div>
+      <button class="rune-picker-close" id="rune-picker-close" type="button" aria-label="Close">✕</button>
+    </div>
+
+    <div class="rune-options" id="rune-options"></div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- PATCH NOTES           -->
+<!-- ===================== -->
+<section class="patch-notes">
+  <h2 class="section-title">Patch Notes</h2>
+
+  <!-- You can edit this HTML per class whenever you want -->
+  <div class="patch-notes-card">
+
+<hr>
+
+<p>
+  <img class="inline-icon"
+         src="images/icons/ability_druid_balanceofpower.jpg"
+         alt="Sunder Armor icon"><strong>Balance Changes</strong>
+<ul>
+<li>
+  <img class="inline-icon" data-wowicon="spell_holy_greaterblessingofsanctuary.jpg" alt="Charge icon">
+  <strong>Blessing of Kings, Wisdom, Salvation, Might and Light</strong> have had their durations
+    increased by 100%.<img class="patch-badge" src="images/wow.png" alt="TBC">
+<li>
+  <img class="inline-icon" data-wowicon="ability_warrior_innerrage.jpg" alt="Charge icon">
+  <strong>Seal of Command</strong> no longer has a chance to partially resist.
+ <img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+ <img class="inline-icon" data-wowicon="inv_ability_holyfire_groundstate.jpg" alt="Charge icon">
+  <strong>Consecration</strong> bonus damage coefficient has been increased on all ranks.
+ <img class="patch-badge" src="images/bc.png" alt="TBC">
+<li>
+     <img class="inline-icon"
+         src="images/icons/spell_holy_excorcism_02.jpg"
+         alt="Sunder Armor icon">
+    <strong>Exorcism</strong> can now be cast on any target and has a 50% increased critical strike chance against Undead and Demons. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+     <img class="inline-icon"
+         src="images/icons/spell_holy_excorcism.jpg"
+         alt="Sunder Armor icon">
+    <strong>Holy Wrath</strong> can now be cast on any target and now stuns Undead and Demons for up to 2 sec.  <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+     <img class="inline-icon"
+         src="images/icons/spell_holy_layonhands.jpg"
+         alt="Sunder Armor icon">
+    <strong>Lay on Hands</strong> cooldown reduced to 20 min. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+     <img class="inline-icon"
+         src="images/icons/inv12_ability_paladin_hammerofwrath.jpg"
+         alt="Sunder Armor icon">
+    <strong>Hammer of Wrath</strong> is now a Retribution spell (moved from Holy) and scales with attack power and spell damage. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+ <img class="inline-icon"
+         src="images/icons/inv12_ability_paladin_hammerofwrath.jpg"
+         alt="Sunder Armor icon">
+    <strong>Hammer of Wrath</strong> mana cost reduced, missile speed increased, now usable on targets below 35% health. <img class="patch-badge" src="images/wrath.png" alt="TBC">
+<li>
+     <img class="inline-icon"
+         src="images/icons/inv12_ability_paladin_hammerofwrath.jpg"
+         alt="Sunder Armor icon">
+    <strong>Hammer of Wrath</strong> now suspends the weapon swing timer rather than resetting it.  <img class="patch-badge" src="images/mynta.png" alt="TBC"><br><ul><em>Note - "The #1 Ret Paladin in the world believes the light should be easier to swing." - Esfand. </em></ul>
+<li>
+ <img class="inline-icon"
+         src="images/icons/spell_holy_divineprotection.jpg"
+         alt="Sunder Armor icon">
+    <strong>Divine Protection</strong> has been reworked:
+<ul>
+	<li>
+Reduces all damage taken by 10% and increases all self-healing done by 10% for 10 sec. 1 min cooldown. <img class="patch-badge" src="images/mynta.png" alt="TBC">
+</ul>
+</ul>
+</hr>
+<hr>
+<p>
+ <img class="inline-icon"
+         src="images/icons/inv_enchant_essencemagicsmall.jpg"
+         alt="Sunder Armor icon"><strong>New Spells and Abilities</strong>
+<ul>
+<li>
+  <img class="inline-icon" data-wowicon="spell_holy_unyieldingfaith.jpg" alt="Charge icon">
+  <strong>Hand of Reckoning</strong> is now trainable at Level 30:
+	<ul>
+	<li>
+Taunts the target to attack you, but has no effect if the target is already attacking you. 10 sec cooldown.
+</ul>
+<li>
+ <img class="inline-icon" data-wowicon="inv_ability_holyfire_groundstate.jpg" alt="Charge icon">
+  <strong>Consecration</strong> is now trainable at level 20.
+<ul>
+	<li>
+Consecrates the land beneath you, doing Holy damage over 8 sec to enemies who enter the area. 8 sec cooldown.
+</ul>
+  <li>
+  <img class="inline-icon" data-wowicon="spell_holy_divineillumination.jpg" alt="Charge icon">
+  <strong>Divine Illumination</strong> is now trainable at Level 60:
+	<ul>
+	<li>
+Reduces the mana cost of all spells by 30% for 15 sec. 5 min cooldown.
+</ul>
+  <li>
+    <img class="inline-icon"
+         src="images/icons/spell_holy_avenginewrath.jpg"
+         alt="Sunder Armor icon">
+    <strong>Avenging Wrath</strong> is now trainable at level 50:
+<ul>
+	<li>
+	Increases all damage and healing caused by 20% for 20 sec. Causes Forbearance. 3 min cooldown.
+</ul>
+</ul>
+</hr>
+<hr>
+<p>
+<img class="inline-icon"
+         src="images/icons/ability_racial_forgeoflight.jpg"
+         alt="Sunder Armor icon"><strong>Hero's Journey</strong>
+<ul>
+Upon reaching max level, the Paladin class chooses from one of three traits. This choice is <strong>permanent</strong> and cannot be undone: 
+<ul>
+<li><strong>Light's Grace</strong> - The mana cost of your Redemption spell is reduced by 60%.
+<li><strong>Light's Tenacity</strong> - After casting Divine Intervention, you remain alive for 10 seconds.
+<li><strong>Light's Calling</strong> - /Praying at a Holy Place increases you and your party member's experience, honor and reputation gains by 10% for 1 hour.
+  </li>
+</ul>
+</ul>
+<hr>
+
+<p><center>Balance Changes Key</center><br><center><img class="patch-badge" src="images/bc.png" alt="TBC"><img class="patch-badge" src="images/wrath.png" alt="TBC"><img class="patch-badge" src="images/cata.png" alt="TBC"> labels the expansion Blizzard made that change.</center><br><center><img class="patch-badge" src="images/wow.png" alt="TBC"> labels an idea Blizzard made during SoD.</center><br>
+<center><img class="patch-badge" src="images/mynta.png" alt="TBC"> labels a new idea I came up with.</center><br><center><em>Thanks for exploring! - Mynta, GM of Aggrophobia, Fear bombing mobs since 2006, Andorhal PvP | NA</em><span style="color: #CC24FF;"> (@mynlol on Discord)</span></center></p>
+  </div>
+</section>
+<div id="tooltip"></div>
+<script src="tooltip_extras.js"></script>
+    <script src="paladin.js"></script>
+<script src="talent_engine.js"></script>
+<script src="runes.js"></script>
+<script src="patchnotes.js"></script>
+<footer class="page-footer">
+  <img src="images/fansiteheader.jpg" alt="World of Warcraft fan site banner">
+</footer>
+</body>
+</html>
