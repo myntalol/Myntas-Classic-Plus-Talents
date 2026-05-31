@@ -27,9 +27,9 @@ This effect can occur once every 10 sec.` },
 <br>
 Axe / Polearm -  Critically strike.
 <br>
-Mace / Staff -  Stun the target for 3 sec.
+Mace / Fist Weapon -  Stun the target for 3 sec.
 <br>
-Sword / Fist Weapon -  Gain an extra attack.
+Sword / Staff / Glaive -  Gain an extra attack.
 <hr>
 Switching weapons during combat places this effect on a 10 sec cooldown.` },
                 { id: 'two-handed-weapon-specialization', name: 'Two-Handed Weapon Specialization', maxPoints: 5, row: 3, col: 1, icon: 'inv_axe_09.jpg', description: (p) => `Increases your damage and chance to hit with two-handed melee weapons by ${p}%.` },

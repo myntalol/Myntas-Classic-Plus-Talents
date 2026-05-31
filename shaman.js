@@ -64,7 +64,7 @@ This effect can chain off of itself.` },
         talents: [
             { id: 'improved-healing-waves', name: 'Improved Healing Waves', maxPoints: 5, row: 0, col: 1, icon: 'spell_nature_magicimmunity.jpg', description: (p) => `Reduces the cast time of your Wave spells by ${p * 0.1} sec and reduces the threat caused by those spells by ${p * 3}%.` },
 	{ id: 'shamanistic-focus', name: 'Shamanistic Focus', maxPoints: 3, row: 0, col: 2, icon: 'spell_nature_elementalabsorption.jpg', description: (p) => `Your melee hits reduce the mana cost of your next Shock spell by ${p * 5}%. Lasts 6 sec. Stacks up to 5 times.`},
-            { id: 'tidal-focus', name: 'Tidal Focus', maxPoints: 5, row: 1, col: 0, icon: 'spell_frost_manarecharge.jpg', description: (p) => `Increases the effectiveness of your healing spells by ${p * 2}% and reduces the mana cost of your your totems by ${p * 4}%.` },
+            { id: 'tidal-focus', name: 'Tidal Focus', maxPoints: 5, row: 1, col: 0, icon: 'spell_frost_manarecharge.jpg', description: (p) => `Increases the effectiveness of your healing spells by ${p * 2}% and reduces the mana cost of your totems by ${p * 4}%.` },
 	{ id: 'natures-ward', name: 'Nature\'s Ward', maxPoints: 3, row: 1, col: 2, icon: 'flightstone-green.jpg', description: (p) => `When you take damage that brings you below 30% health, your maximum health is increased by ${p * 5}% and you restore ${p * 5}% of your missing mana over 10 sec.
 <hr>
 This effect can occur once every 45 sec.` },

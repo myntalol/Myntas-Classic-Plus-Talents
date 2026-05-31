@@ -77,7 +77,7 @@ const RUNE_DATA = {
       { id: "w1", name: "Liquid Courage", icon: "inv_holiday_beerfest_darkiron.jpg", description: "Restores 1% of your total health every 3 seconds while inebriated. Stacks up to 3 times.<br><br>At max stacks, Thunder Clap and Whirlwind strike an additional target." },
       { id: "w2", name: "Not On My Watch", icon: "warrior_talent_icon_blitz.jpg", description: "Your Intervene removes movement impairing effects, can be used in any Stance and reduces the ally's damage taken by 20% for 6 sec.<br><br>If you have Spell Reflect active when using Intervene, the ally gains its effect for 6 sec." },
 	{ id: "w7", name: "Artful Butchery", icon: "inv12_ability_warrior_fury", description: "While dual wielding weapons of the same type, the damage done by your offhand weapon increases by 5%.<br><br>While dual wielding weapons of different types, your skill with both increases by 1 for every 20 levels you have attained." },
-	{ id: "w18", name: "Brothers in Arms", icon: "ability_warrior_stalwartprotector.jpg", description: "Using a Shout ability while within 10 yds of another Warrior in your party inspires you, causing you to deal 5% increased damage with your next 3 abilities. Lasts 10 sec.<hr>This effect can occur once every 30 sec." },
+	{ id: "w18", name: "Brothers in Arms", icon: "ability_warrior_stalwartprotector.jpg", description: "Critically striking an enemy while within 20 yds of another friendly Warrior, Paladin or Shaman inspires you, causing you to deal 5% increased damage with your next 3 abilities. Lasts 10 sec.<hr>This effect can occur once every 30 sec." },
     ],
 
     /* =========================
@@ -123,6 +123,7 @@ const RUNE_DATA = {
 { id: "w9", name: "Savage Temperment", icon: "ability_warrior_focusedrage", description: "Bloodrage now counts as an Enrage effect.<br><br>Whenever you Execute a target while Bloodrage is active, its duration is extended by 1-2 sec." },
 { id: "w3", name: "Valor Calls", icon: "achievement_guildperk_everyones-a-hero.jpg", description: "Last Stand no longer increases maximum health but instead increases damage dealt by 20%." },
 { id: "w18", name: "Front Line Medicine", icon: "inv_misc_bandage_08.jpg", description: "Increases the effectiveness of your self-healing abilities by 10%. In addition, increases the health gained from bandages, potions, trinket and food effects by 50%." },
+{ id: "w69", name: "Legion of Boom", icon: "inv_11_arenaboss_conductionslam.jpg", description: "Your Thunder Clap ability gains increased critical strike chance equal to your hit chance and refreshes the duration of armor reduction effects on targets struck." },
 ],
 
     /* =========================
@@ -175,13 +176,13 @@ const RUNE_DATA = {
 
     // yellow body text
     body: `
-     Instantly equip your <span class='text-white'>Reserve Weapon</span> and strike the enemy, dealing 50% weapon damage and triggering its Chance On Hit or Use effect, if it has one.<br><br>Re-equips your previous weapon after 3 sec.<hr>Requires the Hero's Armory feat.
+     Instantly equip your <span class='text-white'>Reserve Weapon</span> and strike the enemy, dealing 70% weapon damage and triggering its Chance On Hit or Use effect, if it has one.<br><br>Re-equips your previous weapon after 3 sec.<hr>Requires the Hero's Armory feat.
 `
   }
 },
 { id: "w11", name: "Into The Fray", icon: "inv_1115_warrior_fasterreflexes.jpg", description: "You inspire yourself and the closest party member within 15 yds whenever you Charge, granting 20% movement speed, attack speed, and spell casting speed for 3 sec. <hr> This effect can occur once every 30 sec." },
 { id: "w12", name: "Thrill of the Kill", icon: "achievement_bg_killxenemies_generalsroom.jpg", description: "Standing ontop of a corpse increases your attack speed by 1% for 6 sec. Stacks up to 5 times." },
-{ id: "w16", name: "Duelist", icon: "petbattle_attack.jpg", description: "Your Overpower causes your next Revenge to stun the target for 3 sec. Your Revenge causes your next Overpower to strike an additional nearby target." },
+{ id: "w16", name: "Duelist", icon: "petbattle_attack.jpg", description: "Your Overpower causes your next Revenge to stun the target for 3 sec.<br><br>Your Revenge causes your next Overpower to strike an additional nearby target." },
 ],
 
     /* =========================
@@ -356,10 +357,10 @@ Steals a beneficial magic effect from the target.  This effect lasts a maximum o
 
   rogue: [
     /* ROGUE — FEAT SLOT 1 */ [
-{ id: "w1", name: "Blade Runner", icon:"ability_rogue_focusedattacks.jpg", description: "While Sprint is active, your attacks against targets not facing you deal 5% increased damage and you are immune to slow effects." },
+{ id: "w1", name: "Blade Runner", icon:"ability_rogue_focusedattacks.jpg", description: "While Sprint is active, your damage against enemies that aren't facing you is increased by 5% and you are immune to Daze effects." },
 {
   id: "w2",
-  name: "Between The Eyes",
+  name: "Sneaky Sniper",
   icon: "ships_ability_armorpiercingammo.jpg",
 
   // ✅ Main rune description (supports HTML: <br>, <hr>, spans)
@@ -379,21 +380,22 @@ Steals a beneficial magic effect from the target.  This effect lasts a maximum o
     // yellow body text
     body: `
      A Ranged Weapon finishing move that stuns the target for 1 sec per combo point:<br><br>
-1 point: 80% damage<br>2 points: 90% damage<br>3 points: 100% damage<br>4 points: 110% damage<br>5 points: 120% damage<br><br>Cooldown shared with Kidney Shot.<hr>Requires a gun to be in your inventory.
+1 point: 80% damage<br>2 points: 90% damage<br>3 points: 100% damage<br>4 points: 110% damage<br>5 points: 120% damage<br><br>Cooldown shared with Kidney Shot.<hr>Requires a gun in your inventory.
 `
   }
 },
-{ id: "w3", name: "Poison Gas", icon:"inv_engineering_gunpowdercharge.jpg", description: "Your Distract and Smoke Bomb abilities leave behind toxic gas for 20 sec. Enemies within the area suffer damage equal to your highest rank of Instant Poison every 2 seconds." },
-{ id: "w28", name: "Derisive Tactics", icon:"ability_rogue_murderspree.jpg", description: "Your Sinister Strike, Expose Armor and Rupture abilities generate significantly increased threat. In addition, your Slice and Dice ability increases your Parry chance by 10%. " },
+{ id: "w3", name: "Poison Gas", icon:"inv_engineering_gunpowdercharge.jpg", description: "Your Distract and Smoke Bomb abilities leave behind toxic gas for 10 sec. Enemies within the area suffer damage equal to your highest rank of Instant Poison every 2 seconds." },
+{ id: "w28", name: "Derisive Tactics", icon:"ability_rogue_murderspree.jpg", description: "Your Expose Armor and Rupture abilities generate significantly increased threat. In addition, your Slice and Dice ability increases your Parry chance by 2% per Combo Point. " },
+{ id: "w31", name: "Wounded Animal", icon:"ability_demonhunter_bloodlet.jpg", description: "Your Bleed effects have a 10% chance to deal double damage but drain 2 Energy." },
 ],
     /* ROGUE — FEAT SLOT 2 */ [
-{ id: "w6", name: "Sigil of Underestimation", icon:"ability_rogue_sturdyrecuperate.jpg", description: "Evasion temporarily increases your total health by 25%. After the effect expires, the hit points are lost." },
-{ id: "w7", name: "Sigil of Villany", icon:"ability_rogue_nightblade.jpg", description: "Every 3 sec in combat, gain 1% chance for Sinister Strike to hit an additional time. Lose 1 stack each second while out of combat. Max 5 stacks." },
-{ id: "w9", name: "Sigil of Criminality", icon:"inv_misc_token_pvp02.jpg", description: "Your first Backstab, Ambush or Garrote ability refunds its Energy cost and increases your attack speed by 10% for 6 sec.<hr>This effect can occur once every 30 sec." },
-{ id: "w10", name: "Sigil of Masochism", icon:"inv_lightforgedmatrixability_felheartofargus.jpg", description: "Your Rupture ticks have a 2% chance to deal 20% additional damage and enable your next Garrote to be usable outside of Stealth, but you suffer its bleed effect as well." },
+{ id: "w6", name: "What Doesn't Kill You...", icon:"ability_rogue_sturdyrecuperate.jpg", description: "Taking damage while below 50% total Health has a 10% chance to grant you Adrenaline Rush for 3 sec. This chance is increased to 100% while below 20% total Health.<hr>Requires the Adrenaline Rush talent." },
+{ id: "w7", name: "Azerothian Scoundrel", icon:"ability_rogue_nightblade.jpg", description: "Every 4 sec in combat, your Sinister Strike gains 2% increased damage and critical strike chance. Lose 1 stack each second while out of combat. Stacks up to 5 times." },
+{ id: "w9", name: "Criminal Background", icon:"inv_misc_token_pvp02.jpg", description: "Your first Backstab, Ambush or Garrote ability refunds its Energy cost and increases your attack speed by 10% for 6 sec.<hr>This effect can occur once every 30 sec." },
+{ id: "w10", name: "Masochism", icon:"inv_lightforgedmatrixability_felheartofargus.jpg", description: "Dealing damage with Rupture has a 10% chance to enable your next Garrote to be usable outside of Stealth, but you suffer its effects as well." },
 ],
     /* ROGUE — FEAT SLOT 3 */ [
-{ id: "w26", name: "On The Run", icon:"rogue_burstofspeed.jpg", description: "You can bandage while moving and without removing Stealth. In addition, you gain 30 Energy over 3 sec whenever you enter Stealth or Vanish." },
+{ id: "w26", name: "On The Run", icon:"rogue_burstofspeed.jpg", description: "You can bandage while moving and without removing Stealth. In addition, you gain 15 Energy whenever you enter Stealth or Vanish." },
 {
   id: "w12",
   name: "Goblin Super Serum",
@@ -419,61 +421,41 @@ Steals a beneficial magic effect from the target.  This effect lasts a maximum o
 `
   }
 },
-{ id: "w17", name: "Gnawing Poisons", icon:"ability_creature_poison_01.jpg", description: "Your damaging finishing moves deal additional Nature damage based on your Deadly Poison doses on the target and have a 10% chance to greatly increase the frequency of applying Instant Poison to your target for 6 sec." },
+{ id: "w17", name: "Gnawing Poisons", icon:"ability_creature_poison_01.jpg", description: "Your damaging finishing moves deal additional Nature damage based on your Deadly Poison doses on the target." },
 { id: "w30", name: "Brains Over Brawn", icon:"inv_misc_organ_03.jpg", description: "Increases your Parry chance by 0.06% and your Energy regeneration rate by 0.08% for every point of Intellect." },
 { id: "w18", name: "Stalking Death", icon:"ability_rogue_deadliness.jpg", description: "For 6 seconds after exiting Stealth you can use Garrote, Ambush, Cheap Shot, Premeditation, Pickpocket and Disarm Trap.<hr>This effect can occur once every 60 sec." },
 ],
     /* ROGUE — FEAT SLOT 4 */ [
-{ id: "w16", name: "Cowl of Carnage", icon:"inv_helm_armor_banditmask_c_01.jpg", description: "Your helmet slot takes on the appearance of a red hood. Your Riposte, Ghostly Strike and Shiv deal 20% increased damage to targets afflicted by atleast two of your Bleed effects." },
-{ id: "w14", name: "Veil of Solitude", icon:"inv_misc_bandana_01.jpg", description: "Your helmet slot takes on the appearance of a dark bandana. Shadowstep may be used on corpses and grants Ghosting for 10 sec.<hr>Ghosting increases your chance to Dodge by 10% and allows you to Backstab enemies facing you." },{
-  id: "w4",
-  name: "Eyepatch of Piracy",
-  icon: "inv_helm_armor_pirateeyepatch_b_01_blackpirate.jpg", description: `Your helmet slot takes on the appearance of an eyepatch. Your <span class="text-white">Gouge</span> ability transforms into:`,
-
-  // ✅ Optional “mini ability tooltip” block (uses renderSubSpell from tooltip_extras.js)
-  subSpell: {
-    name: "Quickdraw",
-    icon: "inv_legendary_gun.jpg",
-
-    // left column (white)
-    left: ["40 Energy","Instant"],
-
-    // right column (white)
-    right: ["25 yd range","6 sec cooldown"],
-
-    // yellow body text
-    body: `
-     Draw a concealed pistol and shoot your target, dealing Fire damage equal to 110% Ranged Weapon damage. Awards 1 Combo Point.<hr>Requires a gun to be in your inventory.
-`
-  }
-},
-{ id: "w15", name: "Mask of Antagonism", icon:"ability_rogue_disguise.jpg", description: "Your helmet slot takes on the appearance of a white mask. Your Feint ability no longer lowers your threat but instead taunts the target to attack you." },
+{ id: "w16", name: "Cowl of Carnage", icon:"inv_helm_armor_banditmask_c_01.jpg", description: "Your helmet slot takes on the appearance of a red hood.<br><br>Riposte, Ghostly Strike and Shiv deal 20% increased damage to targets afflicted by atleast two of your Bleed effects." },
+{ id: "w14", name: "Veil of Solitude", icon:"inv_misc_bandana_01.jpg", description: "Your helmet slot takes on the appearance of a dark bandana.<br><br>Shadowstep may be used on corpses and grants Ghosting for 10 sec.<hr>Ghosting increases your chance to Dodge by 10% and allows you to Backstab enemies facing you." },
+{ id: "w4", name: "Eyepatch of Piracy", icon:"inv_helm_armor_pirateeyepatch_b_01_blackpirate.jpg", description: "Your helmet slot takes on the appearance of an eyepatch.<br><br>Your Between The Eyes ability gains 5 yds of range, your Broadside ability ignores armor, and your Quick Draw ability has its cooldown reduced by 5 sec." },
+{ id: "w15", name: "Mask of Antagonism", icon:"ability_rogue_disguise.jpg", description: "Your helmet slot takes on the appearance of a white mask.<br><br>Feint no longer lowers your threat but instead taunts the target to attack you." },
 { id: "rogue_wildcard", name: "Wildcard", icon: "inv_misc_hearthstonecard_epic.jpg", description: "Allows you to select a non-active feat from any other slot and use it in this slot.", isWildcard: true
     },
 ],
     /* ROGUE — FEAT SLOT 5 */ [
 {
   id: "w25",
-  name: "Broadside",
-  icon: "inv_musket_04.jpg",
+  name: "Plunderbuss",
+  icon: "inv_legendary_gun.jpg",
 
   // ✅ Main rune description (supports HTML: <br>, <hr>, spans)
-  description: `Gain the <span class="text-white">Broadside</span> ability:`,
+  description: `Gain the <span class="text-white">Quick Draw</span> ability:`,
 
   // ✅ Optional “mini ability tooltip” block (uses renderSubSpell from tooltip_extras.js)
   subSpell: {
-    name: "Broadside",
-    icon: "inv_musket_04.jpg",
+    name: "Quick Draw",
+    icon: "inv_legendary_gun.jpg",
 
     // left column (white)
-    left: ["20 Energy","Instant","Requires Gun"],
+    left: ["20 Energy","Instant"],
 
     // right column (white)
-    right: ["20 yd range","15 sec cooldown"],
+    right: ["20 yd range","8 sec cooldown"],
 
     // yellow body text
     body: `
-     Quickly draw a gun and fire an overcharged blast at up to 3 enemies in a cone in front of you for Physical damage that ignores armor.<hr>Requires a gun to be in your inventory.
+Draw a concealed pistol and shoot your target, dealing Fire damage. Awards 1 Combo Point.<hr>Requires a gun in your inventory.
 `
   }
 },
@@ -1504,7 +1486,7 @@ Clamp your jaws down on the target, dealing physical damage every 1 sec for 2 se
 
   paladin: [
     /* PALADIN — FEAT SLOT 1 */ [
-{ id: "w2", name: "Highly Favored", icon: "spell_priest_angelicbulwark.jpg", description: "Forbearance increases your healing received by 5%.<br><br>The Holy Guardian summoned by your Celestial Aid spell can now cast a variety of Holy Paladin and Holy Priest spells and lasts until killed or dismissed." },
+{ id: "w2", name: "Highly Favored", icon: "spell_priest_angelicbulwark.jpg", description: "The Holy Guardian summoned by your Celestial Aid spell can now cast a variety of Holy Paladin and Holy Priest spells and lasts until killed or dismissed." },
 { id: "w23", name: "Contempt for the Weak", icon: "inv_plate_raidpaladint2_d_01_helm.jpg", description: "Your basic attacks increase the damage of your next Exorcism or Divine Verdict by 2%. Lasts 10 sec. Stacks up to 10 times." },
 {
   id: "w40",
@@ -1600,7 +1582,7 @@ Clamp your jaws down on the target, dealing physical damage every 1 sec for 2 se
 ],
     /* PALADIN — FEAT SLOT 5 */ [
 { id: "w1", name: "Lance A Lot", icon: "inv_lightforgedmatrixability_lightsjudgment.jpg", description: "Each cast of Holy Shock during Divine Verdict summons an additional spear of light." },
-{ id: "w16", name: "Iconography", icon: "spell_holy_rune.jpg", description: "Your healing spells have a 5% chance to summon a holy symbol on the ground nearby.<br><br>Whenever a friendly target steps on the symbol, it grants them an absorption shield equal to 20% of your bonus healing. Up to 3 symbols may be active at once. Lasts 30 sec." },
+{ id: "w16", name: "Iconography", icon: "spell_holy_rune.jpg", description: "Your healing spells have a 5% chance to summon a holy symbol on the ground nearby.<br><br>Stepping on a symbol grants the friendly target an absorption shield equal to 20% of your bonus healing. Up to 3 symbols may be active at once. Lasts 30 sec." },
 { id: "w39", name: "Light's Protector", icon: "ability_paladin_touchedbylight.jpg", description: "Each stack of Worthy reduces the mana cost of your Cleanse and Celestial Aid spells by 20%." },
 { id: "w51", name: "Barricade of Faith", icon: "ability_paladin_barrieroffaith.jpg", description: "Righteous Shield protects you from the next spell to strike you, reducing its damage by 20%. Lasts 3 sec.<br><br>While holding a shield, you have a 10% chance to block incoming spells, reducing their damage by 10%." },
 {
