@@ -1301,3 +1301,66 @@ animation: frameGlow 11s cubic-bezier(0.6, 0.0, 0.4, 1.0) infinite;
   border: 1px solid rgba(255,255,255,0.10);
   box-shadow: 0 0 6px rgba(0,0,0,0.6);
 }
+
+/* ============================
+   MOBILE OVERRIDES
+   ============================ */
+@media (max-width: 900px){
+  /* prevent the whole page from sideways scrolling */
+  html, body { overflow-x: hidden; }
+
+  /* constrain the shell to the viewport so overflow can scroll */
+  .talent-shell{
+    max-width: 100vw;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    padding-bottom: 8px;
+  }
+
+  /* keep the inside at its natural width so it can overflow */
+  .talent-frame,
+  .talent-calculator{
+    width: max-content;
+  }
+
+  /* controls */
+  #controls{
+    gap: 10px;
+    padding: 6px 0;
+  }
+  #reset-button,
+  #toggle-empty-slots{
+    padding: 10px 14px;
+    font-size: 16px;
+  }
+
+  /* avoid iOS zoom */
+  input, textarea, select, button { font-size: 16px; }
+
+  /* tooltips */
+  #tooltip, .rune-tooltip{
+    max-width: min(360px, 92vw);
+    max-height: 55vh;
+    overflow: auto;
+  }
+
+  /* performance (optional) */
+  .talent-frame::before{ filter: none; }
+  .talent-shell{ box-shadow: none; }
+
+  /* patch notes full width */
+  .patch-notes{
+    width: 96vw;
+    max-width: 96vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .patch-notes-card{ width: 100%; }
+}
+
+/* iPhone safe-area padding */
+body{
+  padding-bottom: calc(20px + env(safe-area-inset-bottom));
+}
