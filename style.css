@@ -1418,3 +1418,35 @@ body{
     margin-left: 16px;
   }
 }
+
+/* Index page: make class selection buttons smaller on mobile */
+@media (max-width: 600px){
+
+  /* tighter grid */
+  body.index-page .class-grid{
+    gap: 10px;
+    /* if your grid feels too wide, uncomment one of these */
+    /* grid-template-columns: repeat(3, 1fr); */
+    /* grid-template-columns: repeat(4, 1fr); */
+  }
+
+  /* shrink the clickable tiles/buttons */
+  body.index-page .class-grid a,
+  body.index-page .class-grid .class-button,
+  body.index-page .class-grid .class-card{
+    padding: 8px 10px;
+    border-radius: 8px;
+  }
+
+  /* shrink icon images inside the buttons */
+  body.index-page .class-grid img{
+    width: 44px;
+    height: 44px;
+  }
+
+  /* shrink label text if you show names under icons */
+  body.index-page .class-grid .class-name,
+  body.index-page .class-grid span{
+    font-size: 0.85rem;
+  }
+}
