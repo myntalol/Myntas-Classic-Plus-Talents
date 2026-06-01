@@ -1364,3 +1364,57 @@ animation: frameGlow 11s cubic-bezier(0.6, 0.0, 0.4, 1.0) infinite;
 body{
   padding-bottom: calc(20px + env(safe-area-inset-bottom));
 }
+
+/* ============================
+   PATCH NOTES: limit line length (desktop), full width (mobile)
+   ============================ */
+
+/* Desktop: keep the parchment wide, but cap the text measure */
+.patch-notes-card{
+  --patch-measure: 102ch; /* tweak: 76ch (shorter lines) .. 92ch (longer lines) */
+}
+
+/* Apply the measure to the actual text blocks */
+.patch-notes-card :is(p, ul, ol, blockquote){
+  max-width: var(--patch-measure);
+}
+
+/* Keep dividers spanning the full parchment width */
+.patch-notes-card hr{
+  max-width: none;
+}
+
+/* Mobile: let it use the full card width, and slightly smaller type */
+@media (max-width: 900px){
+  .patch-notes-card{
+    --patch-measure: 100%;
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+}
+
+
+/* ============================
+   PATCH NOTES READABILITY TWEAKS
+   - Desktop: more inner padding so text doesn't touch parchment edge
+   - Mobile: slightly smaller padding + font for better line length
+   ============================ */
+@media (min-width: 901px){
+  .patch-notes-card{
+    padding: 24px 34px; /* top/bottom | left/right */
+  }
+  .patch-notes-card ul{
+    margin-left: 18px; /* keep bullets aligned */
+  }
+}
+
+@media (max-width: 900px){
+  .patch-notes-card{
+    padding: 14px 16px;
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+  .patch-notes-card ul{
+    margin-left: 16px;
+  }
+}

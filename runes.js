@@ -357,7 +357,7 @@ Steals a beneficial magic effect from the target.  This effect lasts a maximum o
 
   rogue: [
     /* ROGUE — FEAT SLOT 1 */ [
-{ id: "w1", name: "Blade Runner", icon:"ability_rogue_focusedattacks.jpg", description: "While Sprint is active, your damage against enemies that aren't facing you is increased by 5% and you are immune to Daze effects." },
+{ id: "w1", name: "Blade Runner", icon:"ability_rogue_focusedattacks.jpg", description: "You move 20% faster while in Stealth and your Sprint ability makes you immune to Daze effects for the duration." },
 {
   id: "w2",
   name: "Sneaky Sniper",
@@ -386,7 +386,7 @@ Steals a beneficial magic effect from the target.  This effect lasts a maximum o
 },
 { id: "w3", name: "Poison Gas", icon:"inv_engineering_gunpowdercharge.jpg", description: "Your Distract and Smoke Bomb abilities leave behind toxic gas for 10 sec. Enemies within the area suffer damage equal to your highest rank of Instant Poison every 2 seconds." },
 { id: "w28", name: "Derisive Tactics", icon:"ability_rogue_murderspree.jpg", description: "Your Expose Armor and Rupture abilities generate significantly increased threat. In addition, your Slice and Dice ability increases your Parry chance by 2% per Combo Point. " },
-{ id: "w31", name: "Wounded Animal", icon:"ability_demonhunter_bloodlet.jpg", description: "Your Bleed effects have a 10% chance to deal double damage but drain 2 Energy." },
+{ id: "w31", name: "Wounded Animal", icon:"ability_demonhunter_bloodlet.jpg", description: "While above 40 Energy, your Bleed effects have a 10% chance to deal double damage but drain 2 Energy." },
 ],
     /* ROGUE — FEAT SLOT 2 */ [
 { id: "w6", name: "What Doesn't Kill You...", icon:"ability_rogue_sturdyrecuperate.jpg", description: "Taking damage while below 50% total Health has a 10% chance to grant you Adrenaline Rush for 3 sec. This chance is increased to 100% while below 20% total Health.<hr>Requires the Adrenaline Rush talent." },
