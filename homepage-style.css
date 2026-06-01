@@ -102,3 +102,30 @@ body.index-page .container{
 body.index-page .container{
   flex: 1; /* pushes footer to bottom */
 }
+
+/* Patch notes alignment modes (index page) */
+body.index-page .patch-notes.align-left{
+  text-align: left !important;
+}
+
+body.index-page .patch-notes.align-center{
+  text-align: center !important;
+}
+
+/* Make lists look correct in each mode */
+body.index-page .patch-notes.align-left ul,
+body.index-page .patch-notes.align-left ol{
+  padding-left: 22px;
+  margin-left: 0;
+}
+
+body.index-page .patch-notes.align-center ul,
+body.index-page .patch-notes.align-center ol{
+  display: inline-block;   /* centers the list block */
+  text-align: left;        /* keeps bullets/text readable */
+  padding-left: 22px;
+  margin: 0;
+}
+
+.pn-left { text-align: left; }
+.pn-center { text-align: center; }

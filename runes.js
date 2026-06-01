@@ -77,7 +77,7 @@ const RUNE_DATA = {
       { id: "w1", name: "Liquid Courage", icon: "inv_holiday_beerfest_darkiron.jpg", description: "Restores 1% of your total health every 3 seconds while inebriated. Stacks up to 3 times.<br><br>At max stacks, Thunder Clap and Whirlwind strike an additional target." },
       { id: "w2", name: "Not On My Watch", icon: "warrior_talent_icon_blitz.jpg", description: "Your Intervene removes movement impairing effects, can be used in any Stance and reduces the ally's damage taken by 20% for 6 sec.<br><br>If you have Spell Reflect active when using Intervene, the ally gains its effect for 6 sec." },
 	{ id: "w7", name: "Artful Butchery", icon: "inv12_ability_warrior_fury", description: "While dual wielding weapons of the same type, the damage done by your offhand weapon increases by 5%.<br><br>While dual wielding weapons of different types, your skill with both increases by 1 for every 20 levels you have attained." },
-	{ id: "w18", name: "Brothers in Arms", icon: "ability_warrior_stalwartprotector.jpg", description: "Critically striking an enemy while within 20 yds of another friendly Warrior, Paladin or Shaman inspires you, causing you to deal 5% increased damage with your next 3 abilities. Lasts 10 sec.<hr>This effect can occur once every 30 sec." },
+	{ id: "w18", name: "Brothers in Arms", icon: "ability_warrior_stalwartprotector.jpg", description: "Critically striking an enemy while within 20 yds of another friendly Warrior, Paladin or Shaman inspires you, causing you to deal 10% increased damage with your next 3 abilities. Lasts 10 sec.<hr>This effect can occur once every 20 sec." },
     ],
 
     /* =========================
@@ -123,7 +123,7 @@ const RUNE_DATA = {
 { id: "w9", name: "Savage Temperment", icon: "ability_warrior_focusedrage", description: "Bloodrage now counts as an Enrage effect.<br><br>Whenever you Execute a target while Bloodrage is active, its duration is extended by 1-2 sec." },
 { id: "w3", name: "Valor Calls", icon: "achievement_guildperk_everyones-a-hero.jpg", description: "Last Stand no longer increases maximum health but instead increases damage dealt by 20%." },
 { id: "w18", name: "Front Line Medicine", icon: "inv_misc_bandage_08.jpg", description: "Increases the effectiveness of your self-healing abilities by 10%. In addition, increases the health gained from bandages, potions, trinket and food effects by 50%." },
-{ id: "w69", name: "Legion of Boom", icon: "inv_11_arenaboss_conductionslam.jpg", description: "Your Thunder Clap ability gains increased critical strike chance equal to your hit chance and refreshes the duration of armor reduction effects on targets struck." },
+{ id: "w69", name: "Legion of Boom", icon: "inv_11_arenaboss_conductionslam.jpg", description: "Your Thunder Clap ability gains increased critical strike chance equal to your hit chance and refreshes the duration of any Sunder Armor effects on targets struck." },
 ],
 
     /* =========================
@@ -172,11 +172,11 @@ const RUNE_DATA = {
     left: ["15 Rage","Instant","Requires Battle Stance"],
 
     // right column (white)
-    right: ["Melee Range", "30 sec cooldown"],
+    right: ["Melee Range", "20 sec cooldown"],
 
     // yellow body text
     body: `
-     Instantly equip your <span class='text-white'>Reserve Weapon</span> and strike the enemy, dealing 70% weapon damage and triggering its Chance On Hit or Use effect, if it has one.<br><br>Re-equips your previous weapon after 3 sec.<hr>Requires the Hero's Armory feat.
+     Instantly equip your <span class='text-white'>Reserve Weapon</span> and strike the enemy, dealing 80% weapon damage and triggering its Chance On Hit or Use effect, if it has one.<br><br>Re-equips your previous weapon after 3 sec.<hr>Requires the Hero's Armory feat.
 `
   }
 },
@@ -223,8 +223,8 @@ const RUNE_DATA = {
   mage: [
     /* MAGE — FEAT SLOT 1 */ [
 { id: "w1", name: "Fracturing Mind", icon: "spell_arcane_mindmastery.jpg", description: "Experience gains increased by 15%.<br><br>Your spells become unstable. Each spell cast has a 2% to Polymorph you for 3 sec, summon an Unstable Elemental, teleport you to a random location within 5 yds, or alter your damage dealt by a positive or negative amount for 20 sec." },
-{ id: "w2", name: "Living Flame", icon: "spell_fire_masterofelements.jpg", description: "Successful Fireball and Balefire Bolts generate a stack of Heat. Lasts 30 sec.<br><br>Upon reaching 10 stacks, you conjure a Living Flame towards your target that deals Fire damage to nearby enemies over 8 sec.<hr>Heat stacks are lost if you become stunned, feared, or incapacitated." },
-{ id: "w3", name: "Chromatic Spellslinger", icon: "spell_arcane_arcanepotency_nightborne.jpg", description: "Casting three spells from different schools of magic within 6 sec increases your base stats by 5% for 30 sec." },
+{ id: "w2", name: "Living Flame", icon: "spell_fire_masterofelements.jpg", description: "Successful Fireball, Fire Blasts and Frostfire Lances generate a stack of Heat. Lasts 30 sec.<br><br>Upon reaching 10 stacks, you conjure a Living Flame towards your target that deals Fire damage to nearby enemies over 8 sec.<hr>Heat stacks are lost if you become stunned, feared, or incapacitated." },
+{ id: "w3", name: "Chromatic Spellslinger", icon: "spell_arcane_arcanepotency_nightborne.jpg", description: "Casting three spells from different schools of magic within 6 sec increases your base stats by 10% for 30 sec." },
 { id: "w4", name: "Winter's Messenger", icon: "spell_mage_iceflows.jpg", description: "Your Blizzard spell is no longer channeled and has a 30 sec cooldown but now slowly follows the lowest health enemy within its radius." },
 {
   id: "w5",
@@ -311,6 +311,7 @@ const RUNE_DATA = {
   }
 },
 { id: "w9", name: "Timeweaver", icon: "inv_12_profession_tailoring_spellthread_purple.jpg", description: "Your Mystic Beam can be cast on friendly targets to heal them and Rewind Time restores up to 10 sec to the duration of Temporal Beacon when cast on a target affected by it." },
+{ id: "w69", name: "Mental Domination", icon: "spell_nature_focusedmind.jpg", description: "Instant cast spells used during the effect of your Presence of Mind generate no threat and refund their mana cost." },
 { id: "w17", name: "Trial by Fire", icon: "inv_summerfest_firespirit.jpg", description: "Your Fire damage spells have a 5% chance to cause your next Fire Blast to cost no mana and spread any Fire damage over time effects to nearby enemy targets within 12 yards.<hr>While this feat is active, your Frost and Arcane spells deal 40% less damage." },
 { id: "w18", name: "Winter's Embrace", icon: "spell_ice_lament.jpg", description: "Your Frost Nova spell gains an additional charge. In addition, you gain an absorb shield equal to 100% of your Intellect every 30 sec.<hr>While this feat is active, your Fire and Arcane spells deal 40% less damage." },
 { id: "w22", name: "Elemental Fusion", icon: "inv_10_elementalcombinedfoozles_primordial.jpg", description: "Your Convergence spell gives you a 100% chance to avoid interruption caused by damage and lasts an additional 5 sec." },
