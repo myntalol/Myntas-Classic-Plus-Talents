@@ -1450,3 +1450,46 @@ body{
     font-size: 0.85rem;
   }
 }
+
+/* ============================
+   MOBILE PATCH NOTES READABILITY
+   ============================ */
+@media (max-width: 900px){
+
+  /* Make body text breathe */
+  .patch-notes-card{
+    font-size: 0.98rem;
+    line-height: 1.55;
+    padding: 16px 16px;          /* keeps the card same width, improves readability */
+    overflow-wrap: break-word;   /* prevents long words/URLs from wrecking layout */
+  }
+
+  /* First-level lists: slightly less indent */
+  .patch-notes-card ul,
+  .patch-notes-card ol{
+    margin: 10px 0;
+    padding-left: 18px;
+  }
+
+  /* Nested (sub) bullets: MUCH less indent so it doesn't crush the text */
+  .patch-notes-card ul ul,
+  .patch-notes-card ol ol,
+  .patch-notes-card ul ol,
+  .patch-notes-card ol ul{
+    margin: 6px 0 6px 0;
+    padding-left: 14px;
+  }
+
+  /* Give list items more vertical spacing */
+  .patch-notes-card li{
+    margin: 8px 0;
+  }
+  .patch-notes-card li li{
+    margin: 6px 0;
+  }
+
+  /* Optional: make sub-bullets visually distinct */
+  .patch-notes-card ul ul{
+    list-style-type: circle;
+  }
+}

@@ -74,10 +74,11 @@ const RUNE_DATA = {
        WARRIOR — FEAT SLOT 1
        ========================= */
     [
-      { id: "w1", name: "Liquid Courage", icon: "inv_holiday_beerfest_darkiron.jpg", description: "Restores 1% of your total health every 3 seconds while inebriated. Stacks up to 3 times.<br><br>At max stacks, Thunder Clap and Whirlwind strike an additional target." },
-      { id: "w2", name: "Not On My Watch", icon: "warrior_talent_icon_blitz.jpg", description: "Your Intervene removes movement impairing effects, can be used in any Stance and reduces the ally's damage taken by 20% for 6 sec.<br><br>If you have Spell Reflect active when using Intervene, the ally gains its effect for 6 sec." },
+      { id: "w1", name: "Liquid Courage", icon: "inv_holiday_beerfest_darkiron.jpg", description: "Restores 1% of your total Health every 3 seconds while inebriated. Stacks up to 3 times.<br><br>At max stacks, Thunder Clap, Whirlwind and Revenge strike an additional nearby target." },
+      { id: "w2", name: "Not On My Watch", icon: "warrior_talent_icon_blitz.jpg", description: "Your Intervene can be used in any Stance, gains an additional charge and reduces the ally's damage taken by 20% for 6 sec.<br><br>If you have Spell Reflect active when using Intervene, the ally gains its effect for 6 sec." },
 	{ id: "w7", name: "Artful Butchery", icon: "inv12_ability_warrior_fury", description: "While dual wielding weapons of the same type, the damage done by your offhand weapon increases by 5%.<br><br>While dual wielding weapons of different types, your skill with both increases by 1 for every 20 levels you have attained." },
 	{ id: "w18", name: "Brothers in Arms", icon: "ability_warrior_stalwartprotector.jpg", description: "Critically striking an enemy while within 20 yds of another friendly Warrior, Paladin or Shaman inspires you, causing you to deal 10% increased damage with your next 3 abilities. Lasts 10 sec.<hr>This effect can occur once every 20 sec." },
+	{ id: "w70", name: "Impending Victory", icon: "spell_impending_victory.jpg", description: "Second Wind and Last Stand are now considered Enrage effects.<br><br>Whenever you Execute a target while under the effects of Second Wind, you instantly restore 3% of your total Health and generate 6 Rage points." },
     ],
 
     /* =========================
@@ -85,7 +86,18 @@ const RUNE_DATA = {
        ========================= */
     [
       { id: "w4", name: "Suicidal Tendencies", icon: "ability_warrior_rampage.jpg", description: "While there are more enemies than allies within 15 yards of you, your damage done and damage taken are increased by 5%." },
- {
+{ id: "w9", name: "Savage Temperment", icon: "ability_warrior_focusedrage", description: "Bloodrage now counts as an Enrage effect.<br><br>Critically striking an enemy while Bloodrage is active extends its duration by 3 sec." },
+{ id: "w6", name: "Internal Bleeding", icon: "ability_warrior_bloodnova.jpg", description: "Your Rend ability instantly deals 20% weapon damage whenever you reapply while wielding a two-handed weapon." },
+{ id: "w17", name: "Seige Warfare", icon: "inv_crossbow_2h_dragonquest_b_01.jpg", description: "Your next ranged weapon attack or Barbaric Throw cannot miss, critically strikes and applies one stack of Sunder Armor.<hr>This effect can occur once every 30 sec." },
+{ id: "w20", name: "Battering Ram", icon: "inv_1115_warrior_headbutt.jpg", description: "Your Shield Slam bypasses 80% of the target's armor and can benefit from or trigger the effects of your Improved Slam and Crimson Cyclone talents." },
+    ],
+
+    /* =========================
+       WARRIOR — FEAT SLOT 3
+       ========================= */
+    [
+{ id: "w30", name: "Hero's Armory", icon: "inv_12_profession_blacksmithing_weaponsmithing.jpg", description: "The first slot in your Backpack becomes a <span class='text-white'>Reserve Weapon</span> slot, where you can insert a two-handed melee weapon. You gain the base stats of that weapon as if it were equipped." },
+{
   id: "w5",
   name: "Barbaric Throw",
   icon: "inv_axe_1h_garrison_a_01.jpg",
@@ -102,7 +114,7 @@ const RUNE_DATA = {
     left: ["5 Rage","Instant","Requires Berserker Stance"],
 
     // right column (white)
-    right: ["5-30 yd range", "30 sec cooldown"],
+    right: ["30 yd range", "30 sec cooldown"],
 
     // yellow body text
     body: `
@@ -110,17 +122,7 @@ const RUNE_DATA = {
 `
   }
 },
-{ id: "w6", name: "Bloody Business", icon: "ability_warrior_bloodnova.jpg", description: "Your Overpower critical strikes increase your Rend ability's Bleed effect on the target by 5%. Stacks up to 3 times.<br><br>At 3 stacks, the target will instantly take an additional 10% weapon damage whenever you reapply Rend." },
-{ id: "w17", name: "Seige Warfare", icon: "inv_crossbow_2h_dragonquest_b_01.jpg", description: "Your next  ranged weapon attack cannot miss, critically strikes and applies one stack of Sunder Armor.<hr>This effect can occur once every 30 sec." },
-{ id: "w20", name: "Battering Ram", icon: "inv_1115_warrior_headbutt.jpg", description: "Your Shield Slam deals 100% increased damage to targets that aren't facing you." },
-    ],
 
-    /* =========================
-       WARRIOR — FEAT SLOT 3
-       ========================= */
-    [
-{ id: "w30", name: "Hero's Armory", icon: "inv_12_profession_blacksmithing_weaponsmithing.jpg", description: "The first slot in your Backpack becomes a <span class='text-white'>Reserve Weapon</span> slot, where you can insert a two-handed melee weapon. You gain the base stats of that weapon as if it were equipped." },
-{ id: "w9", name: "Savage Temperment", icon: "ability_warrior_focusedrage", description: "Bloodrage now counts as an Enrage effect.<br><br>Whenever you Execute a target while Bloodrage is active, its duration is extended by 1-2 sec." },
 { id: "w3", name: "Valor Calls", icon: "achievement_guildperk_everyones-a-hero.jpg", description: "Last Stand no longer increases maximum health but instead increases damage dealt by 20%." },
 { id: "w18", name: "Front Line Medicine", icon: "inv_misc_bandage_08.jpg", description: "Increases the effectiveness of your self-healing abilities by 10%. In addition, increases the health gained from bandages, potions, trinket and food effects by 50%." },
 { id: "w69", name: "Legion of Boom", icon: "inv_11_arenaboss_conductionslam.jpg", description: "Your Thunder Clap ability gains increased critical strike chance equal to your hit chance and refreshes the duration of any Sunder Armor effects on targets struck." },
@@ -151,7 +153,7 @@ const RUNE_DATA = {
 
     // yellow body text
     body: `
-     Consumes all active enrage effects on you, removing movement impairing effects and gaining increased size and damage per enrage consumed for 20 sec.<hr>You cannot benefit from other enrage effects for the duration.
+     Consumes all active Enrage effects on you, gaining increased movmenent speed, size and damage per Enrage consumed for 20 sec.<hr>You cannot benefit from other Enrage effects for the duration.
 `
   }
 },
@@ -180,9 +182,9 @@ const RUNE_DATA = {
 `
   }
 },
-{ id: "w11", name: "Into The Fray", icon: "inv_1115_warrior_fasterreflexes.jpg", description: "You inspire yourself and the closest party member within 15 yds whenever you Charge, granting 20% movement speed, attack speed, and spell casting speed for 3 sec. <hr> This effect can occur once every 30 sec." },
+{ id: "w11", name: "Into The Fray", icon: "inv_1115_warrior_fasterreflexes.jpg", description: "You inspire yourself and the closest party member within 15 yds whenever you Charge, granting 20% movement speed, attack speed, and spell casting speed for 3 sec." },
 { id: "w12", name: "Thrill of the Kill", icon: "achievement_bg_killxenemies_generalsroom.jpg", description: "Standing ontop of a corpse increases your attack speed by 1% for 6 sec. Stacks up to 5 times." },
-{ id: "w16", name: "Duelist", icon: "petbattle_attack.jpg", description: "Your Overpower causes your next Revenge to stun the target for 3 sec.<br><br>Your Revenge causes your next Overpower to strike an additional nearby target." },
+{ id: "w16", name: "Duelist", icon: "petbattle_attack.jpg", description: "Your Overpower causes your next Revenge to stun the target for 3 sec.<br><br>Your Revenge causes your next Overpower to strike twice." },
 ],
 
     /* =========================
@@ -216,7 +218,8 @@ const RUNE_DATA = {
   }
 },
 { id: "w15", name: "Reckless Abandon", icon: "inv_sword_148.jpg", description: "Your Mocking Blow ability can be used in Berkserker Stance, deals 150% weapon damage with both weapons and causes the target to take 20% increased damage from your attacks for the duration." },
-{ id: "w16", name: "Fearmonger", icon: "ability_fomor_boss_shout.jpg", description: "Your next Shout ability costs no Rage and reduces the cooldown of your Intimidating Shout by 5%.<hr>This effect can occur once every 30 sec." },
+{ id: "w16", name: "Fearmonger", icon: "ability_fomor_boss_shout.jpg", description: "Your next Shout ability costs no Rage and reduces the cooldown of your Intimidating Shout by 5 sec.<hr>This effect can occur once every 30 sec." },
+{ id: "w75", name: "Savagery", icon: "inv_1125_remix_hardmode.jpg", description: "Your Strike abilities costs 1 less Rage point and deals 5% increased damage for each enemy that is currently bleeding from your attacks or abilities. Stacks up to 10 times." },
 ],
   ],
 
@@ -312,8 +315,8 @@ const RUNE_DATA = {
 },
 { id: "w9", name: "Timeweaver", icon: "inv_12_profession_tailoring_spellthread_purple.jpg", description: "Your Mystic Beam can be cast on friendly targets to heal them and Rewind Time restores up to 10 sec to the duration of Temporal Beacon when cast on a target affected by it." },
 { id: "w69", name: "Mental Domination", icon: "spell_nature_focusedmind.jpg", description: "Instant cast spells used during the effect of your Presence of Mind generate no threat and refund their mana cost." },
-{ id: "w17", name: "Trial by Fire", icon: "inv_summerfest_firespirit.jpg", description: "Your Fire damage spells have a 5% chance to cause your next Fire Blast to cost no mana and spread any Fire damage over time effects to nearby enemy targets within 12 yards.<hr>While this feat is active, your Frost and Arcane spells deal 40% less damage." },
-{ id: "w18", name: "Winter's Embrace", icon: "spell_ice_lament.jpg", description: "Your Frost Nova spell gains an additional charge. In addition, you gain an absorb shield equal to 100% of your Intellect every 30 sec.<hr>While this feat is active, your Fire and Arcane spells deal 40% less damage." },
+{ id: "w17", name: "Trial by Fire", icon: "inv_summerfest_firespirit.jpg", description: "Your Fire Blast and Frostfire Lance spells have a 10% chance to spread your active Fire damage over time effects on the target to nearby enemies within 10 yards." },
+{ id: "w18", name: "Winter's Embrace", icon: "ability_deathknight_runicimpowerment.jpg", description: "Your Frostbolt and Frostfire Lance spells have a 30% chance to reset the cooldown of your Cone of Cold and cause it to disarm targets struck for 3 sec.<hr>This effect can occur once every 20 sec." },
 { id: "w22", name: "Elemental Fusion", icon: "inv_10_elementalcombinedfoozles_primordial.jpg", description: "Your Convergence spell gives you a 100% chance to avoid interruption caused by damage and lasts an additional 5 sec." },
 ],
     /* MAGE — FEAT SLOT 4 */ [
@@ -344,11 +347,12 @@ Steals a beneficial magic effect from the target.  This effect lasts a maximum o
 `
   }
 },
-{ id: "w23", name: "Steam Elemental", icon: "spell_frost_summonwaterelemental_2.jpg", description: "Maintaining both effects of Hot and Cold at their maximum for at least 30 seconds causes your next Presence of Mind spell to summon a Steam Elemental.<br><br>The Steam Elemental assists you in combat for 5 sec, increased by 5 sec for every talent point placed into Thermal Fluctuation." },
+{ id: "w23", name: "Steam Elemental", icon: "spell_frost_summonwaterelemental_2.jpg", description: "Maintaining both effects of Hot and Cold at their maximum for at least 30 seconds causes your next Convergence spell to summon a Steam Elemental.<br><br>The Steam Elemental assists you in combat for 10 sec, increased by 3 sec for every talent point placed into Thermal Fluctuation." },
 { id: "w24", name: "Empowered Blink", icon: "ability_socererking_arcaneacceleration.jpg", description: "Reduces the mana cost of your Blink spell by 50%. In addition, your spell haste is increased by 3% for every enemy you Blink through. Stacks up to 5 times. Lasts 10 sec." },
 ],
     /* MAGE — FEAT SLOT 5 */ [
 { id: "w25", name: "Rematerialize", icon: "inv_112_arcane_buff.jpg", description: "Your Disintegrate spell heals all party members within 20 yds of the target for 200% of the damage it deals, but its damage is dealt over 30 sec." },
+{ id: "w70", name: "Synaptic Echo", icon: "inv_112_arcane_missile.jpg", description: "Each stack of Regenerative Conduit also gives your damaging Arcane spells a 2% chance to strike the target a second time at 30% effectiveness.<hr>Requires the Regenerative Conduit talent." },
 { id: "w26", name: "Temporal Interloper", icon:"ability_titankeeper_residualcorruption.jpg", description: "Casting Rewind Time on an alternate version of yourself breaks reality, summoning 3 additional versions of you. Whether these beings are friendly or hostile is uncertain. Lasts 30 sec." },
 { id: "w27", name: "Cauterize", icon:"spell_fire_rune.jpg", description: "Fatal damage instead brings you to 30% health. However, you will burn for 4% of your maximum health every 1 sec for the next 6 sec.<hr>This effect can occur once every 6 min." },
 { id: "w29", name: "Icicles", icon:"artifactability_frostmage_blackicicles.jpg", description: "Taking damage while Frost Armor is active has a 5% chance to generate an Icicle above you.<br><br>Upon collecting 3, your next offensive spell triggers them to fire at your current target, dealing Frost damage. Icicles melt after 30 sec." },
@@ -854,7 +858,7 @@ Draw a concealed pistol and shoot your target, dealing Fire damage. Awards 1 Com
 
     // yellow body text
     body: `
-	Corrupts your pet or the pet of a party or raid member, causing it to grow in size and deal additional Shadow damage with each attack for 15 sec. When this effect ends, the pet explodes, dealing massive Shadow damage to itself and all enemies within 10 yds.
+	Corrupts your pet or the pet of a party or raid member, causing it to grow in size and deal additional Shadow damage with each attack for 15 sec. When this effect ends, the pet explodes, dealing massive Shadow damage to itself and all enemies within 20 yds.
 `
   }
 },
@@ -1102,7 +1106,7 @@ Clamp your jaws down on the target, dealing physical damage every 1 sec for 2 se
   hunter: [
     /* HUNTER — FEAT SLOT 1 */ [
 { id: "w2", name: "Wildbound", icon: "inv_nature_missile.jpg", description: "Every 50 yards of movement causes your next Steady Shot to become instant cast and deal additional Nature damage equal to 200% of your total Spirit." },
-{ id: "w3", name: "Unbreakable Bond", icon: "ability_hunter_beastmastery.jpg", description: "Mend Pet and Beastial Wrath increase your pet's happiness slightly.<br><br>Intimidation reduces your pet's damage taken by 10% for 10 sec.<br><br>Territorial Defense removes a slow effect from you and your pet." },
+{ id: "w3", name: "Unbreakable Bond", icon: "ability_hunter_beastmastery.jpg", description: "Beastial Wrath greatly increases your pet's happiness for the duration.<br><br>Intimidation reduces your pet's damage taken by 10% for 10 sec.<br><br>Territorial Defense removes a slow effect from you and your pet." },
 { id: "w14", name: "Snare Master", icon: "inv_fishing_nethooks01.jpg", description: "Your Wing Clip ability generates 10 Prowess and immobilizes the target for 5 seconds but has a 20 second cooldown." },
 {
   id: "w27",
