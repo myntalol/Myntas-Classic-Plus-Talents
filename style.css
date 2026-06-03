@@ -1350,12 +1350,13 @@ animation: frameGlow 11s cubic-bezier(0.6, 0.0, 0.4, 1.0) infinite;
   .talent-frame::before{ filter: none; }
   .talent-shell{ box-shadow: none; }
 
-  /* patch notes full width */
+  /* patch notes: readable column with side breathing room */
   .patch-notes{
-    width: 96vw;
-    max-width: 96vw;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    max-width: 720px;        /* article-like measure on phones */
+    margin: 0 auto;
+    padding: 0 14px;         /* <-- space from screen edges */
+    box-sizing: border-box;
   }
   .patch-notes-card{
     width: 100%;
@@ -1455,35 +1456,5 @@ body{
   body.index-page .class-grid .class-name,
   body.index-page .class-grid span{
     font-size: 0.85rem;
-  }
-}
-
-/* First-level lists: slightly less indent */
-  .patch-notes-card ul,
-  .patch-notes-card ol{
-    margin: 10px 0;
-    padding-left: 18px;
-  }
-
-  /* Nested (sub) bullets: MUCH less indent so it doesn't crush the text */
-  .patch-notes-card ul ul,
-  .patch-notes-card ol ol,
-  .patch-notes-card ul ol,
-  .patch-notes-card ol ul{
-    margin: 6px 0 6px 0;
-    padding-left: 14px;
-  }
-
-  /* Give list items more vertical spacing */
-  .patch-notes-card li{
-    margin: 8px 0;
-  }
-  .patch-notes-card li li{
-    margin: 6px 0;
-  }
-
-  /* Optional: make sub-bullets visually distinct */
-  .patch-notes-card ul ul{
-    list-style-type: circle;
   }
 }
