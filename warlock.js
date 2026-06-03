@@ -5,7 +5,7 @@ const talentData = {
         name: 'Affliction',
         talents: [
             { id: 'suppression', name: 'Suppression', maxPoints: 5, row: 0, col: 1, icon: 'spell_shadow_unsummonbuilding.jpg', description: (p) => `Reduces the chance for enemies to resist your Affliction spells by ${p * 1}% and reduces the mana cost of your Affliction spells by ${p * 1}%.` },
-{ id: 'improved-corruption', name: 'Improved Corruption', maxPoints: 5, row: 0, col: 2, icon: 'spell_shadow_abominationexplosion.jpg', description: (p) => `Reduces the casting time of your Corruption spell by ${(p * 0.4).toFixed(1)} sec.` },
+{ id: 'improved-corruption', name: 'Improved Corruption', maxPoints: 5, row: 0, col: 2, icon: 'spell_shadow_abominationexplosion.jpg', description: (p) => `Reduces the casting time of your Corruption spell by ${(p * 0.4).toFixed(1)} sec. In addition, increases the damage done by Corruption by ${p * 1}%` },
             { id: 'improved-drain-soul', name: 'Improved Drain Soul', maxPoints: 2, row: 1, col: 0, icon: 'spell_shadow_haunting.jpg', description: (p) => `Restores ${p * 5}% of your maximum mana when a target is killed while you drain its soul. In addition, Drain Soul has a chance every time it deals damage to generate an additional Soul Shard.` },
             { id: 'improved-curse-of-weakness', name: 'Improved Curse of Weakness', maxPoints: 2, row: 5, col: 2, icon: 'spell_shadow_curseofmannoroth.jpg', description: (p) => `
 Increases the effect of your Curse of Weakness by ${p * 10}% and increases the energy, rage or focus costs of the target's abilities by ${p * 5}% while active.` },
@@ -35,7 +35,7 @@ Only one Unstable Affliction or Immolate per Warlock can be active on any one ta
         name: 'Demonology',
         talents: [
             { id: 'demonic-resilience', name: 'Demonic Resilience', maxPoints: 3, row: 0, col: 1, icon: 'inv12_ability_demonhunter_felfirefists.jpg', description: (p) => `Reduces the chance you'll be critically hit by spells by ${p * 1}% and reduces all spell damage your summoned demon takes by ${p * 5}%.` },
-            { id: 'fel-fortitude', name: 'Fel Fortitude', maxPoints: 5, row: 0, col: 2, icon: 'spell_shadow_metamorphosis.jpg', description: (p) => `Increases the Stamina of you and your summoned demon by ${p * 2}%, but increases the damage you take from Holy and Nature spells and effects by ${p * 1}%.` },
+            { id: 'fel-fortitude', name: 'Fel Fortitude', maxPoints: 5, row: 0, col: 2, icon: 'spell_shadow_metamorphosis.jpg', description: (p) => `Increases the Stamina of you and your summoned demon by ${p * 2}%, but increases the damage you take from Holy spells and effects by ${p * 1}%.` },
 		{ id: 'fel-synergy', name: 'Fel Synergy', maxPoints: 3, row: 0, col: 3, icon: 'spell_shadow_felmending.jpg', description: (p) => `Your direct damage spells have a ${p * 20}% chance to heal your summoned demon for ${p * 10}% of the damage done.` },
             { id: 'improved-health-funnel', name: 'Improved Health Funnel', maxPoints: 2, row: 1, col: 0, icon: 'spell_shadow_lifedrain.jpg', description: (p) => `Increases the amount of Health transferred by your Health Funnel spell by ${p * 10}% and reduces the health cost by ${p * 10}%.` },
             { id: 'dance-of-the-wicked', name: 'Dance of the Wicked', maxPoints: 5, row: 1, col: 1, icon: 'ability_warlock_eradication.jpg', description: (p) => `You and your summoned demon gain dodge chance equal to ${p * 10}% of your spell critical strike chance each time you critically strike with a spell. Lasts 10 sec.` },
@@ -55,7 +55,7 @@ Succubus/Incubus - Reduces the chance your spells will be dispelled by ${p * 2}%
 Felhunter - Reduces the duration of all Silence effects by ${p * 2}%.
 <br><br>
 Felguard - Increases all resistances by ${p * .1} per level.` },
-	{ id: 'demonic-tactics', name: 'Demonic Tactics', maxPoints: 2, row: 4, col: 1, icon: 'spell_shadow_demonictactics.jpg', description: (p) => `Increases the melee and spell critical strike chance of you and your summoned demon by ${p * 5}%.` },
+	{ id: 'demonic-tactics', name: 'Demonic Tactics', maxPoints: 3, row: 4, col: 1, icon: 'spell_shadow_demonictactics.jpg', description: (p) => `Increases the melee and spell critical strike chance of you and your summoned demon by ${p * 2}%. This effect increases by an additional 3% versus Demons and Humanoids.` },
             { id: 'master-summoner', name: 'Master Summoner', maxPoints: 2, row: 2, col: 2, prereq: 'fel-domination', icon: 'spell_shadow_impphaseshift.jpg', description: (p) => `Reduces the casting time of your Demon Summoning spells by ${p * 2} sec and reduces their Mana cost by ${p * 20}%.` },
             { id: 'unholy-power', name: 'Unholy Power', maxPoints: 5, row: 3, col: 2, icon: 'spell_shadow_shadowworddominate.jpg', description: (p) => `Increases the damage done by your summoned demon by ${p * 4}% for 15 sec whenever you land a spell critical strike.` },
 	{ id: 'mana-feed', name: 'Mana Feed', maxPoints: 2, row: 5, col: 0, icon: 'spell_warlock_soulburn_haunt.jpg', description: (p) => `Your summoned demon gains ${p * 30}% of the mana you gain when casting Drain Mana or Life Tap.` },
@@ -88,7 +88,7 @@ This effect is cancelled if any demon is summoned.` },
     'destruction': {
         name: 'Destruction',
         talents: [
-            { id: 'empowered-shadows', name: 'Empowered Shadows', maxPoints: 5, row: 0, col: 1, icon: 'spell_shadow_shadowbolt.jpg', description: (p) => `Your Shadow Bolt and Shadow Cleave critical strikes increase the damage done by Shadow spells on the target by ${p * 2}% until 4 non-periodic damage sources are applied.<hr>This effect lasts a maximum of 12 sec.` },
+            { id: 'empowered-shadows', name: 'Empowered Shadows', maxPoints: 5, row: 0, col: 1, icon: 'spell_shadow_shadowbolt.jpg', description: (p) => `Your Shadow Bolt and Shadow Cleave critical strikes increase Shadow spell damage taken by the target by ${p * 3}% until 6 non-periodic damage sources are applied.<hr>This effect lasts a maximum of 12 sec.` },
             { id: 'cataclysm', name: 'Cataclysm', maxPoints: 5, row: 0, col: 2, icon: 'spell_fire_windsofwoe.jpg', description: (p) => `Increases the periodic damage done by your Immolate spell by ${p * 2}%, and your Conflagrate spell has a ${p * 4}% chance to daze the target for 3 sec.` },
 	{ id: 'nether-ward', name: 'Nether Ward', maxPoints: 1, row: 2, col: 1, prereq: 'nether-protection', icon: 'spell_fire_felfireward.jpg', description: (p) => `Transforms your Shadow Ward into Nether Ward, which can absorb Shadow, Fire and Arcane damage.` },
             { id: 'bane', name: 'Bane', maxPoints: 5, row: 1, col: 2, icon: 'spell_shadow_deathpact.jpg', description: (p) => `Reduces the cast time of your Immolate and Incinerate spells by ${p * 0.1} sec.` },

@@ -8,7 +8,7 @@ const talentData = {
             { id: 'remorseless-attacks', name: 'Remorseless Attacks', maxPoints: 2, row: 0, col: 1, icon: 'ability_fiegndead.jpg', description: (p) => `When an enemy you have damaged within the last 5 sec dies, the critical strike chance of your next ability within 15 sec is increased by ${p * 10}% and your Slice and Dice ability is refreshed to its original duration.
 <hr>
 This effect only triggers from enemies that yield experience or honor.` },
-            { id: 'malice', name: 'Malice', maxPoints: 5, row: 0, col: 2, icon: 'sha_ability_rogue_bloodyeye.jpg', description: (p) => `Increases your critical strike chance by ${p}%. This effect is doubled versus Humanoids and Giants.` },
+            { id: 'malice', name: 'Malice', maxPoints: 5, row: 0, col: 2, icon: 'sha_ability_rogue_bloodyeye.jpg', description: (p) => `Increases your critical strike chance by ${p}%.  This effect increases by an additional 2% versus Humanoids and Giants.` },
             { id: 'deviousness', name: 'Deviousness', maxPoints: 3, row: 1, col: 0, icon: 'ability_rogue_deviouspoisons.jpg', description: (p) => `Your finishing moves have a ${p * 20}% chance to add a Combo Point on poisoned targets.` },
 	{ id: 'murder', name: 'Murder', maxPoints: 3, row: 1, col: 1, icon: 'ability_rogue_slaughterfromtheshadows.jpg', description: (p) => `When you Backstab enemies below ${p * 10}% health, you restore 10 Energy. This effect is doubled versus Humanoids and Giants.` },
         { id: 'lethality', name: 'Lethality', maxPoints: 5, row: 2, col: 2, prereq: 'malice', icon: 'ability_criticalstrike.jpg', description: (p) => `Increases the critical strike damage bonus of all Combo Point-generating abilities that do not require stealth by ${p * 4}%.` },

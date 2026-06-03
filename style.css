@@ -1357,7 +1357,34 @@ animation: frameGlow 11s cubic-bezier(0.6, 0.0, 0.4, 1.0) infinite;
     margin-left: auto;
     margin-right: auto;
   }
-  .patch-notes-card{ width: 100%; }
+  .patch-notes-card{
+    width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 14px 16px;
+    overflow-wrap: break-word;
+  }
+
+  .patch-notes-card ul,
+  .patch-notes-card ol{
+    margin: 10px 0;
+    margin-left: 0;
+    padding-left: 18px;
+  }
+
+  .patch-notes-card ul ul,
+  .patch-notes-card ol ol,
+  .patch-notes-card ul ol,
+  .patch-notes-card ol ul{
+    margin: 6px 0;
+    margin-left: 0;
+    padding-left: 14px;
+  }
+
+  .patch-notes-card li{ margin: 7px 0; }
+  .patch-notes-card li li{ margin: 5px 0; }
+
+  .patch-notes-card ul ul{ list-style-type: circle; }
 }
 
 /* iPhone safe-area padding */
@@ -1385,15 +1412,6 @@ body{
 }
 
 /* Mobile: let it use the full card width, and slightly smaller type */
-@media (max-width: 900px){
-  .patch-notes-card{
-    --patch-measure: 100%;
-    font-size: 0.95rem;
-    line-height: 1.45;
-  }
-}
-
-
 /* ============================
    PATCH NOTES READABILITY TWEAKS
    - Desktop: more inner padding so text doesn't touch parchment edge
@@ -1405,17 +1423,6 @@ body{
   }
   .patch-notes-card ul{
     margin-left: 18px; /* keep bullets aligned */
-  }
-}
-
-@media (max-width: 900px){
-  .patch-notes-card{
-    padding: 14px 16px;
-    font-size: 0.95rem;
-    line-height: 1.45;
-  }
-  .patch-notes-card ul{
-    margin-left: 16px;
   }
 }
 
@@ -1451,20 +1458,7 @@ body{
   }
 }
 
-/* ============================
-   MOBILE PATCH NOTES READABILITY
-   ============================ */
-@media (max-width: 900px){
-
-  /* Make body text breathe */
-  .patch-notes-card{
-    font-size: 0.98rem;
-    line-height: 1.55;
-    padding: 16px 16px;          /* keeps the card same width, improves readability */
-    overflow-wrap: break-word;   /* prevents long words/URLs from wrecking layout */
-  }
-
-  /* First-level lists: slightly less indent */
+/* First-level lists: slightly less indent */
   .patch-notes-card ul,
   .patch-notes-card ol{
     margin: 10px 0;

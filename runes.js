@@ -314,7 +314,7 @@ const RUNE_DATA = {
   }
 },
 { id: "w9", name: "Timeweaver", icon: "inv_12_profession_tailoring_spellthread_purple.jpg", description: "Your Mystic Beam can be cast on friendly targets to heal them and Rewind Time restores up to 10 sec to the duration of Temporal Beacon when cast on a target affected by it." },
-{ id: "w69", name: "Mental Domination", icon: "spell_nature_focusedmind.jpg", description: "Instant cast spells used during the effect of your Presence of Mind generate no threat and refund their mana cost." },
+{ id: "w69", name: "Mental Domination", icon: "spell_nature_focusedmind.jpg", description: "Your Presence of Mind is not consumed when casting a spell that is already instant cast, and those spells generate no threat and refund their mana cost for the duration." },
 { id: "w17", name: "Trial by Fire", icon: "inv_summerfest_firespirit.jpg", description: "Your Fire Blast and Frostfire Lance spells have a 10% chance to spread your active Fire damage over time effects on the target to nearby enemies within 10 yards." },
 { id: "w18", name: "Winter's Embrace", icon: "ability_deathknight_runicimpowerment.jpg", description: "Your Frostbolt and Frostfire Lance spells have a 30% chance to reset the cooldown of your Cone of Cold and cause it to disarm targets struck for 3 sec.<hr>This effect can occur once every 20 sec." },
 { id: "w22", name: "Elemental Fusion", icon: "inv_10_elementalcombinedfoozles_primordial.jpg", description: "Your Convergence spell gives you a 100% chance to avoid interruption caused by damage and lasts an additional 5 sec." },
