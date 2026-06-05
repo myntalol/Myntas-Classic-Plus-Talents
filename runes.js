@@ -86,9 +86,9 @@ const RUNE_DATA = {
        ========================= */
     [
       { id: "w4", name: "Suicidal Tendencies", icon: "ability_warrior_rampage.jpg", description: "While there are more enemies than allies within 15 yards of you, your damage done and damage taken are increased by 5%." },
-{ id: "w9", name: "Savage Temperment", icon: "ability_warrior_focusedrage", description: "Bloodrage now counts as an Enrage effect.<br><br>Critically striking an enemy while Bloodrage is active extends its duration by 3 sec." },
+{ id: "w9", name: "Savage Temperament", icon: "ability_warrior_focusedrage", description: "Bloodrage now counts as an Enrage effect.<br><br>Critically striking an enemy while Bloodrage is active extends its duration by 3 sec." },
 { id: "w6", name: "Internal Bleeding", icon: "ability_warrior_bloodnova.jpg", description: "Your Rend ability instantly deals 20% weapon damage whenever you reapply while wielding a two-handed weapon." },
-{ id: "w17", name: "Seige Warfare", icon: "inv_crossbow_2h_dragonquest_b_01.jpg", description: "Your next ranged weapon attack or Barbaric Throw cannot miss, critically strikes and applies one stack of Sunder Armor.<hr>This effect can occur once every 30 sec." },
+{ id: "w17", name: "Siege Warfare", icon: "inv_crossbow_2h_dragonquest_b_01.jpg", description: "Your next ranged weapon attack or Barbaric Throw cannot miss, critically strikes and applies one stack of Sunder Armor.<hr>This effect can occur once every 30 sec." },
 { id: "w20", name: "Battering Ram", icon: "inv_1115_warrior_headbutt.jpg", description: "Your Shield Slam bypasses 80% of the target's armor and can benefit from or trigger the effects of your Improved Slam and Crimson Cyclone talents." },
     ],
 
@@ -153,7 +153,7 @@ const RUNE_DATA = {
 
     // yellow body text
     body: `
-     Consumes all active Enrage effects on you, gaining increased movmenent speed, size and damage per Enrage consumed for 20 sec.<hr>You cannot benefit from other Enrage effects for the duration.
+     Consumes all active Enrage effects on you, gaining increased movement speed, size and damage per Enrage consumed for 20 sec.<hr>You cannot benefit from other Enrage effects for the duration.
 `
   }
 },
@@ -183,7 +183,7 @@ const RUNE_DATA = {
   }
 },
 { id: "w11", name: "Into The Fray", icon: "inv_1115_warrior_fasterreflexes.jpg", description: "You inspire yourself and the closest party member within 15 yds whenever you Charge, granting 20% movement speed, attack speed, and spell casting speed for 3 sec." },
-{ id: "w12", name: "Thrill of the Kill", icon: "achievement_bg_killxenemies_generalsroom.jpg", description: "Standing ontop of a corpse increases your attack speed by 1% for 6 sec. Stacks up to 5 times." },
+{ id: "w12", name: "Thrill of the Kill", icon: "achievement_bg_killxenemies_generalsroom.jpg", description: "Standing on top of a corpse increases your attack speed by 1% for 6 sec. Stacks up to 5 times." },
 { id: "w16", name: "Duelist", icon: "petbattle_attack.jpg", description: "Your Overpower causes your next Revenge to stun the target for 3 sec.<br><br>Your Revenge causes your next Overpower to strike twice." },
 ],
 
@@ -219,7 +219,7 @@ const RUNE_DATA = {
 },
 { id: "w15", name: "Reckless Abandon", icon: "inv_sword_148.jpg", description: "Your Mocking Blow ability can be used in Berkserker Stance, deals 150% weapon damage with both weapons and causes the target to take 20% increased damage from your attacks for the duration." },
 { id: "w16", name: "Fearmonger", icon: "ability_fomor_boss_shout.jpg", description: "Your next Shout ability costs no Rage and reduces the cooldown of your Intimidating Shout by 5 sec.<hr>This effect can occur once every 30 sec." },
-{ id: "w75", name: "Savagery", icon: "inv_1125_remix_hardmode.jpg", description: "Your Strike abilities costs 1 less Rage point and deals 5% increased damage for each enemy that is currently bleeding from your attacks or abilities. Stacks up to 10 times." },
+{ id: "w75", name: "Savagery", icon: "inv_1125_remix_hardmode.jpg", description: "Your Strike abilities cost 1 less Rage point and deals 5% increased damage for each enemy that is currently bleeding from your attacks or abilities. Stacks up to 10 times." },
 ],
   ],
 
@@ -422,7 +422,7 @@ Steals a beneficial magic effect from the target.  This effect lasts a maximum o
 
     // yellow body text
     body: `
-     Inject yourself with a suspicous serum that increases your maximum health by 5% but reduces your damage done and damage taken by 4%. Stacks up to 5 times. Lasts 1 min.<hr>Each subsequent dose inoculates you, reducing health lost during injections by 1%.
+     Inject yourself with a suspicious serum that increases your maximum health by 5% but reduces your damage done and damage taken by 4%. Stacks up to 5 times. Lasts 1 min.<hr>Each subsequent dose inoculates you, reducing health lost during injections by 1%.
 `
   }
 },
@@ -431,7 +431,7 @@ Steals a beneficial magic effect from the target.  This effect lasts a maximum o
 { id: "w18", name: "Stalking Death", icon:"ability_rogue_deadliness.jpg", description: "For 6 seconds after exiting Stealth you can use Garrote, Ambush, Cheap Shot, Premeditation, Pickpocket and Disarm Trap.<hr>This effect can occur once every 60 sec." },
 ],
     /* ROGUE — FEAT SLOT 4 */ [
-{ id: "w16", name: "Cowl of Carnage", icon:"inv_helm_armor_banditmask_c_01.jpg", description: "Your helmet slot takes on the appearance of a red hood.<br><br>Riposte, Ghostly Strike and Shiv deal 20% increased damage to targets afflicted by atleast two of your Bleed effects." },
+{ id: "w16", name: "Cowl of Carnage", icon:"inv_helm_armor_banditmask_c_01.jpg", description: "Your helmet slot takes on the appearance of a red hood.<br><br>Riposte, Ghostly Strike and Shiv deal 20% increased damage to targets afflicted by at least two of your Bleed effects." },
 { id: "w14", name: "Veil of Solitude", icon:"inv_misc_bandana_01.jpg", description: "Your helmet slot takes on the appearance of a dark bandana.<br><br>Shadowstep may be used on corpses and grants Ghosting for 10 sec.<hr>Ghosting increases your chance to Dodge by 10% and allows you to Backstab enemies facing you." },
 { id: "w4", name: "Eyepatch of Piracy", icon:"inv_helm_armor_pirateeyepatch_b_01_blackpirate.jpg", description: "Your helmet slot takes on the appearance of an eyepatch.<br><br>Your Between The Eyes ability gains 5 yds of range, your Broadside ability ignores armor, and your Quick Draw ability has its cooldown reduced by 5 sec." },
 { id: "w15", name: "Mask of Antagonism", icon:"ability_rogue_disguise.jpg", description: "Your helmet slot takes on the appearance of a white mask.<br><br>Feint no longer lowers your threat but instead taunts the target to attack you." },
@@ -486,7 +486,7 @@ Draw a concealed pistol and shoot your target, dealing Fire damage. Awards 1 Com
 
     // yellow body text
     body: `
-     Place an rat strapped with dynamite on the ground, which proceeds to pursue the furthest enemy you are in combat with for up to 10 sec.<br><br>If the rat reaches its target, it explodes, dealing Fire damage to all enemies within 10 yds and resetting the cooldown of this ability.
+     Place a rat strapped with dynamite on the ground, which proceeds to pursue the furthest enemy you are in combat with for up to 10 sec.<br><br>If the rat reaches its target, it explodes, dealing Fire damage to all enemies within 10 yds and resetting the cooldown of this ability.
 `
   }
 },
@@ -1286,7 +1286,7 @@ Clamp your jaws down on the target, dealing physical damage every 1 sec for 2 se
   }
 },
 
-{ id: "w3", name: "Shatter", icon: "ability_earthen_pillar.jpg", description: "While you are at maximum charges of Earth Shield, your Earth Shock spell consumes one orb charge to pull a spike from beneath the earth onto the target, dealing Nature damage." },
+{ id: "w3", name: "Shatter", icon: "ability_earthen_pillar.jpg", description: "Casting Earth Shield or reaching maximum stacks of Earth Shield increases your block chance by 10% for 6 sec.<br><br>Your Earth Shock spell consumes one orb charge to pull a spike from beneath the earth onto the target, dealing Nature damage." },
 { id: "w9", name: "Storm Sentinel", icon: "inv_mace_2h_draenorguard_b_01_alliance.jpg", description: "While under the effects of Elemental Mastery, your Thunderstorm always critically strikes.<br><br>While under the effects of Shamanistic Rage, Stormstrike always strikes one additional time." },
 { id: "w7", name: "Acid Rains", icon: "spell_nature_acid_01.jpg", description: "Your Healing Rains spell deals Nature damage to enemies within its radius every second and increases their damage taken from Nature and Frost spells and effects by 3%." },
 {
@@ -1482,7 +1482,7 @@ Clamp your jaws down on the target, dealing physical damage every 1 sec for 2 se
 
     // yellow body text
     body: `
-	Consumes your active Air Totem to increase your movement speed by 20% and reflect ranged attacks mage against you back onto random nearby enemies. Lasts 8 sec.<hr>You cannot place another Air Totem for 30 seconds after using this spell.
+	Consumes your active Air Totem to increase your movement speed by 20% and reflect ranged attacks made against you back onto random nearby enemies. Lasts 8 sec.<hr>You cannot place another Air Totem for 30 seconds after using this spell.
 `
   }
 },
