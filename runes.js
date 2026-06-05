@@ -1382,7 +1382,7 @@ Clamp your jaws down on the target, dealing physical damage every 1 sec for 2 se
 { id: "w24", name: "Fire Storm", icon: "spell_shaman_stormearthfire.jpg", description: "While under the effects of Flametongue Totem or Flametongue Weapon, the duration of your Flame Shock increases by 6 sec." },
 { id: "w14", name: "Icy Hot", icon: "spell_frost_icefloes.jpg", description: "While your weapon or shield is imbued with Frostbrand Weapon, your Lava Lash ignores the target's Fire resistance and always causes maximum pushback on targets casting spells." },
 { id: "w28", name: "Rain Stick", icon: "inv_rod_titanium.jpg", description: "Whenever your Earthliving effect triggers, the cooldown of your Healing Rains or Riptide spell is reduced by 1 second, whichever is longer." },
-{ id: "w26", name: "Force Conduit", icon: "ability_evoker_earthensky.jpg", description: "While your weapon or shield is imbued with Rockbiter Weapon, parrying grants you a stack of Maelstrom." },
+{ id: "w26", name: "Force Conduit", icon: "ability_evoker_earthensky.jpg", description: "Each stack of Maelstrom increases your Parry chance by 1%.<br><br>While your weapon or shield is imbued with Rockbiter Weapon, parrying grants you a stack of Maelstrom." },
 ],
     /* SHAMAN — FEAT SLOT 5 */ [
 { id: "w25", name: "Chaos of the Natural World", icon: "inv_10_enchanting2_elementalswirl_color1.jpg", description: "Reduces your damage taken while casting spells by 10%. In addition, you gain the effects of another random <span class='text-white'>Disciple</span> feat in this slot every 30 seconds.<hr>No feat can be chosen twice in a row." },
