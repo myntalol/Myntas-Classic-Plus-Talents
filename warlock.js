@@ -4,7 +4,7 @@ const talentData = {
     'affliction': {
         name: 'Affliction',
         talents: [
-            { id: 'suppression', name: 'Suppression', maxPoints: 5, row: 0, col: 1, icon: 'spell_shadow_unsummonbuilding.jpg', description: (p) => `Reduces the chance for enemies to resist your Affliction spells by ${p * 1}% and reduces the mana cost of your Affliction spells by ${p * 1}%.` },
+            { id: 'suppression', name: 'Suppression', maxPoints: 3, row: 0, col: 1, icon: 'spell_shadow_unsummonbuilding.jpg', description: (p) => `Increases your chance to hit with spells by ${p * 1}% and reduces the mana cost of your Affliction spells by ${p * 1}% for every 10% of your missing mana.` },
 { id: 'improved-corruption', name: 'Improved Corruption', maxPoints: 5, row: 0, col: 2, icon: 'spell_shadow_abominationexplosion.jpg', description: (p) => `Reduces the casting time of your Corruption spell by ${(p * 0.4).toFixed(1)} sec. In addition, increases the damage done by Corruption by ${p * 1}%` },
             { id: 'improved-drain-soul', name: 'Improved Drain Soul', maxPoints: 2, row: 1, col: 0, icon: 'spell_shadow_haunting.jpg', description: (p) => `Restores ${p * 5}% of your maximum mana when a target is killed while you drain its soul. In addition, Drain Soul has a chance every time it deals damage to generate an additional Soul Shard.` },
             { id: 'improved-curse-of-weakness', name: 'Improved Curse of Weakness', maxPoints: 2, row: 5, col: 2, icon: 'spell_shadow_curseofmannoroth.jpg', description: (p) => `
@@ -103,17 +103,17 @@ While in Metamorphosis, this ability ignores all resistances.` },
             { id: 'intensity', name: 'Intensity', maxPoints: 2, row: 4, col: 0, icon: 'spell_fire_lavaspawn.jpg', description: (p) => `Reduces the pushback suffered from damaging attacks while casting or channeling any Destruction spell by ${p * 35}%.` },
 	{ id: 'nether-protection', name: 'Nether Protection', maxPoints: 3, row: 1, col: 1, icon: 'spell_shadow_netherprotection.jpg', description: (p) => `After taking spell damage, you and your summoned demon have a ${p * 10}% chance to reduce all damage from that spell school by 5% for 8 sec. Stacks up to 5 times.` },
             { id: 'destructive-reach', name: 'Destructive Reach', maxPoints: 2, row: 3, col: 1, icon: 'spell_shadow_corpseexplode.jpg', description: (p) => `Increases the range of your Destruction spells by ${p * 10}% and reduces the threat caused by Destruction spells by ${p * 10}%.` },
-            { id: 'shadow-and-flame', name: 'Shadow and Flame', maxPoints: 3, row: 4, col: 2, prereq: 'devastation', icon: 'inv_shadowflame_nova.jpg', description: (p) => `Shadowbolt critical strikes increase your Fire damage by 5% for ${p * 5} sec.
+            { id: 'shadow-and-flame', name: 'Shadow and Flame', maxPoints: 3, row: 4, col: 2, prereq: 'devastation', icon: 'inv_shadowflame_nova.jpg', description: (p) => `Shadowbolt critical strikes increase your Fire damage by 5% for ${p * 10} sec.
 <br>
 <br>
-Incinerate critical strikes increase your Shadow damage by 5% for ${p * 5} sec.` },
+Incinerate critical strikes increase your Shadow damage by 5% for ${p * 10} sec.` },
 	{ id: 'hellguard', name: 'Hellguard', maxPoints: 1, row: 3, col: 3, icon: 'ability_warlock_baneofhavoc.jpg', details: ['1 min cooldown'], subDetails: ['18% of base mana','Instant'], description: (p) => `Invoke 3 burning skulls that slowly rotate around you. While active, your Physical damage taken is reduced by 2% per skull and enemies who come in contact with a skull take Fire damage. Lasts 20 sec.
 <hr>
 While this effect is active, spells that require Soul Shards consume one skull instead.` },
-            { id: 'emberstorm', name: 'Emberstorm', maxPoints: 1, row: 5, col: 2, prereq: 'shadow-and-flame', icon: 'spell_fire_selfdestruct.jpg', description: (p) => `Reduces the cooldown of your Soul Fire spell to 5 seconds while both effects of Shadow and Flame are active.` },
+            { id: 'emberstorm', name: 'Emberstorm', maxPoints: 1, row: 5, col: 2, prereq: 'shadow-and-flame', icon: 'spell_fire_selfdestruct.jpg', description: (p) => `Reduces the cooldown of your Soul Fire spell by 90% and increases your chance to hit with spells by 3% while both effects of Shadow and Flame are active.` },
  	{ id: 'infernum', name: 'Infernum', maxPoints: 3, row: 4, col: 3, icon: 'spell_fire_ragnaros_molteninferno.jpg', description: (p) => `Each time Hellfire deals damage to you, the cooldown of Inferno is reduced by ${p * 2} sec. In addition, Inferno can be used in any location, but the demon summoned will only obey you for 20 sec.` },
-            { id: 'pyroclasm', name: 'Pyroclasm', maxPoints: 2, row: 5, col: 0, prereq: 'intensity', icon: 'spell_fire_volcano.jpg', description: (p) => `Increases the damage of Inferno, Rain of Fire, Hellfire and Hellflame Edict by ${p * 10}%. In addition, Rain of Fire has a ${p * 5}% chance to stun enemies for 3 sec.` },
-	{ id: 'decimation', name: 'Decimation', maxPoints: 5, row: 4, col: 1, icon: 'ability_warlock_fireandbrimstone.jpg', description: (p) => `Whenever your Shadow Bolt or Searing Pain spell hits a target that is at or above 65% health, the cast time of your next Soul Fire is reduced by ${p * 12}% for 10 sec.` },
+            { id: 'pyroclasm', name: 'Pyroclasm', maxPoints: 2, row: 5, col: 0, prereq: 'intensity', icon: 'spell_fire_volcano.jpg', description: (p) => `Increases the damage of Soul Fire, Inferno, Rain of Fire, Hellfire and Hellguard by ${p * 10}%. In addition, Rain of Fire has a ${p * 5}% chance to stun enemies for 3 sec.` },
+	{ id: 'decimation', name: 'Decimation', maxPoints: 5, row: 4, col: 1, icon: 'ability_warlock_fireandbrimstone.jpg', description: (p) => `Whenever your Shadow Bolt or Searing Pain spell hits a target that is at or above 60% total Health, the cast time of your next 3 Soul Fire spells is reduced by ${p * 10}%.` },
 
             { id: 'conflagrate', name: 'Conflagrate', maxPoints: 1, row: 6, col: 1, isUltimate: true, prereq: 'decimation', icon: 'spell_fire_fireball.jpg', details: ['30 yd range','10 sec cooldown'], subDetails: ['9% of base mana','Instant'], description: () => `Ignites a target that is burning from a periodic Fire effect, dealing Fire damage.
 <hr>
