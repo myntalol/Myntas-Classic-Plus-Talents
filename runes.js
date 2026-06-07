@@ -79,6 +79,7 @@ const RUNE_DATA = {
 	{ id: "w7", name: "Artful Butchery", icon: "inv12_ability_warrior_fury", description: "While dual wielding weapons of the same type, the damage done by your offhand weapon increases by 5%.<br><br>While dual wielding weapons of different types, your skill with both increases by 1 for every 20 levels you have attained." },
 	{ id: "w18", name: "Brothers in Arms", icon: "ability_warrior_stalwartprotector.jpg", description: "Critically striking an enemy while within 20 yds of another friendly Warrior, Paladin or Shaman inspires you, causing you to deal 10% increased damage with your next 3 abilities. Lasts 10 sec.<hr>This effect can occur once every 20 sec." },
 	{ id: "w70", name: "Impending Victory", icon: "spell_impending_victory.jpg", description: "Second Wind and Last Stand are now considered Enrage effects.<br><br>Whenever you Execute a target while under the effects of Second Wind, you instantly restore 3% of your total Health and generate 6 Rage points." },
+{ id: "w76", name: "Pain Train", icon: "spell_warrior_paintrain.jpg", description: "Your Overpower, Slam, Execute and Whirlwind abilities deal additional damage equal to 50% <span class='text-white'>Reserve Weapon</span> damage while in Gladiator Stance.<hr>Requires the Hero's Armory feat." },
     ],
 
     /* =========================
@@ -86,17 +87,17 @@ const RUNE_DATA = {
        ========================= */
     [
       { id: "w4", name: "Suicidal Tendencies", icon: "ability_warrior_rampage.jpg", description: "While there are more enemies than allies within 15 yards of you, your damage done and damage taken are increased by 5%." },
-{ id: "w9", name: "Savage Temperament", icon: "ability_warrior_focusedrage", description: "Bloodrage now counts as an Enrage effect.<br><br>Critically striking an enemy while Bloodrage is active extends its duration by 3 sec." },
-{ id: "w6", name: "Internal Bleeding", icon: "ability_warrior_bloodnova.jpg", description: "Your Rend ability instantly deals 20% weapon damage whenever you reapply while wielding a two-handed weapon." },
+{ id: "w9", name: "Savage Temperament", icon: "ability_warrior_focusedrage", description: "Bloodrage now counts as an Enrage effect.<br><br>Critically striking an enemy while Bloodrage is active extends its duration by 2 sec." },
+{ id: "w6", name: "Internal Bleeding", icon: "ability_warrior_bloodnova.jpg", description: "Your Rend ability instantly deals 20% weapon damage whenever you reapply it." },
 { id: "w17", name: "Siege Warfare", icon: "inv_crossbow_2h_dragonquest_b_01.jpg", description: "Your next ranged weapon attack or Barbaric Throw cannot miss, critically strikes and applies one stack of Sunder Armor.<hr>This effect can occur once every 30 sec." },
-{ id: "w20", name: "Battering Ram", icon: "inv_1115_warrior_headbutt.jpg", description: "Your Shield Slam bypasses 80% of the target's armor and can benefit from or trigger the effects of your Improved Slam and Crimson Cyclone talents." },
+{ id: "w20", name: "Battering Ram", icon: "inv_1115_warrior_headbutt.jpg", description: "Your Shield Slam bypasses 50% of the target's armor and always critically strikes while in Gladiator Stance." },
     ],
 
     /* =========================
        WARRIOR — FEAT SLOT 3
        ========================= */
     [
-{ id: "w30", name: "Hero's Armory", icon: "inv_12_profession_blacksmithing_weaponsmithing.jpg", description: "The first slot in your Backpack becomes a <span class='text-white'>Reserve Weapon</span> slot, where you can insert a two-handed melee weapon. You gain the base stats of that weapon as if it were equipped." },
+{ id: "w30", name: "Hero's Armory", icon: "inv_12_profession_blacksmithing_weaponsmithing.jpg", description: "The first slot in your Backpack becomes a <span class='text-white'>Reserve Weapon</span> slot, where you can insert a two-handed melee weapon. You gain the base stats of that weapon as if it were equipped.<hr>While this feat is active, your <span class='text-white'>Reserve Weapon</span> is always visible on your back." },
 {
   id: "w5",
   name: "Barbaric Throw",
@@ -213,7 +214,7 @@ const RUNE_DATA = {
 
     // yellow body text
     body: `
-     An aggressive stance that converts 50% of your Defense into Attack Power, reduces threat generation by 30% and allows the use of all abilities that are restricted to other stances while wearing a shield.
+     An aggressive stance that converts 100% of your Defense into Attack Power, reduces threat generation by 30% and allows the use of all abilities that are restricted to other stances while wearing a shield.
 `
   }
 },

@@ -14,7 +14,7 @@ const talentData = {
 <span class="text-white">Berserker:</span> ${p * 1}% increased movement speed.
 <br> 
 <span class="text-white">Defensive:</span> ${p * 1}% increased parry chance.` },
-                { id: 'thunderstruck', name: 'Thunderstruck', maxPoints: 2, row: 1, col: 3, icon: 'warrior_talent_icon_thunderstruck.jpg', description: (p) => `Your Thunder Clap deals additional damage equal to ${p * 5}% of your Attack Power and is usable in any stance.` },
+                { id: 'thunderstruck', name: 'Thunderstruck', maxPoints: 5, row: 1, col: 3, icon: 'warrior_talent_icon_thunderstruck.jpg', description: (p) => `Your Thunder Clap deals additional damage equal to ${p * 3}% of your Attack Power and is usable in any stance.` },
                 { id: 'overpowering', name: 'Overpowering', maxPoints: 2, row: 1, col: 0, icon: 'ability_meleedamage.jpg', description: (p) => `Your Overpower ability has a ${p * 10}% chance to activate whenever you deal damage with Rend.
 <hr>
 This effect can occur once every 10 sec.` },
@@ -33,11 +33,11 @@ Sword / Staff / Glaive -  Gain an extra attack.
 <hr>
 Switching weapons during combat places this effect on a 10 sec cooldown.` },
      { id: 'blood-frenzy', name: 'Blood Frenzy', maxPoints: 2, row: 3, col: 2, icon: 'ability_warrior_bloodfrenzy.jpg', description: (p) => `Increases your melee attack speed by ${p * 5}%.<br><br>Applying a bleed effect to an enemy also increases all physical damage they take by ${p * 2}% for 1 min.` },
-                { id: 'two-handed-weapon-specialization', name: 'Two-Handed Weapon Specialization', maxPoints: 5, row: 3, col: 1, icon: 'inv_axe_09.jpg', description: (p) => `Increases your damage and chance to hit with two-handed melee weapons by ${p}%.` },
+                { id: 'two-handed-weapon-specialization', name: 'Two-Handed Weapon Specialization', maxPoints: 5, row: 4, col: 0, icon: 'inv_axe_09.jpg', description: (p) => `Increases your damage and chance to hit with two-handed melee weapons by ${p}%.` },
 	{ id: 'strength-of-arms', name: 'Strength of Arms', maxPoints: 5, row: 3, col: 0, icon: 'inv_1115_warrior_victorypose.jpg', description: (p) => `Increases your total Strength and Stamina by ${p * 1}% and reduces the cooldown of your Retaliation, Recklessness and Shield Wall abilities by ${p * 4} mins. ` },
                 { id: 'impale', name: 'Impale', maxPoints: 2, row: 2, col: 2, prereq: 'deep-wounds', icon: 'ability_searingarrow.jpg', description: (p) => `Increases the critical strike damage bonus of your abilities by ${p * 5}%.` },
                 { id: 'sweeping-strikes', name: 'Sweeping Strikes', maxPoints: 1, row: 5, col: 1, icon: 'ability_rogue_slicedice.jpg', details: ['30 sec cooldown'], subDetails: ['15 Rage','Instant cast'], description: () => `Your next 5 melee attacks strike an additional nearby opponent.` },
-                { id: 'crimson-cyclone', name: 'Crimson Cyclone', maxPoints: 2, row: 4, col: 0, icon: 'ability_ironmaidens_swirlingvortex.jpg', description: (p) => `Your Whirlwind hits reduce the cooldown of your Brutalize ability and your Overpowering talent by ${p * 1} sec.` },
+                { id: 'crimson-cyclone', name: 'Crimson Cyclone', maxPoints: 2, row: 3, col: 1, icon: 'ability_ironmaidens_swirlingvortex.jpg', description: (p) => `Your Whirlwind hits reduce the cooldown of your Brutalize ability and your Overpowering talent by ${p * 1} sec.` },
                 { id: 'attrition', name: 'Attrition', maxPoints: 2, row: 5, col: 2, icon: 'achievement_bg_winwsg_3-0.jpg', description: (p) => { const cooldownValues = [10, 5]; return `The cost of Hamstring and Meathook decreases by 1 Rage point every ${cooldownValues[p - 1]} sec in combat. In addition, when you Slam a Dazed target you have a ${p * 5}% chance to knock them down.`;}},
                 { id: 'meathook', name: 'Meathook', maxPoints: 1, row: 2, col: 0, icon: 'inv_fishing_bait_spinefinpiranha.jpg', details: ['30 yd range','35 sec cooldown'], subDetails: ['5 Rage','Instant cast'], description: (p) => `Throw out a hooked chain to pull the target toward you and immobilize them for 3 sec.
 <hr> 
@@ -64,7 +64,7 @@ Ineffective on enemies higher than level 61 or which are marked as boss enemies.
 <br>
 <br>
 Being the victim of a critical strike grants you Seethe, increasing your damage dealt by ${p * 2}%. Lasts 10 sec.<hr>Foment and Seethe both count as Enrage effects.` },
-                { id: 'improved-slam', name: 'Improved Slam', maxPoints: 2, row: 3, col: 0, icon: 'ability_warrior_decisivestrike.jpg', description: (p) => {const castTimeValues = [50, 100]; return `Reduces the cast time of your Slam by ${castTimeValues[p - 1]}%. In addition, your Bloodthirst and Mortal Strike abilities have a ${p * 15}% chance to make your next Slam cost no Rage.`;}},
+                { id: 'improved-slam', name: 'Improved Slam', maxPoints: 2, row: 3, col: 0, icon: 'ability_warrior_decisivestrike.jpg', description: (p) => {const castTimeValues = [50, 100]; return `Reduces the cast time of your Slam by ${castTimeValues[p - 1]}%. In addition, your Bloodthirst, Mortal Strike and Shield Slam abilities have a ${p * 15}% chance to make your next Slam cost no Rage.`;}},
 	{ id: 'single-minded-fury', name: 'Single-Minded Fury', maxPoints: 2, row: 4, col: 0, prereq: 'improved-slam', icon: 'warrior_talent_icon_singlemindedfury.jpg', description: (p) => `Your Slam ability deals ${p * 10}% increased damage and hits with both weapons while dual wielding.` },
                 { id: 'deathwish', name: 'Deathwish', maxPoints: 1, row: 5, col: 1, icon: 'spell_shadow_deathpact.jpg', details: ['3 min cooldown'], subDetails: ['Instant'], description: () => `When activated, increases your physical damage by 20% and makes you immune to Fear and Daze effects, but lowers your armor and all resistances by 50%. Lasts 30 sec.` },
 	{ id: 'to-the-death', name: 'To The Death', maxPoints: 1, row: 4, col: 3, prereq: 'foment', icon: 'spell_warrior_barbarian.jpg', description: (p) => `The next time you take fatal damage you return to full health that decays over 10 sec. During this time you cannot be granted heals, shields or immunity effects.<hr>This effect can occur once every 30 min.` },
@@ -73,14 +73,14 @@ Being the victim of a critical strike grants you Seethe, increasing your damage 
 <hr>
 Your Intercept ability has no cooldown while standing within your banner's radius.` },
                 { id: 'warpath', name: 'Warpath', maxPoints: 2, row: 5, col: 3, icon: 'spell_warrior_dragoncharge.jpg', description: (p) => `Your Charge and Intercept abilities damage all enemies standing between you and your target for an amount equal to ${p * 15}% of your Attack Power.` },
-                { id: 'bloodthirst', name: 'Bloodthirst', maxPoints: 1, row: 6, col: 1, isUltimate: true, prereq: 'deathwish', icon: 'spell_nature_bloodlust.jpg', details: ['Melee Range', '6 sec cooldown'], subDetails: ['30 Rage','Instant cast'], description: () => `An instant attack that causes damage equal to 45% of your Attack Power. In addition, your next 3 melee attacks restore 2% of missing health, increased by 1% for every active enrage effect on you. Lasts 8 sec.` },
+                { id: 'bloodthirst', name: 'Bloodthirst', maxPoints: 1, row: 6, col: 1, isUltimate: true, prereq: 'deathwish', icon: 'spell_nature_bloodlust.jpg', details: ['Melee Range', '6 sec cooldown'], subDetails: ['30 Rage','Instant cast'], description: () => `An instant attack that causes damage equal to 45% of your Attack Power. In addition, your next 3 melee attacks restore 2% of missing health, increased by 1% for every active Enrage effect on you. Lasts 8 sec.` },
             ]
         },
         'protection': {
             name: 'Protection',
             talents: [
                 { id: 'shield-specialization', name: 'Shield Specialization', maxPoints: 5, row: 0, col: 1, icon: 'inv_shield_06.jpg', description: (p) => `Increases your chance to block attacks with a shield by ${p}% and has a ${p * 20}% chance to generate 1 Rage when a block occurs.` },
-                { id: 'improved-bloodrage', name: 'Improved Bloodrage', maxPoints: 2, row: 2, col: 2, icon: 'ability_racial_bloodrage.jpg', description: (p) => `Increases the Rage generated by your Bloodrage ability by ${p * 25}%. In addition, the cooldown of Bloodrage is reduced by ${p * 1} sec whenever you parry.` },
+                { id: 'improved-bloodrage', name: 'Improved Bloodrage', maxPoints: 5, row: 2, col: 2, icon: 'ability_racial_bloodrage.jpg', description: (p) => `Increases the Rage generated by your Bloodrage ability by ${p * 10}%. In addition, your critical strikes have a ${p * 2}% chance to reduce the cooldown of Bloodrage by 2 sec.` },
                 { id: 'toughness', name: 'Toughness', maxPoints: 5, row: 1, col: 2, icon: 'spell_holy_devotionaura.jpg', description: (p) => `Increases your armor value from items by ${p * 2}% and your Defense skill by ${p * 2}.` },
                 { id: 'iron-will', name: 'Iron Will', maxPoints: 5, row: 0, col: 2, icon: 'spell_magic_magearmor.jpg', description: (p) => `Reduces the duration of Stun and Charm effects on you by ${p * 5}%. In addition, reduces the amount of durability lost whenever you block or take damage by ${p * 10}%.` },
                 { id: 'last-stand', name: 'Last Stand', maxPoints: 1, row: 3, col: 0, prereq: 'devastating-defense', icon: 'spell_holy_ashestoashes.jpg', details: ['5 min cooldown'], subDetails: ['Instant'], description: () => `Temporarily grants you 30% of your maximum Health for 20 sec. After the effect expires, the health is lost.` },
